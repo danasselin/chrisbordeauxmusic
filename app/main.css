@@ -1,3 +1,25 @@
-body {
-  background: cornsilk;
+/* normalize */
+@import 'normalize.css';
+h1 {
+  margin: 0; 
+}
+
+/* placeholder CSS */
+
+/* colors */
+$dark-grey: #434343;
+$grey: #999999;
+$light-grey: #b7b7b7;
+$white: #FFFFFF;
+
+/* typography */
+$h1-size-mobile: 56px;
+$h3-size-mobile: 32px;
+$p-size-mobile: 16px;
+
+/* template */
+:global(.banner) {
+  background-color: $dark-grey;
+  color: $white;
+  font-size: $h1-size-mobile;
 }

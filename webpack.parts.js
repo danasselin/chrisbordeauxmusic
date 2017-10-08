@@ -1,3 +1,5 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
     historyApiFallback: true,
@@ -59,6 +61,8 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
             loader: 'postcss-loader',
             options: {
               plugins: () => ([
+                require('postcss-easy-import'), 
+                require('postcss-simple-vars'),
                 require('autoprefixer'),
                 require('precss')
               ]),
