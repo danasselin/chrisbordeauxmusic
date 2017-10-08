@@ -1,14 +1,14 @@
 import React from 'react';
+import '../../main.css';
 
 class Song extends React.Component {
   render() {
-    const { song, trackNo } = this.props.info;
-    const formattedName = `${trackNo}. ${song.name}`;
+    const { song } = this.props.info;
     return (
       <figure className="song">
-        <div className="song-image-placeholder"></div>
+        <div className="song-img-placeholder"></div>
         <div className="song-controller">
-          <h3>{ formattedName }</h3>
+          <h3>{ song.name }</h3>
         </div>
       </figure>
     );

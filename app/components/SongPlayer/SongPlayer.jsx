@@ -5,8 +5,7 @@ class SongPlayer extends React.Component {
   render() {
     const { album } = this.props;
     return (
-      <section className="listener">
-        {/* hard code album name for now */}
+      <section className="content-box song-player">
         <h3>Fossil Fuel Kid</h3>
         {
           album ? album.map((song, i) => {
