@@ -7,6 +7,9 @@ module.exports = {
   },
   extends: 'airbnb-base',
   parserOptions: {
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    }
   }
 }

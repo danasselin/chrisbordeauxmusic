@@ -1,6 +1,7 @@
-export default (text = 'Yello world') => {
+export default () => {
   const element = document.createElement('div');
-  element.innerHTML = text;
+  element.setAttribute('id', 'root');
+  element.innerHTML = 'My app finally works';
 
   return element;
 };

@@ -15,7 +15,7 @@ exports.lintJavaScript = ({ include, exclude, options }) => ({
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         include,
         exclude,
         enforce: 'pre',
@@ -24,6 +24,20 @@ exports.lintJavaScript = ({ include, exclude, options }) => ({
       }
     ]
   }
+});
+
+exports.loadJavaScript = ({ include, exclude, options }) => ({
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        include,
+        exclude,
+        loader: 'babel-loader',
+        options
+      },
+    ],
+  },
 });
 
 exports.loadCSS = ({ include, exclude } = {}) => ({

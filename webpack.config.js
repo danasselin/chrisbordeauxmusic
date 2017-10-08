@@ -18,14 +18,28 @@ const commonConfig = merge([
       path: PATHS.build,
       filename: '[name].js'
     },
+    resolve: {
+      extensions: ['.js', '.jsx']
+    },
     plugins: [
       new HtmlWebpackPlugin({
         title: 'Webpack demo'
       })
     ]
   },
-  parts.lintJavaScript({ include: PATHS.app }),
-  parts.loadCSS()
+  parts.lintJavaScript({
+    include: PATHS.app,
+    options: {
+      cacheDirectory: true
+    }
+  }),
+  parts.loadCSS(),
+  parts.loadJavaScript({
+    include: PATHS.app,
+    options: {
+      cacheDirectory: true
+    }
+  }),
 ]);
 
 const productionConfig = merge([]);
