@@ -1,5 +1,5 @@
 import React from 'react';
-import SongPlayer from './SongPlayer/SongPlayer.jsx'; // eslint-disable-line no-unused-vars
+import SongPlayer from './SongPlayer/SongPlayer.jsx';
 import { fossilFuelKid } from '../dummyData';
 
 class App extends React.Component {

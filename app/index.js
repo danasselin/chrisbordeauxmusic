@@ -1,6 +1,6 @@
-import React from 'react'; // eslint-disable-line no-unused-vars
+import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App.jsx'; // eslint-disable-line no-unused-vars
+import App from './components/App.jsx';
 import root from './root';
 import './main.css';
 
