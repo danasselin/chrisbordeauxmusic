@@ -1,11 +1,41 @@
 import React from 'react';
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
-import SongPlayer from './SongPlayer/SongPlayer.jsx';
-import VideoPlayer from './VideoPlayer/VideoPlayer.jsx';
-import { PressPage } from './PressPage.jsx';
-import { ShowsPage } from './ShowsPage.jsx';
-import { BlogPage } from './BlogPage.jsx';
-import { fossilFuelKid } from '../dummyData';
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  // Redirect,
+} from 'react-router-dom';
+import { HcSiteRoutes } from '../routes.jsx';
+
+function navMenu() {
+  const items = [
+    'listen',
+    'video',
+    'press',
+    'shows',
+    'blog',
+  ];
+  const createLinks = (item, i) => (
+    <Link key={i} to={`/${item}`}>
+      <li>{item}</li>
+    </Link>
+  );
+  return items.map(createLinks);
+}
+
+const createRoutes = route => (
+  <Route
+    path={ route.path }
+    render={ (props) => {
+      let updatedProps;
+      if (route.propsData) {
+        updatedProps = Object.assign({}, props, route.propsData);
+        return <route.component {...updatedProps} />;
+      }
+      return <route.component {...props} />;
+    }}
+  />
+);
 
 class App extends React.Component {
   render() { // eslint-disable-line class-methods-use-this
@@ -17,49 +47,12 @@ class App extends React.Component {
           </header>
           <nav className="hc-nav">
             <ul>
-              <Link to={'/listen'}>
-                <li>Listen</li>
-              </Link>
-              <Link to={'/video'}>
-                <li>Video</li>
-              </Link>
-              <Link to={'/press'}>
-                <li>Press</li>
-              </Link>
-              <Link to={'/shows'}>
-                <li>Shows</li>
-              </Link>
-              <Link to={'/blog'}>
-                <li>Blog</li>
-              </Link>
+              { navMenu() }
             </ul>
           </nav>
           <main className="hc-hero"></main>
 
-          <Route
-            path='/video'
-            render={ () => <VideoPlayer /> }
-          />
-
-          <Route
-            path='/listen'
-            render={ () => <SongPlayer album={ fossilFuelKid }/> }
-          />
-
-          <Route
-            path='/press'
-            render={ () => <PressPage /> }
-          />
-
-          <Route
-            path='/shows'
-            render={ () => <ShowsPage /> }
-          />
-
-          <Route
-            path='/blog'
-            render={ () => <BlogPage /> }
-          />
+          { HcSiteRoutes.map(createRoutes) }
 
         </div>
       </Router>
