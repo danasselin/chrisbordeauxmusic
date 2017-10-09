@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import SongPlayer from './SongPlayer/SongPlayer.jsx';
 import VideoPlayer from './VideoPlayer/VideoPlayer.jsx';
+import { PressPage } from './PressPage.jsx';
+import { ShowsPage } from './ShowsPage.jsx';
+import { BlogPage } from './BlogPage.jsx';
 import { fossilFuelKid } from '../dummyData';
 
 class App extends React.Component {
@@ -14,17 +17,50 @@ class App extends React.Component {
           </header>
           <nav className="hc-nav">
             <ul>
-              <li>Listen</li>
+              <Link to={'/listen'}>
+                <li>Listen</li>
+              </Link>
               <Link to={'/video'}>
                 <li>Video</li>
               </Link>
-              <li>Press</li>
-              <li>Shows</li>
-              <li>Blog</li>
+              <Link to={'/press'}>
+                <li>Press</li>
+              </Link>
+              <Link to={'/shows'}>
+                <li>Shows</li>
+              </Link>
+              <Link to={'/blog'}>
+                <li>Blog</li>
+              </Link>
             </ul>
           </nav>
           <main className="hc-hero"></main>
-          <SongPlayer album={ fossilFuelKid }/>
+
+          <Route
+            path='/video'
+            render={ () => <VideoPlayer /> }
+          />
+
+          <Route
+            path='/listen'
+            render={ () => <SongPlayer album={ fossilFuelKid }/> }
+          />
+
+          <Route
+            path='/press'
+            render={ () => <PressPage /> }
+          />
+
+          <Route
+            path='/shows'
+            render={ () => <ShowsPage /> }
+          />
+
+          <Route
+            path='/blog'
+            render={ () => <BlogPage /> }
+          />
+
         </div>
       </Router>
     );
