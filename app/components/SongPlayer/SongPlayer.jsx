@@ -1,5 +1,5 @@
 import React from 'react';
-import Song from './Song.jsx'; // eslint-disable-line no-unused-vars
+import Song from './Song.jsx';
 
 class SongPlayer extends React.Component {
   render() {
