@@ -1,6 +1,6 @@
 /* normalize */
 @import 'normalize.css';
-h1, h3 {
+h1, h3, ul {
   margin: 0;
 }
 
@@ -20,6 +20,7 @@ $h1-size-mobile: $large-font;
 $h3-size-mobile: $medium-font;
 $p-size-mobile: $small-font;
 $song-player-font-size: $medium-font;
+$nav-menu-font-size: $medium-font;
 
 /* template */
 $song-bg-color: $grey;
@@ -40,6 +41,24 @@ $song-player-bg-color: $light-grey;
       text-align: center;
       padding: 1% 0;
     }
+  }
+
+  .hc-nav {
+    font-size: $nav-menu-font-size;
+    ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: center;
+      li {
+        margin: 0 1%;
+      }
+    }
+  }
+
+  .hc-hero {
+    height: 250px;
+    border-top: 2px dotted;
+    border-bottom: 2px dotted;
   }
 
   .song-player {

@@ -9,6 +9,16 @@ class App extends React.Component {
         <header className="banner">
           <h1>Hayride Casualties</h1>
         </header>
+        <nav className="hc-nav">
+          <ul>
+            <li>Listen</li>
+            <li>Video</li>
+            <li>Press</li>
+            <li>Shows</li>
+            <li>Blog</li>
+          </ul>
+        </nav>
+        <main className="hc-hero"></main>
         <SongPlayer album={ fossilFuelKid }/>
       </div>
     );
