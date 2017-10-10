@@ -1,8 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
-
 const parts = require('./webpack.parts');
+require('dotenv').config();
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
@@ -24,7 +24,15 @@ const commonConfig = merge([
     plugins: [
       new HtmlWebpackPlugin({
         title: 'Webpack demo'
-      })
+      }),
+      parts.setFreeVariable(
+        'process.env.SC_CLIENT_ID',
+        `${process.env.SC_CLIENT_ID}`
+      ),
+      parts.setFreeVariable(
+        'process.env.SC_CLIENT_SEC',
+        `${process.env.SC_CLIENT_SEC}`
+      ),
     ]
   },
   parts.lintJavaScript({

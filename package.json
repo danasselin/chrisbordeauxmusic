@@ -57,6 +57,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "dotenv": "^4.0.0",
     "font-awesome": "^4.7.0",
     "fs": "0.0.1-security",
     "normalize.css": "^7.0.0",

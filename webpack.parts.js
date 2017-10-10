@@ -1,4 +1,11 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+
+exports.setFreeVariable = ( key, value ) => {
+  const env = {};
+  env[key] = JSON.stringify(value);
+  return new webpack.DefinePlugin(env);
+};
 
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
@@ -61,7 +68,7 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
             loader: 'postcss-loader',
             options: {
               plugins: () => ([
-                require('postcss-easy-import'), 
+                require('postcss-easy-import'),
                 require('postcss-simple-vars'),
                 require('autoprefixer'),
                 require('precss')

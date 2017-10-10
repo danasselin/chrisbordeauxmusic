@@ -2,6 +2,15 @@ import React from 'react';
 import Song from './Song.jsx';
 
 class SongPlayer extends React.Component {
+  constructor() {
+    super();
+    this.clientId = process.env.SC_CLIENT_ID;
+    this.clientSec = process.env.SC_CLIENT_SEC;
+  }
+  componentWillMount() {
+    console.log(`Did this work? ${this.clientId}`);
+    console.log(`Did this work? ${this.clientSec}`);
+  }
   render() {
     const { album } = this.props;
     return (
