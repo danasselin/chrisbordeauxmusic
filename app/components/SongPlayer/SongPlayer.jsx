@@ -1,16 +1,25 @@
 import React from 'react';
 import Song from './Song.jsx';
 
+const Dropbox = require('dropbox');
+
 class SongPlayer extends React.Component {
   constructor() {
     super();
-    this.clientId = process.env.SC_CLIENT_ID;
-    this.clientSec = process.env.SC_CLIENT_SEC;
+    this.dropboxToken = process.env.DROPBOX_TOKEN;
+    this.dropboxSec = process.env.DROPBOX_SEC;
   }
   componentWillMount() {
-    console.log(`Did this work? ${this.clientId}`);
-    console.log(`Did this work? ${this.clientSec}`);
+    const dbx = new Dropbox({ accessToken: this.dropboxToken });
+    dbx.filesListFolder({ path: '/dan/ cut up final tracks/mp3' })
+      .then(function(response) { // eslint-disable-line space-before-function-paren
+        console.log(response);
+      })
+      .catch(function(error) { // eslint-disable-line space-before-function-paren
+        console.log(error);
+      });
   }
+
   render() {
     const { album } = this.props;
     return (

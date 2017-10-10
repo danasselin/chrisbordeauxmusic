@@ -26,12 +26,12 @@ const commonConfig = merge([
         title: 'Webpack demo'
       }),
       parts.setFreeVariable(
-        'process.env.SC_CLIENT_ID',
-        `${process.env.SC_CLIENT_ID}`
+        'process.env.DROPBOX_TOKEN',
+        `${process.env.DROPBOX_TOKEN}`
       ),
       parts.setFreeVariable(
-        'process.env.SC_CLIENT_SEC',
-        `${process.env.SC_CLIENT_SEC}`
+        'process.env.DROPBOX_SEC',
+        `${process.env.DROPBOX_SEC}`
       ),
     ]
   },

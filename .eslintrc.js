@@ -21,5 +21,7 @@ module.exports = {
     'class-methods-use-this': 0,
     'react/jsx-uses-vars': 2,
     'react/jsx-uses-react': 2,
+    'func-names': 0,
+    'prefer-arrow-callback': 0,
   }
 }
