@@ -1,7 +1,5 @@
 import React from 'react';
-// import Song from './Song.jsx';
-
-const Dropbox = require('dropbox');
+import Song from './Song.jsx';
 
 class SongPlayer extends React.Component {
   constructor() {
@@ -10,8 +8,7 @@ class SongPlayer extends React.Component {
     this.state = {};
   }
   componentWillMount() {
-    const dbx = new Dropbox({ accessToken: this.dropboxToken });
-    dbx.filesListFolder({ path: '/dan/ cut up final tracks/mp3' })
+    this.props.dbx.filesListFolder({ path: '/dan/ cut up final tracks/mp3' })
       .then(({ entries }) => {
         this.setState({ album: entries });
       })
@@ -22,12 +19,13 @@ class SongPlayer extends React.Component {
 
   render() {
     const { album } = this.state;
+    const { dbx } = this.props;
     return (
       <section className="content-box song-player">
         <h3>Fossil Fuel Kid</h3>
         {
           album ? album.map((song, i) => (
-            <p>{ `${i + 1}.${song.name}` }</p>
+            <Song info={ song } key={ i } dbx={ dbx } />
           )) : null
         }
       </section>
