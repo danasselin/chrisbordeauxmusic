@@ -1,5 +1,5 @@
 import React from 'react';
-import Song from './Song.jsx';
+// import Song from './Song.jsx';
 
 const Dropbox = require('dropbox');
 
@@ -7,32 +7,28 @@ class SongPlayer extends React.Component {
   constructor() {
     super();
     this.dropboxToken = process.env.DROPBOX_TOKEN;
-    this.dropboxSec = process.env.DROPBOX_SEC;
+    this.state = {};
   }
   componentWillMount() {
     const dbx = new Dropbox({ accessToken: this.dropboxToken });
     dbx.filesListFolder({ path: '/dan/ cut up final tracks/mp3' })
-      .then(function(response) { // eslint-disable-line space-before-function-paren
-        console.log(response);
+      .then(({ entries }) => {
+        this.setState({ album: entries });
       })
-      .catch(function(error) { // eslint-disable-line space-before-function-paren
+      .catch((error) => {
         console.log(error);
       });
   }
 
   render() {
-    const { album } = this.props;
+    const { album } = this.state;
     return (
       <section className="content-box song-player">
         <h3>Fossil Fuel Kid</h3>
         {
-          album ? album.map((song, i) => {
-            const info = { song, trackNo: i + 1 };
-            return <Song
-              info={ info }
-              key={ i }
-            />;
-          }) : null
+          album ? album.map((song, i) => (
+            <p>{ `${i + 1}.${song.name}` }</p>
+          )) : null
         }
       </section>
     );

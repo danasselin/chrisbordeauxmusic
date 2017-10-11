@@ -3,13 +3,11 @@ import VideoPlayer from './components/VideoPlayer/VideoPlayer.jsx';
 import { PressPage } from './components/PressPage.jsx';
 import { ShowsPage } from './components/ShowsPage.jsx';
 import { BlogPage } from './components/BlogPage.jsx';
-import { fossilFuelKid } from './dummyData';
 
 export const HcSiteRoutes = [
   {
     path: '/listen',
     component: SongPlayer,
-    propsData: { album: fossilFuelKid },
   },
   {
     path: '/video',
