@@ -3,10 +3,7 @@ import VideoPlayer from './components/VideoPlayer/VideoPlayer.jsx';
 import { PressPage } from './components/PressPage.jsx';
 import { ShowsPage } from './components/ShowsPage.jsx';
 import { BlogPage } from './components/BlogPage.jsx';
-
-const Dropbox = require('dropbox');
-
-const dbx = new Dropbox({ accessToken: process.env.DROPBOX_TOKEN });
+import { dbx } from './helpers.jsx';
 
 export const HcSiteRoutes = [
   {

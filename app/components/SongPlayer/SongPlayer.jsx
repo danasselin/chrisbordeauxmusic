@@ -1,5 +1,6 @@
 import React from 'react';
 import Song from './Song.jsx';
+import { dbxAlbumPath } from '../../constants';
 
 class SongPlayer extends React.Component {
   constructor() {
@@ -8,7 +9,7 @@ class SongPlayer extends React.Component {
     this.state = {};
   }
   componentWillMount() {
-    this.props.dbx.filesListFolder({ path: '/dan/ cut up final tracks/mp3' })
+    this.props.dbx.filesListFolder({ path: dbxAlbumPath })
       .then(({ entries }) => {
         this.setState({ album: entries });
       })
