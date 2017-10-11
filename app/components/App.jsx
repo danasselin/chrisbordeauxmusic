@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { HcSiteRoutes } from '../routes.jsx';
 import { createNavMenu, createRoutes } from '../helpers.jsx';
+import { navItems } from '../constants';
 
 const App = () => (
   <Router>
@@ -11,7 +12,7 @@ const App = () => (
       </header>
       <nav className="hc-nav">
         <ul>
-          { createNavMenu() }
+          { createNavMenu(navItems) }
         </ul>
       </nav>
       <main className="hc-hero"></main>

@@ -1,0 +1,5 @@
+App
+ - renders header/nav menu
+ - sets up all the routing logic
+   + Should contain route components that match entries in the routes config
+   + In other words, 'Links' should correspond to 'Routes'
