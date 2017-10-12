@@ -1,20 +1,31 @@
 import React from 'react';
-import { mount, render } from 'enzyme';
-import Enzyme from 'enzyme';
+import Enzyme, { shallow, render, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { createNavMenu } from '../helpers.jsx';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { createNavMenu } from '../helpers.jsx';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-const Test = () => (
-  <p className="test">This is a test</p>
-);
-
 describe('createNavMenu', () => {
-  it('Creates a link for every nav item passed in', () => {
-    // mount a component that calls createNavMenu
-    const wrapper = mount(<Test />);
-    expect(wrapper.find('.test').text()).toBe('This is a test');
+
+  let wrapper;
+  const menuItems = ['item1', 'item2', 'item3'];
+
+  beforeEach(() => {
+    wrapper = mount(
+      <Router>
+        <div className='nav'>
+          { createNavMenu(menuItems) }
+        </div>
+      </Router>
+    );
+  });
+
+  it('Creates an <a> wrapping an <li> for every menu item name passed in', () => {
+    expect(wrapper.find('a li').length).toEqual(3);
+  });
+
+  it('Each <li> text matches the menu item name from the array', () => {
+    expect(wrapper.find('li').first().text()).toEqual('item1');
   });
 });
