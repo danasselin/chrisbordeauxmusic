@@ -12,25 +12,19 @@ class Song extends React.Component {
     this.path = pathLower;
     this.contentHash = contentHash;
     this.id = id;
-    this.getSong = this.getSong.bind(this);
+    this.fetchSongPlayData = props.fetch.bind(this);
     this.state = {};
   }
 
   getSong() {
-    this.props.dbx.filesGetTemporaryLink({ path: `${this.path}` })
-      .then((response) => {
-        this.setState({ link: response.link });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.fetchSongPlayData(this.path);
   }
 
   render() {
     const { name } = this.props.info;
     const { link } = this.state;
     return (
-      <figure className="song" onClick={ this.getSong }>
+      <figure className="song" onClick={ () => this.fetchSongPlayData(this.path) }>
         <div className="song-img-placeholder"></div>
         <div className="song-controller">
           <h3>{ name }</h3>

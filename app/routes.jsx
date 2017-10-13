@@ -3,13 +3,13 @@ import VideoPlayer from './components/VideoPlayer/VideoPlayer.jsx';
 import { PressPage } from './components/PressPage.jsx';
 import { ShowsPage } from './components/ShowsPage.jsx';
 import { BlogPage } from './components/BlogPage.jsx';
-import { dbx } from './helpers.jsx';
+import { fetchSongNames } from './helpers.jsx';
 
 export const HcSiteRoutes = [
   {
     path: '/listen',
     component: SongPlayer,
-    propsData: { dbx },
+    propsData: { fetch: fetchSongNames },
   },
   {
     path: '/video',
