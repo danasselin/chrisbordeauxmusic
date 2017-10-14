@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 
 const Dropbox = require('dropbox');
+const equal = require('deep-equal');
 
 // Route and template helpers
 export function createNavMenu(items) {
@@ -33,8 +34,10 @@ export const dbx = new Dropbox({ accessToken: process.env.DROPBOX_TOKEN });
 export function fetchSongNames(albumPath) {
   // 'this' is a SongPlayer instance
   dbx.filesListFolder({ path: albumPath })
-    .then(({ entries }) => {
-      this.setState({ album: entries });
+    .then(({ entries: album }) => {
+      // poor man's caching
+      window.currentAlbum = { album };
+      if (!equal(window.currentAlbum, this.state)) this.setState({ album });
     })
     .catch((error) => {
       console.log(error);

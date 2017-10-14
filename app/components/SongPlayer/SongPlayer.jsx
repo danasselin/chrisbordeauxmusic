@@ -7,7 +7,7 @@ class SongPlayer extends React.Component {
   constructor(props) {
     super(props);
     this.fetchSongNames = props.fetch.bind(this);
-    this.state = {};
+    this.state = window.currentAlbum || {};
   }
   componentWillMount() {
     this.fetchSongNames(dbxAlbumPath);
