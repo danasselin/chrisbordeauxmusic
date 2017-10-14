@@ -20,23 +20,20 @@ class Song extends React.Component {
     this.fetchSongPlayData(this.path);
   }
 
+  showSongControls() {
+    const { link } = this.state;
+    const audio = <audio src={ link } preload="auto" controls></audio>;
+    return link ? audio : <p>Click to load song</p>;
+  }
+
   render() {
     const { name } = this.props.info;
-    const { link } = this.state;
     return (
       <figure className="song" onClick={ () => this.fetchSongPlayData(this.path) }>
-        <div className="song-img-placeholder"></div>
         <div className="song-controller">
           <h3>{ name }</h3>
+          { this.showSongControls() }
         </div>
-        {
-          link ?
-            <audio
-              src={ link }
-              preload="auto"
-              controls></audio> :
-            <p>Click to load song</p>
-        }
       </figure>
     );
   }

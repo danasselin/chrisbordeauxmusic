@@ -1,6 +1,6 @@
 /* normalize */
 @import 'normalize.css';
-h1, h3, ul {
+h1, h3, ul, p {
   margin: 0;
 }
 
@@ -13,44 +13,76 @@ $light-grey: #b7b7b7;
 $white: #FFFFFF;
 
 /* typography */
-$small-font: 16px;
-$medium-font: 32px;
-$large-font: 56px;
-$h1-size-mobile: $large-font;
+$small-font: 48px;
+$medium-font: 52px;
+$large-font: 76px;
+$medium-text-spacing: 20px;
+$large-text-spacing: 40px;
+$h1-size: $large-font;
 $h3-size-mobile: $medium-font;
 $p-size-mobile: $small-font;
 $song-player-font-size: $medium-font;
-$nav-menu-font-size: $medium-font;
 
-/* template */
+/* hc-banner typography */
+$banner-font: Palatino;
+$banner-color: $white;
+$banner-bg-color: $dark-grey;
+$banner-text-padding: $large-text-spacing 0;
+
+/* hc-nav typography */
+$hc-nav-font: Verdana;
+$hc-nav-color: $dark-grey;
+$hc-nav-font-size: $medium-font;
+$hc-nav-text-padding: $medium-text-spacing 0;
+
+/* content-box typography */
+$content-box-font: Verdana;
+$content-box-text-padding: $medium-text-spacing;
+
+/* song typography */
 $song-bg-color: $grey;
 $song-player-bg-color: $light-grey;
+$song-controller-font-size: $small-font;
+$song-text-padding: $medium-text-spacing;
+/* placeholders */
 
 :global {
 
-  .content-box {
-    width: 90%;
-    padding: 1% 10px;
+  h1 {
+    font-size: $h1-size;
+    text-align: center;
+    padding: 1% 0;
   }
 
-  .banner {
-    background-color: $dark-grey;
-    color: $white;
-    h1 {
-      font-size: $h1-size-mobile;
+  .content-box {
+    padding: $content-box-text-padding;
+    font-family: $content-box-font;
+    & > h3 {
       text-align: center;
-      padding: 1% 0;
+    }
+    h3 {
+      font-weight: 100;
     }
   }
 
+  .banner {
+    font-family: $banner-font;
+    background-color: $banner-bg-color;
+    color: $banner-color;
+    padding: $banner-text-padding;
+  }
+
   .hc-nav {
-    font-size: $nav-menu-font-size;
+    font-family: $hc-nav-font;
+    font-size: $hc-nav-font-size;
+    color: $hc-nav-color;
+    padding: $hc-nav-text-padding;
     ul {
       list-style-type: none;
       display: flex;
-      justify-content: center;
+      justify-content: space-around;
       a {
-        margin: 0 1%;
+        color: inherit;
         text-decoration: none;
       }
     }
@@ -71,12 +103,13 @@ $song-player-bg-color: $light-grey;
   .song {
     cursor: pointer;
     background-color: $song-bg-color;
-    display: flex;
-    align-items: center;
+    font-size: $song-controller-font-size;
+    padding: $song-text-padding;
 
     .song-controller {
-      padding: 0 1%;
-      flex: 1;
+      h3 {
+        font-size: $song-controller-font-size;
+      }
     }
   }
 

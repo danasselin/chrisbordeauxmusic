@@ -70,8 +70,9 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
               plugins: () => ([
                 require('postcss-easy-import'),
                 require('postcss-simple-vars'),
+                require('postcss-extend'),
                 require('autoprefixer'),
-                require('precss')
+                require('precss'),
               ]),
             },
           }
