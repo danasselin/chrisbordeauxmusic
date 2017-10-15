@@ -9,7 +9,10 @@ export const HcSiteRoutes = [
   {
     path: '/listen',
     component: SongPlayer,
-    propsData: { fetch: fetchSongNames },
+    propsData: {
+      fetch: fetchSongNames,
+      player: document.createElement('audio'),
+    },
   },
   {
     path: '/video',

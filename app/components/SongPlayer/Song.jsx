@@ -1,4 +1,5 @@
 import React from 'react';
+import SongController from './SongController.jsx';
 import '../../main.css';
 
 class Song extends React.Component {
@@ -12,27 +13,19 @@ class Song extends React.Component {
     this.path = pathLower;
     this.contentHash = contentHash;
     this.id = id;
-    this.fetchSongPlayData = props.fetch.bind(this);
     this.state = {};
-  }
-
-  getSong() {
-    this.fetchSongPlayData(this.path);
-  }
-
-  showSongControls() {
-    const { link } = this.state;
-    const audio = <audio src={ link } preload="auto" controls></audio>;
-    return link ? audio : <p>Click to load song</p>;
   }
 
   render() {
     const { name } = this.props.info;
     return (
-      <figure className="song" onClick={ () => this.fetchSongPlayData(this.path) }>
+      <figure className="song">
         <div className="song-controller">
           <h3>{ name }</h3>
-          { this.showSongControls() }
+          <SongController
+            resume={ () => this.props.updatePlayer(this.path) }
+            pause={ this.props.pause }
+          />
         </div>
       </figure>
     );

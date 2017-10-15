@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 
 const Dropbox = require('dropbox');
-const equal = require('deep-equal');
 
 // Route and template helpers
 export function createNavMenu(items) {
@@ -32,25 +31,9 @@ export const createRoutes = (route, i) => (
 // Music API helpers
 export const dbx = new Dropbox({ accessToken: process.env.DROPBOX_TOKEN });
 export function fetchSongNames(albumPath) {
-  // 'this' is a SongPlayer instance
-  dbx.filesListFolder({ path: albumPath })
-    .then(({ entries: album }) => {
-      // poor man's caching
-      window.currentAlbum = { album };
-      if (!equal(window.currentAlbum, this.state)) this.setState({ album });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  return dbx.filesListFolder({ path: albumPath });
 }
 
 export function fetchSongPlayData(albumPath) {
-  dbx.filesGetTemporaryLink({ path: `${albumPath}` })
-    .then((response) => {
-      // 'this' is a Song instance
-      this.setState({ link: response.link });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  return dbx.filesGetTemporaryLink({ path: `${albumPath}` });
 }
