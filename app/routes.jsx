@@ -1,17 +1,21 @@
-import SongPlayer from './components/SongPlayer/SongPlayer.jsx';
+import AlbumLibrary from './components/Libraries/AlbumLibrary.jsx';
 import VideoPlayer from './components/VideoPlayer/VideoPlayer.jsx';
 import { PressPage } from './components/PressPage.jsx';
 import { ShowsPage } from './components/ShowsPage.jsx';
 import { BlogPage } from './components/BlogPage.jsx';
-import { fetchSongNames } from './helpers.jsx';
+import { fetchAlbum } from './helpers.jsx';
+import { albumTitles } from './constants';
+
+const player = document.createElement('audio');
 
 export const HcSiteRoutes = [
   {
     path: '/listen',
-    component: SongPlayer,
+    component: AlbumLibrary,
     propsData: {
-      fetch: fetchSongNames,
-      player: document.createElement('audio'),
+      fetchAlbum,
+      player,
+      albumTitles,
     },
   },
   {

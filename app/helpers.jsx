@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
+import { defaultAlbumPath } from './constants';
 
 const Dropbox = require('dropbox');
 
@@ -30,7 +31,8 @@ export const createRoutes = (route, i) => (
 
 // Music API helpers
 export const dbx = new Dropbox({ accessToken: process.env.DROPBOX_TOKEN });
-export function fetchSongNames(albumPath) {
+
+export function fetchAlbum(albumPath = defaultAlbumPath) {
   return dbx.filesListFolder({ path: albumPath });
 }
 

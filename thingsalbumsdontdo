@@ -1,0 +1,48 @@
+Things albums don't do
+this.fetchSongNames = props.fetch.bind(this);
+this.player = props.player;
+this.state = window.currentAlbum || {};
+this.updatePlayer = this.updatePlayer.bind(this);
+this.pause = this.pause.bind(this);
+this.resume = this.resume.bind(this);
+this.fetchedSongUrls = {};
+
+this.fetchSongNames(dbxAlbumPath)
+  .then(({ entries: album }) => {
+    window.currentAlbum = { album };
+    if (!equal(window.currentAlbum, this.state)) this.setState({ album });
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+  shouldFetchFromAPI(url) {
+    return !(url in this.fetchedSongUrls);
+  }
+
+  updatePlayer(songUrl) {
+    if (this.shouldFetchFromAPI(songUrl)) {
+      fetchSongPlayData(songUrl)
+        .then(({ link }) => {
+          this.fetchedSongUrls[songUrl] = link;
+          this.player.src = link;
+          this.player.play();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      this.resume(songUrl);
+    }
+  }
+
+  pause() {
+    this.player.pause();
+  }
+
+  resume(url) {
+    if (this.player.src !== this.fetchedSongUrls[url]) {
+      this.player.src = this.fetchedSongUrls[url];
+    }
+    this.player.play();
+  }
