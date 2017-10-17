@@ -1,21 +1,23 @@
 import React from 'react';
-import Album from '../Album.jsx';
+import { connect } from 'react-redux';
+import Album from '../components/Album.jsx';
+import { setSelectedAlbum } from '../actions';
 
 const equal = require('deep-equal');
 
 class AlbumLibrary extends React.Component {
   constructor(props) {
     super(props);
-    // I know this sux but it's only temp
-    this.state = window.selectedAlbum || {};
+    this.selectedAlbum = props.songs || { songs: [] };
   }
 
   fetchAlbum() {
-    if (!equal(window.currentAlbum, this.state)) {
+    if (!equal(window.selectedAlbum, this.selectedAlbum)) {
       this.props.fetchAlbum()
         .then(({ entries: songs }) => {
+          // this is a horrible, horrible hack
           window.selectedAlbum = { songs };
-          this.setState({ songs });
+          this.props.dispatch(setSelectedAlbum(songs));
         })
         .catch((err) => {
           console.log(err);
@@ -28,8 +30,7 @@ class AlbumLibrary extends React.Component {
   }
 
   render() {
-    const { albumTitles } = this.props;
-    const { songs } = this.state;
+    const { albumTitles, songs } = this.props;
     return (
       <section>
         <ul>
@@ -43,4 +44,6 @@ class AlbumLibrary extends React.Component {
   }
 }
 
-export default AlbumLibrary;
+const mapStateToProps = state => ({ songs: state.songs });
+
+export default connect(mapStateToProps)(AlbumLibrary);

@@ -1,5 +1,5 @@
-import AlbumLibrary from './components/Libraries/AlbumLibrary.jsx';
-import VideoPlayer from './components/VideoPlayer/VideoPlayer.jsx';
+import AlbumLibrary from './containers/AlbumLibrary.jsx';
+import VideoPlayer from './containers/VideoPlayer.jsx';
 import { PressPage } from './components/PressPage.jsx';
 import { ShowsPage } from './components/ShowsPage.jsx';
 import { BlogPage } from './components/BlogPage.jsx';
