@@ -4,11 +4,18 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import App from './components/App.jsx';
 // import reducer from './reducers';
-import albumlibrary from './reducers/albumlibrary';
+import hcApp from './reducers';
 import root from './root';
 import './main.css';
 
-const store = createStore(albumlibrary);
+const store = createStore(
+  hcApp,
+  /* preloadedState, */
+
+  window // eslint-disable-line no-underscore-dangle
+    .__REDUX_DEVTOOLS_EXTENSION__ && // eslint-disable-line no-underscore-dangle
+    window.__REDUX_DEVTOOLS_EXTENSION__(), // eslint-disable-line no-underscore-dangle
+);
 
 document.body.appendChild(root());
 

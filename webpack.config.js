@@ -45,7 +45,7 @@ const commonConfig = merge([
   parts.loadJavaScript({
     include: PATHS.app,
     options: {
-      cacheDirectory: true
+      cacheDirectory: true,
     }
   }),
 ]);
@@ -56,7 +56,10 @@ const developmentConfig = merge([
   parts.devServer({
     host: process.env.HOST,
     port: process.env.PORT
-  })
+  }),
+  parts.generateSourceMaps({
+    type: 'cheap-module-eval-source-map'
+  }),
 ]);
 
 

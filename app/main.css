@@ -21,7 +21,7 @@ $large-text-spacing: 40px;
 $h1-size: $large-font;
 $h3-size-mobile: $medium-font;
 $p-size-mobile: $small-font;
-$song-player-font-size: $medium-font;
+$album-font-size: $medium-font;
 
 /* hc-banner typography */
 $banner-font: Palatino;
@@ -41,7 +41,7 @@ $content-box-text-padding: $medium-text-spacing;
 
 /* song typography */
 $song-bg-color: $grey;
-$song-player-bg-color: $light-grey;
+$album-bg-color: $light-grey;
 $song-controller-font-size: $small-font;
 $song-text-padding: $medium-text-spacing;
 /* placeholders */
@@ -95,8 +95,19 @@ $song-text-padding: $medium-text-spacing;
   }
 
   .song-player {
-    font-size: $song-player-font-size;
-    background-color: $song-player-bg-color;
+    font-size: $large-font; 
+    ul {
+      text-align: center;
+      li {
+        display: inline-block;
+        margin: 0 5%;
+      }
+    }
+  }
+
+  .album {
+    font-size: $album-font-size;
+    background-color: $album-bg-color;
     margin: 0 auto;
   }
 

@@ -19,6 +19,7 @@ module.exports = {
     'no-console': 0,
     'class-methods-use-this': 0,
     'import/prefer-default-export': 0,
+    'import/no-named-as-default': 0,
     'react/jsx-uses-vars': 2,
     'react/jsx-uses-react': 2,
     'func-names': 0,

@@ -1,4 +1,4 @@
-export default (state = {}, action) => {
+const albumLibrary = (state = {}, action) => {
   switch (action.type) {
     case 'SET_SELECTED_ALBUM':
       return { songs: action.songs };
@@ -6,3 +6,5 @@ export default (state = {}, action) => {
       return state;
   }
 };
+
+export default albumLibrary;

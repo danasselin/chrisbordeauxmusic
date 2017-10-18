@@ -1,6 +1,10 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 
+exports.generateSourceMaps = ({ type }) => ({
+  devtool: type,
+});
+
 exports.setFreeVariable = ( key, value ) => {
   const env = {};
   env[key] = JSON.stringify(value);

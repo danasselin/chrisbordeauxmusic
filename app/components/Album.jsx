@@ -2,8 +2,7 @@ import React from 'react';
 import Song from './Song.jsx';
 
 const Album = ({ songs }) => (
-  <section className="content-box song-player">
-    <h3>Current Album: Fix later</h3>
+  <section className="content-box album">
     {
       songs ? songs.map(({ name, path_lower: pathLower }, i) => (
         <Song
