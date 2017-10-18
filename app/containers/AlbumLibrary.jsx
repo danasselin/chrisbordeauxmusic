@@ -3,20 +3,16 @@ import { connect } from 'react-redux';
 import Album from '../components/Album.jsx';
 import { setSelectedAlbum } from '../actions';
 
-const equal = require('deep-equal');
-
 class AlbumLibrary extends React.Component {
   constructor(props) {
     super(props);
-    this.selectedAlbum = props.songs || { songs: [] };
+    this.selectedAlbum = props.songs || [];
   }
 
-  fetchAlbum() {
-    if (!equal(window.selectedAlbum, this.selectedAlbum)) {
+  fetchAlbum(path = null) {
+    if (!this.selectedAlbum || !path) {
       this.props.fetchAlbum()
         .then(({ entries: songs }) => {
-          // this is a horrible, horrible hack
-          window.selectedAlbum = { songs };
           this.props.dispatch(setSelectedAlbum(songs));
         })
         .catch((err) => {
