@@ -26,6 +26,10 @@ class AlbumLibrary extends React.Component {
     this.fetchInitialAlbum();
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+  }
+
   render() {
     const { albumTitles, songs } = this.props;
     return (
@@ -41,6 +45,10 @@ class AlbumLibrary extends React.Component {
     );
   }
 }
-const mapStateToProps = ({ albumLibrary: { songs } }) => ({ songs });
+
+const mapStateToProps = ({
+  albumLibrary: { songs },
+  songPlayer: { command },
+}) => ({ songs, command });
 
 export default connect(mapStateToProps)(AlbumLibrary);

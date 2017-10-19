@@ -5,9 +5,9 @@ export const setSelectedAlbum = songs => (
   }
 );
 
-export const setSongPlayerCmd = songPlayer => (
+export const setSongPlayerCmd = command => (
   {
     type: 'SET_SONGPLAYER_CMD',
-    songPlayer,
+    command,
   }
 );
