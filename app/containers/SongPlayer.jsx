@@ -1,14 +1,39 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import SongPlayerDisplay from '../components/SongPlayerDisplay.jsx';
 import { setSongPlayerCmd } from '../actions';
+import Player from '../services/Song/Player';
 
-const mapStateToProps = ({ songPlayer: { command } }) => ({ command });
+class SongPlayer extends React.Component {
+  constructor() {
+    super();
+    this.player = new Player();
+  }
+  componentWillReceiveProps(nextProps) {
+    const {
+      command,
+      selectedSong,
+      songs,
+    } = nextProps;
+    this.player.executeCmd(command, selectedSong || songs[0]);
+  }
+
+  render() {
+    const { command, btnOnClick } = this.props;
+    return (
+      <SongPlayerDisplay
+        command={ command }
+        btnOnClick={ btnOnClick }
+      />
+    );
+  }
+}
+
+const mapStateToProps = ({
+  songPlayer: { command, selectedSong },
+  albumLibrary: { songs },
+}) => ({ command, selectedSong, songs });
 
 const mapDispatchToProps = { btnOnClick: setSongPlayerCmd };
 
-const SongPlayer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(SongPlayerDisplay);
-
-export default SongPlayer;
+export default connect(mapStateToProps, mapDispatchToProps)(SongPlayer);

@@ -26,13 +26,6 @@ class AlbumLibrary extends React.Component {
     this.fetchInitialAlbum();
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { songs, command } = nextProps;
-    let selectedSong = nextProps.selectedSong;
-    if (!selectedSong) selectedSong = songs[0].path_lower;
-    this.props.player.executeCmd(command, selectedSong);
-  }
-
   render() {
     const { albumTitles, songs, selectSongFromAlbum: select } = this.props;
     return (
@@ -52,10 +45,7 @@ class AlbumLibrary extends React.Component {
   }
 }
 
-const mapStateToProps = ({
-  albumLibrary: { songs },
-  songPlayer: { command, selectedSong },
-}) => ({ songs, command, selectedSong });
+const mapStateToProps = ({ albumLibrary: { songs } }) => ({ songs });
 
 const mapDispatchToProps = {
   selectSongFromAlbum,

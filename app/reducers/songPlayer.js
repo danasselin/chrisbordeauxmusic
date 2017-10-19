@@ -1,4 +1,4 @@
-export default (state = {}, action) => {
+export default (state = { command: '' }, action) => {
   switch (action.type) {
     case 'SET_SONGPLAYER_CMD':
       return Object.assign(
@@ -10,7 +10,10 @@ export default (state = {}, action) => {
       return Object.assign(
         {},
         state,
-        { selectedSong: action.selectedSong },
+        {
+          selectedSong: action.selectedSong,
+          command: 'queued',
+        },
       );
     default:
       return state;
