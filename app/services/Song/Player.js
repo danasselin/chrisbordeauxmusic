@@ -1,21 +1,33 @@
+import { fetchSongPlayData } from '../../helpers.jsx';
+
 class Player {
   constructor() {
     this.song = '';
+    this.audio = document.createElement('audio');
   }
   play() {
-    console.log('playing', this.song);
+    this.audio.play();
   }
 
   pause() {
-    console.log('pausing', this.song);
+    this.audio.pause();
   }
 
   rewind() {
-    console.log('rewinding', this.song);
+    this.audio.load();
   }
 
   queue() {
-    console.log('ready to play', this.song);
+    // todo: emit action while the song is 'loading...'
+    fetchSongPlayData(this.song)
+      .then(({ link }) => {
+        this.audio.src = link;
+        // todo: emit action when the song is 'loaded'
+      })
+      .catch((err) => {
+        console.log(err);
+        // todo: emit action if fetch fails
+      });
   }
 
   executeCmd(cmd, song) {
