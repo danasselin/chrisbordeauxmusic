@@ -1,7 +1,7 @@
 import React from 'react';
 import Song from './Song.jsx';
 
-const Album = ({ songs }) => (
+const Album = ({ songs, onSongClick }) => (
   <section className="content-box album">
     {
       songs ? songs.map(({ name, path_lower: pathLower }, i) => (
@@ -9,6 +9,7 @@ const Album = ({ songs }) => (
           key={ i }
           name={ name }
           path={ pathLower }
+          onClick={ onSongClick }
         />
       )) : null
     }

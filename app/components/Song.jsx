@@ -1,8 +1,11 @@
 import React from 'react';
 import '../main.css';
 
-const Song = ({ name, path }) => (
-  <figure className='song' data-path={ path }>
+const Song = ({ name, path, onClick }) => (
+  <figure
+    className='song'
+    onClick={ () => onClick(path) }
+  >
     <div className='song-controller'>
       <h3>{ name }</h3>
     </div>

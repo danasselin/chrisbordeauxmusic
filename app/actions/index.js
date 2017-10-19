@@ -11,3 +11,10 @@ export const setSongPlayerCmd = command => (
     command,
   }
 );
+
+export const selectSongFromAlbum = selectedSong => (
+  {
+    type: 'SELECT_SONG_FROM_ALBUM',
+    selectedSong,
+  }
+);

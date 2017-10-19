@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Album from '../components/Album.jsx';
 import SongPlayer from '../containers/SongPlayer.jsx';
-import { setSelectedAlbum } from '../actions';
+import { setSelectedAlbum, selectSongFromAlbum } from '../actions';
 
 class AlbumLibrary extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class AlbumLibrary extends React.Component {
     if (!this.selectedAlbum || !path) {
       this.props.fetchAlbum()
         .then(({ entries: songs }) => {
-          this.props.dispatch(setSelectedAlbum(songs));
+          this.props.setSelectedAlbum(songs);
         })
         .catch((err) => {
           console.log(err);
@@ -27,11 +27,14 @@ class AlbumLibrary extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
+    const { songs, command } = nextProps;
+    let selectedSong = nextProps.selectedSong;
+    if (!selectedSong) selectedSong = songs[0].path_lower;
+    this.props.player.executeCmd(command, selectedSong);
   }
 
   render() {
-    const { albumTitles, songs } = this.props;
+    const { albumTitles, songs, selectSongFromAlbum: select } = this.props;
     return (
       <section>
         <ul>
@@ -39,7 +42,10 @@ class AlbumLibrary extends React.Component {
         </ul>
         <SongPlayer />
         <div>
-          <Album songs={ songs } />
+          <Album
+            songs={ songs }
+            onSongClick={ select }
+          />
         </div>
       </section>
     );
@@ -48,7 +54,12 @@ class AlbumLibrary extends React.Component {
 
 const mapStateToProps = ({
   albumLibrary: { songs },
-  songPlayer: { command },
-}) => ({ songs, command });
+  songPlayer: { command, selectedSong },
+}) => ({ songs, command, selectedSong });
 
-export default connect(mapStateToProps)(AlbumLibrary);
+const mapDispatchToProps = {
+  selectSongFromAlbum,
+  setSelectedAlbum,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AlbumLibrary);

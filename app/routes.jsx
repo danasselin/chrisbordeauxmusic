@@ -5,16 +5,15 @@ import { ShowsPage } from './components/ShowsPage.jsx';
 import { BlogPage } from './components/BlogPage.jsx';
 import { fetchAlbum } from './helpers.jsx';
 import { albumTitles } from './constants';
-
-const player = document.createElement('audio');
+import Player from './services/SongPlayer';
 
 export const HcSiteRoutes = [
   {
     path: '/listen',
     component: AlbumLibrary,
     propsData: {
+      player: new Player(),
       fetchAlbum,
-      player,
       albumTitles,
     },
   },
