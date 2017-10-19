@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Album from '../components/Album.jsx';
+import Album from '../containers/Album.jsx';
 import SongPlayer from '../containers/SongPlayer.jsx';
 import { setSelectedAlbum, selectSongFromAlbum } from '../actions';
 
@@ -27,7 +27,7 @@ class AlbumLibrary extends React.Component {
   }
 
   render() {
-    const { albumTitles, songs, selectSongFromAlbum: select } = this.props;
+    const { albumTitles, songs } = this.props;
     return (
       <section>
         <ul>
@@ -35,10 +35,7 @@ class AlbumLibrary extends React.Component {
         </ul>
         <SongPlayer />
         <div>
-          <Album
-            songs={ songs }
-            onSongClick={ select }
-          />
+          <Album songs={ songs } />
         </div>
       </section>
     );

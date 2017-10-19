@@ -1,5 +1,7 @@
 import React from 'react';
-import Song from './Song.jsx';
+import { connect } from 'react-redux';
+import { selectSongFromAlbum } from '../actions';
+import Song from '../components/Song.jsx';
 
 const Album = ({ songs, onSongClick }) => (
   <section className="content-box album">
@@ -16,4 +18,6 @@ const Album = ({ songs, onSongClick }) => (
   </section>
 );
 
-export default Album;
+const mapDispatchToProps = { onSongClick: selectSongFromAlbum };
+
+export default connect(null, mapDispatchToProps)(Album);
