@@ -1,12 +1,30 @@
-import { fetchSongPlayData } from '../../helpers.jsx';
+import { fetchSongPlayData, animate } from '../../helpers.jsx';
 
 class Player {
   constructor() {
     this.song = '';
     this.audio = document.createElement('audio');
+    this.visualizer = document.getElementsByClassName('visualizer-expander');
   }
+
   play() {
     this.audio.play();
+    this.visualize();
+  }
+
+  visualize() {
+    const duration = this.audio.duration * 1000;
+    const elem = this.visualizer[0];
+    console.log(duration, elem);
+    animate({
+      duration: duration,
+      timing: function(timeFraction) {
+        return timeFraction;
+      },
+      draw: function(progress) {
+        elem.style.width = progress * 100 + '%';
+      }
+    });
   }
 
   pause() {

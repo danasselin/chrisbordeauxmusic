@@ -95,7 +95,7 @@ $song-text-padding: $medium-text-spacing;
   }
 
   .song-player {
-    font-size: $large-font; 
+    font-size: $large-font;
     ul {
       text-align: center;
       li {
@@ -129,5 +129,11 @@ $song-text-padding: $medium-text-spacing;
     color: $white;
     width: 100px;
     height: 100px;
+  }
+
+  .visualizer-expander {
+    height: 50px;
+    width: 1px;
+    background-color: #2884b8;
   }
 }

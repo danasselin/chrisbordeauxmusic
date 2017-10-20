@@ -35,12 +35,12 @@ const commonConfig = merge([
       ),
     ]
   },
-  parts.lintJavaScript({
-    include: PATHS.app,
-    options: {
-      cacheDirectory: true
-    }
-  }),
+  // parts.lintJavaScript({
+  //   include: PATHS.app,
+  //   options: {
+  //     cacheDirectory: true
+  //   }
+  // }),
   parts.loadCSS(),
   parts.loadJavaScript({
     include: PATHS.app,

@@ -15,6 +15,9 @@ const SongPlayerDisplay = ({ command, btnOnClick }) => (
         ))
       }
     </ul>
+    <div className='visualizer'>
+      <div className='visualizer-expander'></div>
+    </div>
   </figure>
 );
 
