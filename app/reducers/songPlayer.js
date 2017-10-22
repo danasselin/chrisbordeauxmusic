@@ -1,4 +1,4 @@
-export default (state = { command: '' }, action) => {
+export default (state = { command: 'queued' }, action) => {
   switch (action.type) {
     case 'SET_SONGPLAYER_CMD':
       return Object.assign(

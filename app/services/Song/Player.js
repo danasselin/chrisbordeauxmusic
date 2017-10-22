@@ -1,42 +1,74 @@
-import { fetchSongPlayData, animate } from '../../helpers.jsx';
+import { fetchSongPlayData, animate, getStartTime } from '../../helpers.jsx';
 
 class Player {
   constructor() {
-    this.song = '';
     this.audio = document.createElement('audio');
-    this.visualizer = document.getElementsByClassName('visualizer-expander');
+    this.song;
+    this.progressBar;
+    this.animationId;
+    this.cmd;
   }
 
   play() {
     this.audio.play();
-    this.visualize();
-  }
-
-  visualize() {
-    const duration = this.audio.duration * 1000;
-    const elem = this.visualizer[0];
-    console.log(duration, elem);
-    animate({
-      duration: duration,
-      timing: function(timeFraction) {
-        return timeFraction;
-      },
-      draw: function(progress) {
-        elem.style.width = progress * 100 + '%';
-      }
-    });
+    this.startProgress();
   }
 
   pause() {
     this.audio.pause();
+    this.endProgress(this.animationId);
   }
 
   rewind() {
+    this.endProgress(this.animationId);
+    this.initProgressBar();
     this.audio.load();
+  }
+
+  setProgressBar(progress) {
+    this.progressBar.style.width = progress;
+  }
+
+  getProgressBar() {
+    return document.getElementsByClassName('progress-bar')[0];
+  }
+
+  initProgressBar(progress = 0) {
+    if (!this.progressBar) this.progressBar = this.getProgressBar();
+    this.progressBar.style.width = this.setProgressBar(progress);
+  }
+
+  initPlayback() {
+    if (this.audio.currentTime > 0) this.pause();
+  }
+
+  increaseProgress(progress) {
+    if(this.cmd === 'play') this.progressBar.style.width = progress * 100 + '%';
+  }
+
+  endProgress(animationId) {
+    cancelAnimationFrame(animationId);
+  }
+
+  startProgress() {
+    const duration = this.audio.duration * 1000;
+    const startTime = getStartTime.bind(null, this.audio.currentTime);
+    const animateProgBar = animate({
+      duration: duration,
+      timing: timeFraction => timeFraction,
+      draw: (progress) => {
+        this.increaseProgress(progress);
+      },
+      player: this,
+      startTime,
+    });
+    this.animationId = requestAnimationFrame(animateProgBar);
   }
 
   queue() {
     // todo: emit action while the song is 'loading...'
+    this.initPlayback();
+    this.initProgressBar();
     fetchSongPlayData(this.song)
       .then(({ link }) => {
         this.audio.src = link;
@@ -49,8 +81,11 @@ class Player {
   }
 
   executeCmd(cmd, song) {
+    this.cmd = cmd;
     this.song = song;
     switch (cmd) {
+      case 'play':
+        return this.play();
       case 'queued':
         return this.queue();
       case 'pause':
@@ -58,7 +93,7 @@ class Player {
       case 'rewind':
         return this.rewind();
       default:
-        return this.play();
+        return null;
     }
   }
 }

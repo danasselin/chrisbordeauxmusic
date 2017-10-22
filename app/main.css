@@ -131,7 +131,7 @@ $song-text-padding: $medium-text-spacing;
     height: 100px;
   }
 
-  .visualizer-expander {
+  .progress-bar {
     height: 50px;
     width: 1px;
     background-color: #2884b8;

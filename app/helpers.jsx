@@ -40,15 +40,26 @@ export function fetchSongPlayData(albumPath) {
   return dbx.filesGetTemporaryLink({ path: `${albumPath}` });
 }
 
-export function animate({ duration, draw, timing }) { // eslint-ignore-line
-  let start = performance.now();
-  requestAnimationFrame(function animate(time) {
+export function getStartTime(time) {
+  const milliseconds = time * 1000;
+  return (time === 0 ? performance.now() : performance.now() - milliseconds);
+};
+
+export function animate({ // eslint-ignore-line
+  duration,
+  draw,
+  timing,
+  player,
+  startTime
+}) {
+  let start = startTime();
+  return function callback(time) {
     let timeFraction = (time - start) / duration;
     if (timeFraction > 1) timeFraction = 1;
-    let progress = timing(timeFraction)
+    let progress = timing(timeFraction);
     draw(progress);
-    if (timeFraction < 1) {
-      requestAnimationFrame(animate);
+    if (timeFraction < 1 && player.cmd === 'play') {
+      requestAnimationFrame(callback);
     }
-  });
+  };
 };

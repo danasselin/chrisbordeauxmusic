@@ -15,7 +15,7 @@ class SongPlayer extends React.Component {
       selectedSong,
       songs,
     } = nextProps;
-    this.player.executeCmd(command, selectedSong || songs[0]);
+    this.player.executeCmd(command, selectedSong || songs[0].path_lower);
   }
 
   render() {
