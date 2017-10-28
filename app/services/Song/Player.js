@@ -26,16 +26,16 @@ class Player {
   }
 
   setProgressBar(progress) {
-    this.progressBar.style.width = progress;
+    this.progressBar.style.background = `linear-gradient(90deg, #EE7752 0px, #EE7752 ${progress}%, #23D5AB 20px)`;
   }
 
   getProgressBar() {
-    return document.getElementsByClassName('progress-bar')[0];
+    return document.getElementsByClassName('song-player')[0];
   }
 
   initProgressBar(progress = 0) {
     if (!this.progressBar) this.progressBar = this.getProgressBar();
-    this.progressBar.style.width = this.setProgressBar(progress);
+    this.setProgressBar(0);
   }
 
   initPlayback() {
@@ -43,7 +43,9 @@ class Player {
   }
 
   increaseProgress(progress) {
-    if(this.cmd === 'play') this.progressBar.style.width = progress * 100 + '%';
+    if(this.cmd === 'play') {
+      this.setProgressBar(progress);
+    }
   }
 
   endProgress(animationId) {
@@ -57,7 +59,7 @@ class Player {
       duration: duration,
       timing: timeFraction => timeFraction,
       draw: (progress) => {
-        this.increaseProgress(progress);
+        this.increaseProgress(progress * 100);
       },
       player: this,
       startTime,
