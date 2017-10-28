@@ -3,10 +3,6 @@ import { fetchSongPlayData, animate, getStartTime } from '../../helpers.jsx';
 class Player {
   constructor() {
     this.audio = document.createElement('audio');
-    this.song;
-    this.progressBar;
-    this.animationId;
-    this.cmd;
   }
 
   play() {
@@ -26,7 +22,7 @@ class Player {
   }
 
   setProgressBar(progress) {
-    this.progressBar.style.background = `linear-gradient(90deg, #EE7752 0px, #EE7752 ${progress}%, #23D5AB 20px)`;
+    this.progressBar.style.background = `linear-gradient(90deg, #EE7752 0px, #EE7752 ${progress}%, #23D5AB 0px)`;
   }
 
   getProgressBar() {
@@ -35,7 +31,7 @@ class Player {
 
   initProgressBar(progress = 0) {
     if (!this.progressBar) this.progressBar = this.getProgressBar();
-    this.setProgressBar(0);
+    this.setProgressBar(progress);
   }
 
   initPlayback() {
@@ -43,7 +39,7 @@ class Player {
   }
 
   increaseProgress(progress) {
-    if(this.cmd === 'play') {
+    if (this.cmd === 'play') {
       this.setProgressBar(progress);
     }
   }
@@ -56,12 +52,12 @@ class Player {
     const duration = this.audio.duration * 1000;
     const startTime = getStartTime.bind(null, this.audio.currentTime);
     const animateProgBar = animate({
-      duration: duration,
       timing: timeFraction => timeFraction,
       draw: (progress) => {
         this.increaseProgress(progress * 100);
       },
       player: this,
+      duration,
       startTime,
     });
     this.animationId = requestAnimationFrame(animateProgBar);

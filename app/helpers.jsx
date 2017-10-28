@@ -43,23 +43,23 @@ export function fetchSongPlayData(albumPath) {
 export function getStartTime(time) {
   const milliseconds = time * 1000;
   return (time === 0 ? performance.now() : performance.now() - milliseconds);
-};
+}
 
 export function animate({ // eslint-ignore-line
   duration,
   draw,
   timing,
   player,
-  startTime
+  startTime,
 }) {
-  let start = startTime();
+  const start = startTime();
   return function callback(time) {
     let timeFraction = (time - start) / duration;
     if (timeFraction > 1) timeFraction = 1;
-    let progress = timing(timeFraction);
+    const progress = timing(timeFraction);
     draw(progress);
     if (timeFraction < 1 && player.cmd === 'play') {
       requestAnimationFrame(callback);
     }
   };
-};
+}
