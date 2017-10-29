@@ -60,6 +60,7 @@ const developmentConfig = merge([
   parts.generateSourceMaps({
     type: 'cheap-module-eval-source-map'
   }),
+  parts.loadImages(),
 ]);
 
 

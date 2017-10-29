@@ -1,23 +1,28 @@
 import React from 'react';
 import SongPlayerButton from './SongPlayerButton.jsx';
+import rewind from '../../public/SVG/rewind.svg';
+import play from '../../public/SVG/play.svg';
+import pause from '../../public/SVG/pause.svg';
 
-const SongPlayerDisplay = ({ command, btnOnClick }) => (
+const btnData = {
+  rewind,
+  play: { play, pause },
+};
+
+const SongPlayerDisplay = ({ btnOnClick }) => (
   <figure className='song-player'>
-    {`${command}`}
-    <ul>
+    <ul className="button-bar">
       {
-        ['rewind', 'pause', 'play'].map((cmdString, i) => (
+        Object.entries(btnData).map(([name, value], i) => (
           <SongPlayerButton
-            type={ cmdString }
             key={ i }
+            type={ name }
+            button={ value }
             onClick={ btnOnClick }
           />
         ))
       }
     </ul>
-    <div className='progress-bar-container'>
-      <div className='progress-bar'></div>
-    </div>
   </figure>
 );
 

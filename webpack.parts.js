@@ -85,3 +85,16 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
     ]
   }
 });
+
+exports.loadImages = ({ include, exclude, options } = {}) => (
+  {
+    module: {
+      rules: [
+        {
+          test: /\.svg$/,
+          use: 'raw-loader',
+        }
+      ]
+    }
+  }
+)

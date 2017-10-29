@@ -2,6 +2,7 @@
 @import 'normalize.css';
 h1, h3, ul, p {
   margin: 0;
+  padding: 0;
 }
 
 /* placeholder CSS */
@@ -96,8 +97,12 @@ $song-text-padding: $medium-text-spacing;
 
   .song-player {
     font-size: $large-font;
-    ul {
+    .button-bar {
       text-align: center;
+      svg {
+        width: 75px;
+        height: 75px;
+      }
       li {
         display: inline-block;
         margin: 0 5%;
