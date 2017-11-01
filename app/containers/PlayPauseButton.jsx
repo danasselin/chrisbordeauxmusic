@@ -4,7 +4,7 @@ import SVGInline from 'react-svg-inline';
 import { setSongPlayerCmd } from '../actions';
 
 const PlayPauseButton = ({ command, play, pause, onClick }) => (
-  (command === 'queued' || command === 'pause') ?
+  (command !== 'play') ?
     <li onClick={ () => onClick('play') }>
       <SVGInline svg={ play } />
     </li> :
