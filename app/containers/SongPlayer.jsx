@@ -5,8 +5,8 @@ import { setSongPlayerCmd } from '../actions';
 import Player from '../services/Song/Player';
 
 class SongPlayer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.player = new Player();
   }
   componentWillReceiveProps(nextProps) {
@@ -15,15 +15,21 @@ class SongPlayer extends React.Component {
       selectedSong,
       songs,
     } = nextProps;
-    this.player.executeCmd(command, selectedSong || songs[0].path_lower);
+    const path = selectedSong ? selectedSong.path : songs[0].path_lower;
+    this.player.executeCmd(command, path);
   }
 
   render() {
-    const { command, btnOnClick } = this.props;
+    const {
+      command,
+      btnOnClick,
+      selectedSong,
+    } = this.props;
     return (
       <SongPlayerDisplay
         command={ command }
         btnOnClick={ btnOnClick }
+        selectedSongName={ selectedSong ? selectedSong.name : 'initial state' }
       />
     );
   }

@@ -1,6 +1,6 @@
 /* normalize */
 @import 'normalize.css';
-h1, h3, ul, p {
+h1, h3, ul, p, figure {
   margin: 0;
   padding: 0;
 }
@@ -23,6 +23,7 @@ $h1-size: $large-font;
 $h3-size-mobile: $medium-font;
 $p-size-mobile: $small-font;
 $album-font-size: $medium-font;
+$player-button-size: calc($large-font * 2);
 
 /* hc-banner typography */
 $banner-font: Palatino;
@@ -96,12 +97,16 @@ $song-text-padding: $medium-text-spacing;
   }
 
   .song-player {
-    font-size: $large-font;
+    margin: 1em 40px;
+    font-size: calc($medium-font * 1.2);
+  }
+
+  .progress-bar {
     .button-bar {
       text-align: center;
       svg {
-        width: 75px;
-        height: 75px;
+        width: $player-button-size;
+        height: $player-button-size;
       }
       li {
         display: inline-block;
@@ -121,6 +126,7 @@ $song-text-padding: $medium-text-spacing;
     background-color: $song-bg-color;
     font-size: $song-controller-font-size;
     padding: $song-text-padding;
+    margin: 1em 40px;
 
     .song-controller {
       h3 {
@@ -134,11 +140,5 @@ $song-text-padding: $medium-text-spacing;
     color: $white;
     width: 100px;
     height: 100px;
-  }
-
-  .progress-bar {
-    height: 50px;
-    width: 1px;
-    background-color: #2884b8;
   }
 }

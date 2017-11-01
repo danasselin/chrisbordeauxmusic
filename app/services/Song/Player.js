@@ -1,4 +1,6 @@
 import { fetchSongPlayData, animate, getStartTime } from '../../helpers.jsx';
+// TODO: figure out if you can dispatch 'updateSongTime' directly OR
+// see if you can wrap an es6 class in 'connect'
 
 class Player {
   constructor() {
@@ -26,7 +28,7 @@ class Player {
   }
 
   getProgressBar() {
-    return document.getElementsByClassName('song-player')[0];
+    return document.getElementsByClassName('progress-bar')[0];
   }
 
   initProgressBar(progress = 0) {

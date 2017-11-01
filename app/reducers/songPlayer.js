@@ -1,4 +1,10 @@
-export default (state = { command: 'queued' }, action) => {
+export default (
+  state = {
+    command: 'queued',
+    songTime: '0:00',
+  },
+  action,
+) => {
   switch (action.type) {
     case 'SET_SONGPLAYER_CMD':
       return Object.assign(
@@ -11,8 +17,16 @@ export default (state = { command: 'queued' }, action) => {
         {},
         state,
         {
-          selectedSong: action.selectedSong,
           command: 'queued',
+          selectedSong: action.selectedSong,
+        },
+      );
+    case 'UPDATE_SONG_TIME':
+      return Object.assign(
+        {},
+        state,
+        {
+          songTime: action.time,
         },
       );
     default:

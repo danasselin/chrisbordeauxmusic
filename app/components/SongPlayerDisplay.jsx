@@ -11,21 +11,26 @@ const btnData = {
   forward,
 };
 
-const SongPlayerDisplay = ({ btnOnClick }) => (
-  <figure className='song-player'>
-    <ul className="button-bar">
-      {
-        Object.entries(btnData).map(([name, value], i) => (
-          <SongPlayerButton
-            key={ i }
-            type={ name }
-            button={ value }
-            onClick={ btnOnClick }
-          />
-        ))
-      }
-    </ul>
-  </figure>
+const SongPlayerDisplay = ({ btnOnClick, selectedSongName }) => (
+  <div className='song-player'>
+    <figcaption className='song-player-caption'>
+      { selectedSongName }
+    </figcaption>
+    <figure className='progress-bar'>
+      <ul className="button-bar">
+        {
+          Object.entries(btnData).map(([name, value], i) => (
+            <SongPlayerButton
+              key={ i }
+              type={ name }
+              button={ value }
+              onClick={ btnOnClick }
+            />
+          ))
+        }
+      </ul>
+    </figure>
+  </div>
 );
 
 export default SongPlayerDisplay;

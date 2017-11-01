@@ -18,3 +18,10 @@ export const selectSongFromAlbum = selectedSong => (
     selectedSong,
   }
 );
+
+export const updateSongTime = time => (
+  {
+    type: 'UPDATE_SONG_TIME',
+    time,
+  }
+);
