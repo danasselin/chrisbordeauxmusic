@@ -63,3 +63,10 @@ export function animate({ // eslint-ignore-line
     }
   };
 }
+
+export function formatSongTime(time) {
+  const min = Math.floor(time / 60);
+  let sec = Math.floor(time % 60);
+  sec = sec < 10 ? `0${sec}` : sec;
+  return `${min}:${sec}`;
+}

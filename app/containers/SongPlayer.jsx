@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SongPlayerDisplay from '../components/SongPlayerDisplay.jsx';
-import { setSongPlayerCmd } from '../actions';
+import { setSongPlayerCmd, updateSongTime } from '../actions';
 import Player from '../services/Song/Player';
 
 class SongPlayer extends React.Component {
   constructor(props) {
     super(props);
-    this.player = new Player();
+    this.player = new Player(props.onSongPlay);
   }
   componentWillReceiveProps(nextProps) {
     const {
@@ -24,22 +24,31 @@ class SongPlayer extends React.Component {
       command,
       btnOnClick,
       selectedSong,
+      songTime,
     } = this.props;
     return (
       <SongPlayerDisplay
         command={ command }
+        songTime={ songTime }
         btnOnClick={ btnOnClick }
-        selectedSongName={ selectedSong ? selectedSong.name : 'initial state' }
+        selectedSongName={
+          selectedSong ?
+            selectedSong.name :
+            'initial state'
+        }
       />
     );
   }
 }
 
 const mapStateToProps = ({
-  songPlayer: { command, selectedSong },
+  songPlayer: { command, selectedSong, songTime },
   albumLibrary: { songs },
-}) => ({ command, selectedSong, songs });
+}) => ({ command, selectedSong, songs, songTime });
 
-const mapDispatchToProps = { btnOnClick: setSongPlayerCmd };
+const mapDispatchToProps = {
+  onSongPlay: updateSongTime,
+  btnOnClick: setSongPlayerCmd,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SongPlayer);

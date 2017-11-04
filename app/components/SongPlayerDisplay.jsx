@@ -11,11 +11,16 @@ const btnData = {
   forward,
 };
 
-const SongPlayerDisplay = ({ btnOnClick, selectedSongName }) => (
+const SongPlayerDisplay = ({
+  btnOnClick,
+  selectedSongName,
+  songTime,
+}) => (
   <div className='song-player'>
     <figcaption className='song-player-caption'>
       { selectedSongName }
     </figcaption>
+    <p>{ songTime }</p>
     <figure className='progress-bar'>
       <ul className="button-bar">
         {

@@ -1,20 +1,34 @@
-import { fetchSongPlayData, animate, getStartTime } from '../../helpers.jsx';
+import {
+  fetchSongPlayData,
+  animate,
+  getStartTime,
+  formatSongTime,
+} from '../../helpers.jsx';
 // TODO: figure out if you can dispatch 'updateSongTime' directly OR
 // see if you can wrap an es6 class in 'connect'
 
 class Player {
-  constructor() {
+  constructor(songPlayCb) {
     this.audio = document.createElement('audio');
+    this.onSongPlay = songPlayCb;
   }
 
   play() {
     this.audio.play();
     this.startProgress();
+    this.songTimeId = setInterval(() => {
+      this.onSongPlay(
+        formatSongTime(
+          Math.round(this.audio.currentTime),
+        ),
+      );
+    }, 1000);
   }
 
   pause() {
     this.audio.pause();
     this.endProgress(this.animationId);
+    clearInterval(this.songTimeId);
   }
 
   rewind() {
