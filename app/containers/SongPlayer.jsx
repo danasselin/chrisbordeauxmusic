@@ -34,7 +34,7 @@ class SongPlayer extends React.Component {
         selectedSongName={
           selectedSong ?
             selectedSong.name :
-            'initial state'
+            'Loading song . . .'
         }
       />
     );

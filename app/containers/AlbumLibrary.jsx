@@ -10,20 +10,18 @@ class AlbumLibrary extends React.Component {
     this.selectedAlbum = props.songs || [];
   }
 
-  fetchInitialAlbum(path) {
-    if (!this.selectedAlbum || !path) {
-      this.props.fetchAlbum()
-        .then(({ entries: songs }) => {
-          this.props.setSelectedAlbum(songs);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  }
-
   componentWillMount() {
-    this.fetchInitialAlbum();
+    this.props.fetchAlbum()
+      .then(({ entries: songs }) => {
+        this.props.setSelectedAlbum(songs);
+        return songs[0];
+      })
+      .then((initialSong) => {
+        this.props.selectSongFromAlbum(initialSong);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   render() {
