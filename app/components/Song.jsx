@@ -1,9 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { isSelectedSong } from '../helpers.jsx';
 import '../main.css';
 
-const Song = ({ name, path, onClick }) => (
+const Song = ({
+  name,
+  path,
+  onClick,
+  selectedSong,
+}) => (
   <figure
-    className='song'
+    className={ `song${isSelectedSong(name, selectedSong.name)}` }
     onClick={ () => onClick({ path, name }) }
   >
     <div className='song-controller'>
@@ -12,4 +19,6 @@ const Song = ({ name, path, onClick }) => (
   </figure>
 );
 
-export default Song;
+const mapStateToProps = ({ songPlayer: { selectedSong } }) => ({ selectedSong });
+
+export default connect(mapStateToProps)(Song);

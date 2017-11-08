@@ -13,11 +13,11 @@ class AlbumLibrary extends React.Component {
   componentWillMount() {
     this.props.fetchAlbum()
       .then(({ entries: songs }) => {
-        this.props.setSelectedAlbum(songs);
-        return songs[0];
+        this.props.selectSongFromAlbum(songs[0]);
+        return songs;
       })
-      .then((initialSong) => {
-        this.props.selectSongFromAlbum(initialSong);
+      .then((songs) => {
+        this.props.setSelectedAlbum(songs);
       })
       .catch((err) => {
         console.log(err);

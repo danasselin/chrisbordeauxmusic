@@ -4,6 +4,11 @@ import { defaultAlbumPath } from './constants';
 
 const Dropbox = require('dropbox');
 
+// display helpers
+export const isSelectedSong = (song1, song2) => (
+  song1 === song2 ? ' selected' : ''
+);
+
 // Route and template helpers
 export function createNavMenu(items) {
   const createLinks = (item, i) => (
