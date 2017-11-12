@@ -2,7 +2,7 @@ import {
   fetchSongPlayData,
   animate,
   getStartTime,
-  formatSongTime,
+  formatTime,
 } from '../../helpers.jsx';
 
 class Player {
@@ -17,7 +17,7 @@ class Player {
     const songTimeId = setInterval(() => {
       if (this.cmd === 'play') {
         this.onSongPlay(
-          formatSongTime(Math.round(this.audio.currentTime)),
+          formatTime(this.audio.currentTime),
         );
       } else {
         clearInterval(songTimeId);
@@ -83,13 +83,11 @@ class Player {
   }
 
   queue() {
-    // todo: emit action while the song is 'loading...'
     this.initPlayback();
     this.initProgressBar();
     fetchSongPlayData(this.song)
       .then(({ link }) => {
         this.audio.src = link;
-        // todo: emit action when the song is 'loaded'
       })
       .catch((err) => {
         console.log(err);

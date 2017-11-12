@@ -69,8 +69,9 @@ export function animate({ // eslint-ignore-line
   };
 }
 
-export function formatSongTime(time) {
-  console.log('Im still being called');
+
+export function formatTime(rawTime) {
+  const time = Math.round(rawTime);
   const min = Math.floor(time / 60);
   let sec = Math.floor(time % 60);
   sec = sec < 10 ? `0${sec}` : sec;
