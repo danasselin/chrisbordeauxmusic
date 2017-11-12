@@ -7,15 +7,14 @@ import Player from '../services/Song/Player';
 class SongPlayer extends React.Component {
   constructor(props) {
     super(props);
-    this.player = new Player(props.onSongPlay);
+    this.player = new Player(props.updateSongTime);
   }
   componentWillReceiveProps(nextProps) {
     const {
       command,
       selectedSong,
-      songs,
     } = nextProps;
-    const path = selectedSong ? selectedSong.path : songs[0].path_lower;
+    const path = selectedSong.path_lower || selectedSong.path;
     this.player.executeCmd(command, path);
   }
 
@@ -47,7 +46,7 @@ const mapStateToProps = ({
 }) => ({ command, selectedSong, songs, songTime });
 
 const mapDispatchToProps = {
-  onSongPlay: updateSongTime,
+  updateSongTime,
   btnOnClick: setSongPlayerCmd,
 };
 

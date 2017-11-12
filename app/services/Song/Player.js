@@ -6,9 +6,9 @@ import {
 } from '../../helpers.jsx';
 
 class Player {
-  constructor(songPlayCb) {
+  constructor(updateSongTime) {
     this.audio = document.createElement('audio');
-    this.onSongPlay = songPlayCb;
+    this.updateSongTime = updateSongTime;
   }
 
   play() {
@@ -16,7 +16,7 @@ class Player {
     this.startProgress();
     const songTimeId = setInterval(() => {
       if (this.cmd === 'play') {
-        this.onSongPlay(
+        this.updateSongTime(
           formatTime(this.audio.currentTime),
         );
       } else {
@@ -67,6 +67,10 @@ class Player {
     cancelAnimationFrame(animationId);
   }
 
+  clearTime(song) {
+    if (this.song !== song) this.updateSongTime('0:00');
+  }
+
   startProgress() {
     const duration = this.audio.duration * 1000;
     const startTime = getStartTime.bind(null, this.audio.currentTime);
@@ -82,7 +86,7 @@ class Player {
     this.animationId = requestAnimationFrame(animateProgBar);
   }
 
-  queue() {
+  queue() {  
     this.initPlayback();
     this.initProgressBar();
     fetchSongPlayData(this.song)
@@ -96,6 +100,7 @@ class Player {
   }
 
   executeCmd(cmd, song) {
+    this.clearTime(song);
     this.cmd = cmd;
     this.song = song;
     switch (cmd) {
