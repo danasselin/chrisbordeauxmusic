@@ -14,25 +14,30 @@ class Player {
   play() {
     this.audio.play();
     this.startProgress();
-    this.songTimeId = setInterval(() => {
-      this.onSongPlay(
-        formatSongTime(
-          Math.round(this.audio.currentTime),
-        ),
-      );
+    const songTimeId = setInterval(() => {
+      if (this.cmd === 'play') {
+        this.onSongPlay(
+          formatSongTime(Math.round(this.audio.currentTime)),
+        );
+      } else {
+        clearInterval(songTimeId);
+      }
     }, 1000);
   }
 
   pause() {
     this.audio.pause();
     this.endProgress(this.animationId);
-    clearInterval(this.songTimeId);
   }
 
   rewind() {
     this.endProgress(this.animationId);
     this.initProgressBar();
     this.audio.load();
+  }
+
+  forward() {
+    console.log('forward!');
   }
 
   setProgressBar(progress) {
@@ -104,6 +109,8 @@ class Player {
         return this.pause();
       case 'rewind':
         return this.rewind();
+      case 'forward':
+        return this.forward();
       default:
         return null;
     }
