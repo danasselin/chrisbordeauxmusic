@@ -50,6 +50,12 @@ export function getStartTime(time) {
   return (time === 0 ? performance.now() : performance.now() - milliseconds);
 }
 
+export function formatSong(song, songNumber = 0) {
+  const { name, path_lower: path } = song;
+  return { name, path, songNumber };
+}
+
+// Music player helpers
 export function animate({ // eslint-ignore-line
   duration,
   draw,
@@ -68,7 +74,6 @@ export function animate({ // eslint-ignore-line
     }
   };
 }
-
 
 export function formatTime(rawTime) {
   const time = Math.round(rawTime);

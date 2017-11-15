@@ -8,10 +8,11 @@ const Song = ({
   path,
   onClick,
   selectedSong,
+  songNumber,
 }) => (
   <figure
     className={ `song${isSelectedSong(name, selectedSong.name)}` }
-    onClick={ () => onClick({ path, name }) }
+    onClick={ () => onClick({ path, name, songNumber }) }
   >
     <div className='song-controller'>
       <h3>{ name }</h3>

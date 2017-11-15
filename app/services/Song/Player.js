@@ -6,9 +6,13 @@ import {
 } from '../../helpers.jsx';
 
 class Player {
-  constructor(updateSongTime) {
+  constructor(updateSongTime, selectSongFromAlbum) {
     this.audio = document.createElement('audio');
     this.updateSongTime = updateSongTime;
+    this.selectSongFromAlbum = selectSongFromAlbum;
+    this.audio.ontimeupdate = () => {
+      this.currentSongTime = formatTime(this.audio.currentTime);
+    };
   }
 
   play() {
@@ -16,9 +20,7 @@ class Player {
     this.startProgress();
     const songTimeId = setInterval(() => {
       if (this.cmd === 'play') {
-        this.updateSongTime(
-          formatTime(this.audio.currentTime),
-        );
+        this.updateSongTime(this.currentSongTime);
       } else {
         clearInterval(songTimeId);
       }
@@ -32,12 +34,15 @@ class Player {
 
   rewind() {
     this.endProgress(this.animationId);
-    this.initProgressBar();
     this.audio.load();
+    this.initProgressBar();
+    this.updateSongTime('0:00');
   }
 
   forward() {
-    console.log('forward!');
+    this.selectSongFromAlbum(this.songs[this.songNumber + 1]);
+    this.songPath = this.songs[this.songNumber + 1].path;
+    this.queue();
   }
 
   setProgressBar(progress) {
@@ -67,10 +72,6 @@ class Player {
     cancelAnimationFrame(animationId);
   }
 
-  clearTime(song) {
-    if (this.song !== song) this.updateSongTime('0:00');
-  }
-
   startProgress() {
     const duration = this.audio.duration * 1000;
     const startTime = getStartTime.bind(null, this.audio.currentTime);
@@ -86,10 +87,11 @@ class Player {
     this.animationId = requestAnimationFrame(animateProgBar);
   }
 
-  queue() {  
+  queue() {
+    this.updateSongTime('0:00');
     this.initPlayback();
     this.initProgressBar();
-    fetchSongPlayData(this.song)
+    fetchSongPlayData(this.songPath)
       .then(({ link }) => {
         this.audio.src = link;
       })
@@ -99,10 +101,10 @@ class Player {
       });
   }
 
-  executeCmd(cmd, song) {
-    this.clearTime(song);
+  executeCmd(cmd, path, songNumber) {
     this.cmd = cmd;
-    this.song = song;
+    this.songPath = path;
+    this.songNumber = songNumber;
     switch (cmd) {
       case 'play':
         return this.play();

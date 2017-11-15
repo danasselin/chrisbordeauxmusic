@@ -6,11 +6,12 @@ import Song from '../components/Song.jsx';
 const Album = ({ songs, onSongClick }) => (
   <section className="content-box album">
     {
-      songs ? songs.map(({ name, path_lower: pathLower }, i) => (
+      songs ? songs.map(({ name, path }, i) => (
         <Song
           key={ i }
+          songNumber={ i }
           name={ name }
-          path={ pathLower }
+          path={ path }
           onClick={ onSongClick }
         />
       )) : null

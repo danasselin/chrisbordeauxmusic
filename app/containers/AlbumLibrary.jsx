@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Album from '../containers/Album.jsx';
 import SongPlayer from '../containers/SongPlayer.jsx';
+import { formatSong } from '../helpers.jsx';
 import { setSelectedAlbum, selectSongFromAlbum } from '../actions';
 
 class AlbumLibrary extends React.Component {
@@ -13,8 +14,9 @@ class AlbumLibrary extends React.Component {
   componentWillMount() {
     this.props.fetchAlbum()
       .then(({ entries: songs }) => {
-        this.props.selectSongFromAlbum(songs[0]);
-        return songs;
+        const formatted = songs.map(formatSong);
+        this.props.selectSongFromAlbum(formatted[0]);
+        return formatted;
       })
       .then((songs) => {
         this.props.setSelectedAlbum(songs);
