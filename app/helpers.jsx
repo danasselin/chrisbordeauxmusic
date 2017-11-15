@@ -82,3 +82,7 @@ export function formatTime(rawTime) {
   sec = sec < 10 ? `0${sec}` : sec;
   return `${min}:${sec}`;
 }
+
+export function handleBack(cmd, type) {
+  return (cmd === 'rewind' && type === 'rewind' ? 'back' : type);
+}

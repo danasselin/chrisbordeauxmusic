@@ -15,6 +15,7 @@ const SongPlayerDisplay = ({
   btnOnClick,
   selectedSongName,
   songTime,
+  command,
 }) => (
   <div className='song-player'>
     <figcaption className='song-player-caption'>
@@ -30,6 +31,7 @@ const SongPlayerDisplay = ({
               type={ name }
               button={ value }
               onClick={ btnOnClick }
+              command={ command }
             />
           ))
         }

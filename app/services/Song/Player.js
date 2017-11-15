@@ -33,10 +33,17 @@ class Player {
   }
 
   rewind() {
-    this.endProgress(this.animationId);
-    this.audio.load();
-    this.initProgressBar();
-    this.updateSongTime('0:00');
+    if (this.currentSongTime !== '0:00') {
+      this.endProgress(this.animationId);
+      this.audio.load();
+      this.updateSongTime('0:00');
+      this.initProgressBar();
+    } else {
+      const prevSong = this.songs[this.songNumber - 1];
+      this.selectSongFromAlbum(prevSong);
+      this.songPath = prevSong.path;
+      this.queue();
+    }
   }
 
   forward() {
@@ -113,6 +120,8 @@ class Player {
       case 'pause':
         return this.pause();
       case 'rewind':
+        return this.rewind();
+      case 'back':
         return this.rewind();
       case 'forward':
         return this.forward();
