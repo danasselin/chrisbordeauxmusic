@@ -1,4 +1,4 @@
-/* normalize */
+  /* normalize */
 @import 'normalize.css';
 h1, h3, ul, p, figure {
   margin: 0;
@@ -111,6 +111,34 @@ $song-text-padding: $medium-text-spacing;
       li {
         display: inline-block;
         margin: 0 5%;
+      }
+    }
+  }
+
+  .album-preview-carousel {
+    overflow: hidden;
+    .carousel-btn-wrap {
+      display: flex;
+      justify-content: space-between;
+      p {
+        font-size: $large-font;
+      }
+    }
+    .carousel-wrap {
+      display: flex;
+      justify-content: space-around;
+      list-style: none;
+      transition: transform 1s;
+      .album-preview {
+        background-color: $light-grey;
+        min-width: 350px;
+        height: 350px;
+        border: 1px solid;
+        margin: 15px 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: $medium-font;
       }
     }
   }

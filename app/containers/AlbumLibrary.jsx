@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Album from '../containers/Album.jsx';
+import AlbumPreviewCarousel from './AlbumPreviewCarousel.jsx';
 import SongPlayer from '../containers/SongPlayer.jsx';
 import { formatSong } from '../helpers.jsx';
 import { setSelectedAlbum, selectSongFromAlbum } from '../actions';
@@ -27,12 +28,10 @@ class AlbumLibrary extends React.Component {
   }
 
   render() {
-    const { albumTitles, songs } = this.props;
+    const { songs } = this.props;
     return (
       <section>
-        <ul>
-          { albumTitles.map((title, i) => <li key={ i }>{ title }</li>) }
-        </ul>
+        <AlbumPreviewCarousel />
         <SongPlayer />
         <div>
           <Album songs={ songs } />

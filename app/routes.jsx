@@ -4,7 +4,6 @@ import { PressPage } from './components/PressPage.jsx';
 import { ShowsPage } from './components/ShowsPage.jsx';
 import { BlogPage } from './components/BlogPage.jsx';
 import { fetchAlbum } from './helpers.jsx';
-import { albumTitles } from './constants';
 
 export const HcSiteRoutes = [
   {
@@ -12,7 +11,6 @@ export const HcSiteRoutes = [
     component: AlbumLibrary,
     propsData: {
       fetchAlbum,
-      albumTitles,
     },
   },
   {
