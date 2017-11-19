@@ -1,5 +1,7 @@
 import React from 'react';
-import SongPlayerButton from './SongPlayerButton.jsx';
+import { connect } from 'react-redux';
+import { setSongPlayerCmd } from '../actions';
+import SongPlayerButton from '../components/SongPlayerButton.jsx';
 import rewind from '../../public/SVG/rewind.svg';
 import play from '../../public/SVG/play.svg';
 import pause from '../../public/SVG/pause.svg';
@@ -13,13 +15,15 @@ const btnData = {
 
 const SongPlayerDisplay = ({
   btnOnClick,
-  selectedSongName,
+  selectedSong,
   songTime,
   command,
 }) => (
   <div className='song-player'>
     <figcaption className='song-player-caption'>
-      { selectedSongName }
+      { selectedSong ?
+        selectedSong.name :
+        'Loading song . . .' }
     </figcaption>
     <p>{ songTime }</p>
     <figure className='progress-bar'>
@@ -40,4 +44,10 @@ const SongPlayerDisplay = ({
   </div>
 );
 
-export default SongPlayerDisplay;
+const mapStateToProps = ({
+  songPlayer: { command, selectedSong, songTime },
+}) => ({ command, selectedSong, songTime });
+
+const mapDispatchToProps = { btnOnClick: setSongPlayerCmd };
+
+export default connect(mapStateToProps, mapDispatchToProps)(SongPlayerDisplay);

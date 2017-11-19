@@ -17,7 +17,6 @@ export default (
         {},
         state,
         {
-          command: 'queued',
           selectedSong: action.selectedSong,
         },
       );

@@ -1,7 +1,7 @@
 import React from 'react';
 import SVGInline from 'react-svg-inline';
 import PlayPauseButton from '../containers/PlayPauseButton.jsx';
-import { handleBack } from '../helpers.jsx';
+import { handleSkip } from '../helpers.jsx';
 
 const SongPlayerButton = ({ onClick, button, type, command }) => (
   type === 'play' ?
@@ -9,7 +9,7 @@ const SongPlayerButton = ({ onClick, button, type, command }) => (
       play={ button.play }
       pause={ button.pause }
     /> :
-    <li onClick={ () => onClick(handleBack(command, type)) }>
+    <li onClick={ () => onClick(handleSkip(command, type)) }>
       <SVGInline svg={ button } />
     </li>
 );

@@ -83,6 +83,9 @@ export function formatTime(rawTime) {
   return `${min}:${sec}`;
 }
 
-export function handleBack(cmd, type) {
-  return (cmd === 'rewind' && type === 'rewind' ? 'back' : type);
+export function handleSkip(cmd, type) {
+  let finalType = type;
+  if (cmd === 'rewind' && type === 'rewind') finalType = 'back';
+  if (cmd === 'forward' && type === 'forward') finalType = 'skip';
+  return finalType;
 }

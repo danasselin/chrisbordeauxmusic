@@ -7,6 +7,8 @@ import {
 
 class Player {
   constructor(updateSongTime, selectSongFromAlbum) {
+    this.fetchedSongs = {};
+    this.songNumber = 0;
     this.audio = document.createElement('audio');
     this.updateSongTime = updateSongTime;
     this.selectSongFromAlbum = selectSongFromAlbum;
@@ -39,16 +41,23 @@ class Player {
       this.updateSongTime('0:00');
       this.initProgressBar();
     } else {
-      const prevSong = this.songs[this.songNumber - 1];
-      this.selectSongFromAlbum(prevSong);
-      this.songPath = prevSong.path;
-      this.queue();
+      this.back();
     }
   }
 
   forward() {
-    this.selectSongFromAlbum(this.songs[this.songNumber + 1]);
-    this.songPath = this.songs[this.songNumber + 1].path;
+    this.songNumber += 1;
+    const nextSong = this.songs[this.songNumber];
+    this.songPath = nextSong.path;
+    this.selectSongFromAlbum(nextSong);
+    this.queue();
+  }
+
+  back() {
+    this.songNumber -= 1;
+    const prevSong = this.songs[this.songNumber];
+    this.songPath = prevSong.path;
+    this.selectSongFromAlbum(prevSong);
     this.queue();
   }
 
@@ -94,24 +103,36 @@ class Player {
     this.animationId = requestAnimationFrame(animateProgBar);
   }
 
+  songCached() {
+    return this.fetchedSongs[this.songPath];
+  }
+
+  queueCached() {
+    this.audio.src = this.fetchedSongs[this.songPath];
+  }
+
   queue() {
     this.updateSongTime('0:00');
     this.initPlayback();
     this.initProgressBar();
-    fetchSongPlayData(this.songPath)
-      .then(({ link }) => {
-        this.audio.src = link;
-      })
-      .catch((err) => {
-        console.log(err);
-        // todo: emit action if fetch fails
-      });
+    if (this.songCached()) {
+      this.queueCached();
+    } else {
+      const songPath = this.songPath || this.songs[0].path;
+      fetchSongPlayData(songPath)
+        .then(({ link }) => {
+          this.fetchedSongs[songPath] = link;
+          this.audio.src = link;
+        })
+        .catch((err) => {
+          console.log(err);
+          // todo: emit action if fetch fails
+        });
+    }
   }
 
-  executeCmd(cmd, path, songNumber) {
+  executeCmd(cmd) {
     this.cmd = cmd;
-    this.songPath = path;
-    this.songNumber = songNumber;
     switch (cmd) {
       case 'play':
         return this.play();
@@ -124,6 +145,8 @@ class Player {
       case 'back':
         return this.rewind();
       case 'forward':
+        return this.forward();
+      case 'skip':
         return this.forward();
       default:
         return null;
