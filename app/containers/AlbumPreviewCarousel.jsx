@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { browsePreview, setPreviewWidth, setPreviewDistance } from '../actions';
 import { albumTitles } from '../constants';
 
 const PREVIEW_WIDTH = 375;
@@ -10,25 +12,24 @@ const AlbumPreview = ({ title }) => (
 );
 
 class AlbumPreviewCarousel extends React.Component {
-  constructor() {
-    super();
-    this.distance = 0;
+  componentWillMount() {
+    this.props.setPreviewWidth(PREVIEW_WIDTH);
   }
+
   slide(direction) {
-    const wrapper = document.getElementsByClassName('carousel-wrap');
+    const { distance, previewWidth } = this.props;
     if (direction === 'left') {
-      this.distance += PREVIEW_WIDTH;
-      wrapper[0].style.transform = `translateX(${this.distance}px)`;
+      this.props.setPreviewDistance(distance + previewWidth);
     } else {
-      this.distance -= PREVIEW_WIDTH;
-      wrapper[0].style.transform = `translateX(${this.distance}px)`;
+      this.props.setPreviewDistance(distance - previewWidth);
     }
   }
 
   render() {
+    const wrapStyle = { transform: `translateX(${this.props.distance}px)` };
     return (
       <div className='album-preview-carousel'>
-        <div className='carousel-wrap'>
+        <div className='carousel-wrap' style={wrapStyle}>
           {
             albumTitles.map((title, i) => (
               <AlbumPreview
@@ -51,4 +52,14 @@ class AlbumPreviewCarousel extends React.Component {
   }
 }
 
-export default AlbumPreviewCarousel;
+const mapStateToProps = ({
+  albumPreviewCarousel: { distance, scroll, previewWidth },
+}) => ({ distance, scroll, previewWidth });
+
+const mapDispatchToProps = {
+  btnOnClick: browsePreview,
+  setPreviewDistance,
+  setPreviewWidth,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(AlbumPreviewCarousel);

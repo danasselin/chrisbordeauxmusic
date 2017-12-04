@@ -25,3 +25,24 @@ export const updateSongTime = time => (
     time,
   }
 );
+
+export const browsePreview = direction => (
+  {
+    type: 'BROWSE_PREVIEW',
+    direction,
+  }
+);
+
+export const setPreviewWidth = width => (
+  {
+    type: 'SET_PREVIEW_WIDTH',
+    width,
+  }
+);
+
+export const setPreviewDistance = distance => (
+  {
+    type: 'SET_PREVIEW_DISTANCE',
+    distance,
+  }
+);
