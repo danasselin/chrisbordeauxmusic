@@ -89,3 +89,26 @@ export function handleSkip(cmd, type) {
   if (cmd === 'forward' && type === 'forward') finalType = 'skip';
   return finalType;
 }
+
+export function sortCenter(array, element) {
+  const copy = array;
+  const origIndex = array.indexOf(element);
+  if (origIndex > -1) {
+    const length = copy.length;
+    let prevCenter;
+    if (length % 2 === 0) {
+      prevCenter = copy[length / 2];
+      copy[length / 2] = element;
+      copy.splice(origIndex, 1);
+      copy.push(prevCenter);
+    } else {
+      // make element the center element
+      const centerIndex = Math.round(length / 2);
+      prevCenter = copy[centerIndex];
+      copy[centerIndex] = element;
+      copy.splice(origIndex, 1);
+      copy.push(prevCenter);
+    }
+  }
+  return copy;
+}
