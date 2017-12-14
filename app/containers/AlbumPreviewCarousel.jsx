@@ -17,12 +17,12 @@ class AlbumPreviewCarousel extends React.Component {
   }
 
   componentWillMount() {
-    // this.props.setPreviewWidth(this.previewWidth);
     this.center = this.getCenter();
   }
 
   componentDidMount() {
-    this.props.setPreviewDistance(this.getDistance());
+    this.props.setPreviewDistance(0);
+    this.slideDistance = this.getDistance();
   }
 
   getPreviewWidth() {
@@ -41,7 +41,6 @@ class AlbumPreviewCarousel extends React.Component {
   }
 
   getDistance() {
-    // return (offsetLeft of center + 1) - (center offsetLeft)
     const previews = document.querySelectorAll('.album-preview');
     const previewLength = previews.length;
     const centerIndex = Math.round(previewLength / 2);
@@ -57,8 +56,7 @@ class AlbumPreviewCarousel extends React.Component {
   }
 
   slide(direction) {
-    const { distance } = this.props;
-    this.slideDistance = this.slideDistance || distance;
+    const distance = this.props.distance;
     if (direction === 'left') {
       this.props.setPreviewDistance(distance - this.slideDistance);
     } else {
