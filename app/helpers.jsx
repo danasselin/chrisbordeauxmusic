@@ -94,7 +94,7 @@ export function sortCenter(array, element) {
   const origIndex = array.indexOf(element);
   if (origIndex > -1) {
     const length = array.length;
-    const centerIndex = (length % 2 === 0) ? length / 2 : Math.round(length / 2);
+    const centerIndex = (length % 2 === 0) ? ((length / 2) + 1) : Math.round(length / 2);
     return array.map(function (el, i) {
       if (i === centerIndex - 1) return element;
       if (el === element) return array[centerIndex - 1];

@@ -131,14 +131,15 @@ $song-text-padding: $medium-text-spacing;
       transition: transform 1s;
       .album-preview {
         background-color: $light-grey;
-        /*min-width: 350px;
-        height: 350px;*/
         border: 1px solid;
         margin: 15px 5%;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: $medium-font;
+        &.invisible {
+          visibility: hidden;
+        }
       }
     }
   }

@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { browsePreview, setPreviewWidth, setPreviewOffset } from '../actions';
 import { sortCenter } from '../helpers.jsx';
 
-const AlbumPreview = ({ title, width }) => (
-  <div className='album-preview' style={{ minWidth: `${width}px` }}>
+const AlbumPreview = ({ title, width, addlClass = '' }) => (
+  <div
+    className={`album-preview ${addlClass}`}
+    style={{ minWidth: `${width}px` }}>
     { title }
   </div>
 );
@@ -14,10 +16,6 @@ class AlbumPreviewCarousel extends React.Component {
     super(props);
     this.previewWidth = this.getPreviewWidth();
     this.previews = this.processPreviews(this.props.previews);
-  }
-
-  componentWillMount() {
-    this.center = this.getCenter();
   }
 
   componentDidMount() {
@@ -33,18 +31,14 @@ class AlbumPreviewCarousel extends React.Component {
     return 350;
   }
 
-  getCenter() {
-    const windowWidth = window.outerWidth;
-    const windowCenter = windowWidth / 2;
-    const previewCenter = this.previewWidth / 2;
-    return windowCenter - previewCenter;
-  }
-
   getDistance() {
     const previews = document.querySelectorAll('.album-preview');
     const previewLength = previews.length;
     const centerIndex = Math.round(previewLength / 2);
     const center = previews[centerIndex];
+    if (!previews[centerIndex + 1]) {
+      return previews[centerIndex].offsetLeft - previews[centerIndex - 1].offsetLeft;
+    }
     return previews[centerIndex + 1].offsetLeft - center.offsetLeft;
   }
 
@@ -65,10 +59,7 @@ class AlbumPreviewCarousel extends React.Component {
   }
 
   render() {
-    const wrapStyle = {
-      transform: `translateX(${this.props.offset}px)`,
-      left: `${this.center}px`,
-    };
+    const wrapStyle = { transform: `translateX(${this.props.offset}px)` };
     return (
       <div className='album-preview-carousel'>
         <div className='carousel-wrap' style={wrapStyle}>
@@ -80,6 +71,16 @@ class AlbumPreviewCarousel extends React.Component {
                 width={ preview.width }
               />
             ))
+          }
+          {
+            this.previews.length % 2 === 0
+              ?
+              <AlbumPreview
+                width={ this.previewWidth }
+                title={''}
+                addlClass='invisible'
+              />
+              : null
           }
         </div>
         <div className='carousel-btn-wrap'>
