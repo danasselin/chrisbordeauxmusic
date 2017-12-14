@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { browsePreview, setPreviewWidth, setPreviewDistance } from '../actions';
+import { browsePreview, setPreviewWidth, setPreviewOffset } from '../actions';
 import { sortCenter } from '../helpers.jsx';
 
 const AlbumPreview = ({ title, width }) => (
@@ -21,7 +21,7 @@ class AlbumPreviewCarousel extends React.Component {
   }
 
   componentDidMount() {
-    this.props.setPreviewDistance(0);
+    this.props.setPreviewOffset(0);
     this.slideDistance = this.getDistance();
   }
 
@@ -56,17 +56,17 @@ class AlbumPreviewCarousel extends React.Component {
   }
 
   slide(direction) {
-    const distance = this.props.distance;
+    const { offset } = this.props;
     if (direction === 'left') {
-      this.props.setPreviewDistance(distance - this.slideDistance);
+      this.props.setPreviewOffset(offset - this.slideDistance);
     } else {
-      this.props.setPreviewDistance(distance + this.slideDistance);
+      this.props.setPreviewOffset(offset + this.slideDistance);
     }
   }
 
   render() {
     const wrapStyle = {
-      transform: `translateX(${this.props.distance}px)`,
+      transform: `translateX(${this.props.offset}px)`,
       left: `${this.center}px`,
     };
     return (
@@ -96,12 +96,12 @@ class AlbumPreviewCarousel extends React.Component {
 }
 
 const mapStateToProps = ({
-  albumPreviewCarousel: { distance, scroll, previewWidth },
-}) => ({ distance, scroll, previewWidth });
+  albumPreviewCarousel: { offset, scroll, previewWidth },
+}) => ({ offset, scroll, previewWidth });
 
 const mapDispatchToProps = {
   btnOnClick: browsePreview,
-  setPreviewDistance,
+  setPreviewOffset,
   setPreviewWidth,
 };
 

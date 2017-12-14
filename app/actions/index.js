@@ -40,9 +40,9 @@ export const setPreviewWidth = width => (
   }
 );
 
-export const setPreviewDistance = distance => (
+export const setPreviewOffset = offset => (
   {
-    type: 'SET_PREVIEW_DISTANCE',
-    distance,
+    type: 'SET_PREVIEW_OFFSET',
+    offset,
   }
 );
