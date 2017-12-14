@@ -91,24 +91,15 @@ export function handleSkip(cmd, type) {
 }
 
 export function sortCenter(array, element) {
-  const copy = array;
   const origIndex = array.indexOf(element);
   if (origIndex > -1) {
-    const length = copy.length;
-    let prevCenter;
-    if (length % 2 === 0) {
-      prevCenter = copy[length / 2];
-      copy[length / 2] = element;
-      copy.splice(origIndex, 1);
-      copy.push(prevCenter);
-    } else {
-      // make element the center element
-      const centerIndex = Math.round(length / 2);
-      prevCenter = copy[centerIndex];
-      copy[centerIndex] = element;
-      copy.splice(origIndex, 1);
-      copy.push(prevCenter);
-    }
+    const length = array.length;
+    const centerIndex = (length % 2 === 0) ? length / 2 : Math.round(length / 2);
+    return array.map(function (el, i) {
+      if (i === centerIndex - 1) return element;
+      if (el === element) return array[centerIndex - 1];
+      return el;
+    });
   }
-  return copy;
+  return array;
 }

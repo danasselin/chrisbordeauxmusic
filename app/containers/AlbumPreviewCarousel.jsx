@@ -48,7 +48,7 @@ class AlbumPreviewCarousel extends React.Component {
     return previews[centerIndex + 1].offsetLeft - center.offsetLeft;
   }
 
-  processPreviews(previews, center = 'A Hundred Thousand Dollars A Day (Single)') {
+  processPreviews(previews, center = 'Fossil Fuel Kid') {
     const { previewWidth: width } = this;
     return sortCenter(previews, center).map(title => (
       { title, width }
