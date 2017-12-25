@@ -1,0 +1,11 @@
+Front-end
+
+[ ] set up CSS framework (with Post CSS)
+[ ] handle images, icons, fonts
+[ ] design tablet and desktop layout
+
+Back-end
+
+[ ] handle hosting and endpoints for music, video (and photos?)
+[ ] handle calendar endpoint (possibly just link up to Facebook)
+[ ] handle blog data endpoint
