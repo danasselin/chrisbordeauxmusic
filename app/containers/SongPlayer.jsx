@@ -11,16 +11,17 @@ import Player from '../services/Song/Player';
 class SongPlayer extends React.Component {
   constructor(props) {
     super(props);
-    this.player = new Player(
-      props.updateSongTime,
-      props.selectSongFromAlbum,
-    );
+    this.player = new Player({
+      updateSongTime: props.updateSongTime,
+      selectSongFromAlbum: props.selectSongFromAlbum,
+      setSongPlayerCmd: props.setSongPlayerCmd,
+    });
   }
 
   componentWillReceiveProps(nextProps) {
     const { command, selectedSong } = nextProps;
+    if (!this.player.songs) this.player.songs = nextProps.songs;
     this.player.selectedSong = selectedSong;
-    // this.player.songs = nextProps.songs;
     this.player.executeCmd(command);
   }
 
@@ -38,7 +39,7 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = {
   updateSongTime,
-  btnOnClick: setSongPlayerCmd,
+  setSongPlayerCmd,
   selectSongFromAlbum,
 };
 

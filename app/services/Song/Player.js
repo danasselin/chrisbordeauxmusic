@@ -6,12 +6,17 @@ import {
 } from '../../helpers.jsx';
 
 class Player {
-  constructor(updateSongTime, selectSongFromAlbum) {
+  constructor({
+    updateSongTime,
+    selectSongFromAlbum,
+    setSongPlayerCmd,
+  }) {
     this.fetchedSongs = {};
     this.songNumber = 0;
     this.audio = document.createElement('audio');
     this.updateSongTime = updateSongTime;
     this.selectSongFromAlbum = selectSongFromAlbum;
+    this.setSongPlayerCmd = setSongPlayerCmd;
     this.audio.ontimeupdate = () => {
       this.currentSongTime = formatTime(this.audio.currentTime);
     };
@@ -50,7 +55,7 @@ class Player {
     const nextSong = this.songs[this.songNumber];
     this.songPath = nextSong.path;
     this.selectSongFromAlbum(nextSong);
-    this.queue();
+    this.setSongPlayerCmd('queued');
   }
 
   back() {
@@ -58,7 +63,7 @@ class Player {
     const prevSong = this.songs[this.songNumber];
     this.songPath = prevSong.path;
     this.selectSongFromAlbum(prevSong);
-    this.queue();
+    this.setSongPlayerCmd('queued');
   }
 
   setProgressBar(progress) {
@@ -104,11 +109,11 @@ class Player {
   }
 
   songCached() {
-    return this.fetchedSongs[this.songPath];
+    return this.fetchedSongs[this.selectedSong.path];
   }
 
   queueCached() {
-    this.audio.src = this.fetchedSongs[this.songPath];
+    this.audio.src = this.fetchedSongs[this.selectedSong.path];
   }
 
   queue() {
@@ -118,10 +123,7 @@ class Player {
     if (this.songCached()) {
       this.queueCached();
     } else {
-      const songPath =
-        this.selectedSong.path ||
-        this.songPath ||
-        this.songs[0].path;
+      const songPath = this.selectedSong.path;
       fetchSongPlayData(songPath)
         .then(({ link }) => {
           this.fetchedSongs[songPath] = link;
