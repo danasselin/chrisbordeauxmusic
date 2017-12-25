@@ -118,7 +118,10 @@ class Player {
     if (this.songCached()) {
       this.queueCached();
     } else {
-      const songPath = this.songPath || this.songs[0].path;
+      const songPath =
+        this.selectedSong.path ||
+        this.songPath ||
+        this.songs[0].path;
       fetchSongPlayData(songPath)
         .then(({ link }) => {
           this.fetchedSongs[songPath] = link;
