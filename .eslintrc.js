@@ -15,6 +15,11 @@ module.exports = {
   plugins: [
     'react'
   ],
+  settings: {
+    'import/resolver': {
+      'babel-plugin-root-import':  {},
+    },
+  },
   rules: {
     'no-console': 0,
     'class-methods-use-this': 0,

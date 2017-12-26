@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { isSelectedSong } from '../helpers.jsx';
-import { selectSongFromAlbum, setSongPlayerCmd } from '../actions';
-import '../main.css';
+import { isSelectedSong } from '~/app/js/helpers';
+import { selectSongFromAlbum, setSongPlayerCmd } from '~/app/js/actions';
+import '~/app/css/main.css';
 
 class Song extends React.Component {
   handleSongSelection() {

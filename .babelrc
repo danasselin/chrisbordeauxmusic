@@ -6,5 +6,6 @@
   ],
   "plugins": [
     "transform-react-jsx",
+    "babel-plugin-root-import",
   ],
 }
