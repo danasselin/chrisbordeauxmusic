@@ -1,0 +1,10 @@
+$small-font: 48px;
+$medium-font: 52px;
+$large-font: 76px;
+$medium-text-spacing: 20px;
+$large-text-spacing: 40px;
+$h1-size: $large-font;
+$h3-size-mobile: $medium-font;
+$p-size-mobile: $small-font;
+$album-font-size: $medium-font;
+$player-button-size: calc($large-font * 2);

@@ -12,14 +12,14 @@ module.exports = {
       jsx: true
     }
   },
+  settings: {
+    "import/resolver": {
+      "babel-plugin-root-import": {}
+    }
+  },
   plugins: [
     'react'
   ],
-  settings: {
-    'import/resolver': {
-      'babel-plugin-root-import':  {},
-    },
-  },
   rules: {
     'no-console': 0,
     'class-methods-use-this': 0,
@@ -30,5 +30,7 @@ module.exports = {
     'react/jsx-uses-react': 2,
     'func-names': 0,
     'prefer-arrow-callback': 0,
+    'import/no-unresolved': 0,
+    'import/extensions': 0
   }
 }

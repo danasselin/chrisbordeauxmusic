@@ -1,11 +1,13 @@
 {
   "presets": [
     [
-      "env",
+      "env"
     ]
   ],
   "plugins": [
-    "transform-react-jsx",
-    "babel-plugin-root-import",
-  ],
+    [
+      "transform-react-jsx", 
+      "babel-plugin-root-import"
+    ]
+  ]
 }

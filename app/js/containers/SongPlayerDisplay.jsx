@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setSongPlayerCmd } from '../actions';
 import SongPlayerButton from '../components/SongPlayerButton.jsx';
-import rewind from '../../public/SVG/rewind.svg';
-import play from '../../public/SVG/play.svg';
-import pause from '../../public/SVG/pause.svg';
-import forward from '../../public/SVG/forward.svg';
+import rewind from './../../../public/SVG/rewind.svg';
+import play from './../../../public/SVG/play.svg';
+import pause from './../../../public/SVG/pause.svg';
+import forward from './../../../public/SVG/forward.svg';
 
 const btnData = {
   rewind,
