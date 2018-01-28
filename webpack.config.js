@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build')
+  build: path.join(__dirname, 'build'),
 };
 
 const commonConfig = merge([
@@ -16,24 +16,24 @@ const commonConfig = merge([
     },
     output: {
       path: PATHS.build,
-      filename: '[name].js'
+      filename: '[name].js',
     },
     resolve: {
-      extensions: ['.js', '.jsx']
+      extensions: ['.js', '.jsx', '.json'],
     },
     plugins: [
       new HtmlWebpackPlugin({
-        title: 'Webpack demo'
+        title: 'Webpack demo',
       }),
       parts.setFreeVariable(
         'process.env.DROPBOX_TOKEN',
-        `${process.env.DROPBOX_TOKEN}`
+        `${process.env.DROPBOX_TOKEN}`,
       ),
       parts.setFreeVariable(
         'process.env.DROPBOX_SEC',
-        `${process.env.DROPBOX_SEC}`
+        `${process.env.DROPBOX_SEC}`,
       ),
-    ]
+    ],
   },
   parts.lintJavaScript({
     include: PATHS.app,
@@ -41,12 +41,15 @@ const commonConfig = merge([
       cacheDirectory: true,
     }
   }),
+  parts.loadImages(),
+  parts.loadFonts(),
   parts.loadCSS(),
   parts.loadJavaScript({
     include: PATHS.app,
     options: {
       cacheDirectory: true,
-    }
+      plugins: ['babel-plugin-root-import'],
+    },
   }),
 ]);
 
@@ -58,9 +61,8 @@ const developmentConfig = merge([
     port: process.env.PORT
   }),
   parts.generateSourceMaps({
-    type: 'cheap-module-eval-source-map'
+    type: 'cheap-module-eval-source-map',
   }),
-  parts.loadImages(),
 ]);
 
 

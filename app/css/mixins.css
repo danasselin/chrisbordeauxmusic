@@ -1,0 +1,27 @@
+@import './media.css';
+
+@define-mixin breakpoint $point {
+  @if $(point) == mobile {
+    @media (max-width: $mobile-breakpoint) {
+      @mixin-content;
+    }
+  }
+
+  @if $(point) == tablet {
+    @media (min-width: $mobile-breakpoint) and (max-width: $tablet-breakpoint) {
+      @mixin-content;
+    }
+  }
+
+  @if $(point) == desktop {
+    @media (min-width: $tablet-breakpoint) {
+      @mixin-content;
+    }
+  }
+
+  @if $(point) == jumbotron {
+    @media (min-width: $desktop-breakpoint) {
+      @mixin-content;
+    }
+  }
+}

@@ -9,3 +9,6 @@ Back-end
 [ ] handle hosting and endpoints for music, video (and photos?)
 [ ] handle calendar endpoint (possibly just link up to Facebook)
 [ ] handle blog data endpoint
+
+template guide
+https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_cv&stacked=h

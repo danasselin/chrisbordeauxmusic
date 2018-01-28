@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import App from './components/App.jsx';
+import App from './js/components/App.jsx';
 // import reducer from './reducers';
-import hcApp from './reducers';
-import root from './root';
-import './main.css';
+import hcApp from './js/reducers';
+import root from './js/root';
+import './css/main.css';
 
 const store = createStore(
   hcApp,

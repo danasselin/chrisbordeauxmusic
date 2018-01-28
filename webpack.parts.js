@@ -19,7 +19,7 @@ exports.devServer = ({ host, port } = {}) => ({
     port,
     overlay: {
       errors: false,
-      warnings: false
+      warnings: false,
     }
   }
 });
@@ -33,12 +33,11 @@ exports.lintJavaScript = ({ include, exclude, options }) => ({
         exclude,
         enforce: 'pre',
         loader: 'eslint-loader',
-        options
+        options,
       }
     ]
   }
 });
-
 exports.loadJavaScript = ({ include, exclude, options }) => ({
   module: {
     rules: [
@@ -47,7 +46,7 @@ exports.loadJavaScript = ({ include, exclude, options }) => ({
         include,
         exclude,
         loader: 'babel-loader',
-        options
+        options,
       },
     ],
   },
@@ -64,15 +63,16 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
           'style-loader',
           {
             loader: 'css-loader',
-            options: {
-              modules: true
-            }
           },
           {
             loader: 'postcss-loader',
             options: {
               plugins: () => ([
                 require('postcss-easy-import'),
+                require('postcss-mixins'),
+                require('postcss-for'),
+                require('postcss-each'),
+                require('postcss-conditionals'),
                 require('postcss-simple-vars'),
                 require('postcss-extend'),
                 require('autoprefixer'),
@@ -93,8 +93,26 @@ exports.loadImages = ({ include, exclude, options } = {}) => (
         {
           test: /\.svg$/,
           use: 'raw-loader',
+        },
+        {
+          test: /\.jpg$/,
+          use: 'file-loader',
         }
       ]
     }
   }
-)
+);
+
+exports.loadFonts = ({ include, exclude, options } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[name].[ext]',
+        },
+      },
+    ],
+  },
+});
