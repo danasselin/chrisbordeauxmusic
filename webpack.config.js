@@ -6,7 +6,8 @@ require('dotenv').config();
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build')
+  build: path.join(__dirname, 'build'),
+  publicPath: 'http://localhost:8080/',
 };
 
 const commonConfig = merge([
@@ -33,7 +34,7 @@ const commonConfig = merge([
         'process.env.DROPBOX_SEC',
         `${process.env.DROPBOX_SEC}`
       ),
-    ]
+    ],
   },
   parts.lintJavaScript({
     include: PATHS.app,
@@ -42,6 +43,8 @@ const commonConfig = merge([
     }
   }),
   parts.loadCSS(),
+  parts.loadFonts(),
+  parts.loadImages(),
   parts.loadJavaScript({
     include: PATHS.app,
     options: {
@@ -59,9 +62,8 @@ const developmentConfig = merge([
     port: process.env.PORT
   }),
   parts.generateSourceMaps({
-    type: 'cheap-module-eval-source-map'
+    type: 'cheap-module-eval-source-map',
   }),
-  parts.loadImages(),
 ]);
 
 

@@ -93,8 +93,23 @@ exports.loadImages = ({ include, exclude, options } = {}) => (
         {
           test: /\.svg$/,
           use: 'raw-loader',
+        },
+        {
+          test: /\.jpg$/,
+          use: 'file-loader',
         }
       ]
     }
   }
-)
+);
+
+exports.loadFonts = ({ include, exclude, options } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.(ttf|eot|woff(2?))(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader?name=fonts/[name][hash].[ext]',
+      }
+    ],
+  },
+});

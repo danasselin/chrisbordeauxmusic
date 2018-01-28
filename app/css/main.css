@@ -1,7 +1,7 @@
   /* normalize */
 @import 'normalize.css';
-@import './grid.css';
 @import './typography.css';
+@import './grid.css';
 @import './mixins.css';
 @import './components/card.css';
 @import './components/player.css';
@@ -15,6 +15,7 @@ h1, h3, ul, p, figure {
 :global {
   body {
     background: $very-light-grey;
+    font-family: 'Roboto';
   }
 
   .content {
@@ -23,8 +24,9 @@ h1, h3, ul, p, figure {
 
   h1 {
     font-size: $h1-size;
-    text-align: center;
-    padding: 1% 0;
+    font-family: $h1-font;
+    /* text-align: center; */
+    /* padding: 1% 0; */
   }
   
   .content-box {

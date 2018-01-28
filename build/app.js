@@ -5721,11 +5721,11 @@ var _Album = __webpack_require__(126);
 
 var _Album2 = _interopRequireDefault(_Album);
 
-var _AlbumPreviewCarousel = __webpack_require__(147);
+var _AlbumPreviewCarousel = __webpack_require__(148);
 
 var _AlbumPreviewCarousel2 = _interopRequireDefault(_AlbumPreviewCarousel);
 
-var _SongPlayer = __webpack_require__(148);
+var _SongPlayer = __webpack_require__(149);
 
 var _SongPlayer2 = _interopRequireDefault(_SongPlayer);
 
@@ -5779,7 +5779,12 @@ var AlbumLibrary = function (_React$Component) {
 
       return _react2.default.createElement(
         'section',
-        { className: 'player-container' },
+        { className: 'player-container card' },
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Chris Bordeaux'
+        ),
         _react2.default.createElement(_AlbumPreviewCarousel2.default, { previews: _constants.albumTitles }),
         _react2.default.createElement(_SongPlayer2.default, null),
         _react2.default.createElement(
@@ -5856,7 +5861,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(145)(content, options);
+var update = __webpack_require__(146)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -5895,7 +5900,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _classnames = __webpack_require__(151);
+var _classnames = __webpack_require__(152);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -6054,11 +6059,11 @@ var _App = __webpack_require__(100);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _reducers = __webpack_require__(161);
+var _reducers = __webpack_require__(163);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _root = __webpack_require__(165);
+var _root = __webpack_require__(167);
 
 var _root2 = _interopRequireDefault(_root);
 
@@ -27428,7 +27433,7 @@ var _AlbumLibrary = __webpack_require__(55);
 
 var _AlbumLibrary2 = _interopRequireDefault(_AlbumLibrary);
 
-var _routes = __webpack_require__(158);
+var _routes = __webpack_require__(159);
 
 var _helpers = __webpack_require__(8);
 
@@ -33753,7 +33758,7 @@ exports = module.exports = __webpack_require__(144)(undefined);
 
 
 // module
-exports.push([module.i, "  /* normalize */\n/*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */\n/* Document\n   ========================================================================== */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in\n *    IE on Windows Phone and in iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -ms-text-size-adjust: 100%; /* 2 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n/* Sections\n   ========================================================================== */\n/**\n * Remove the margin in all browsers (opinionated).\n */\nbody {\n  margin: 0;\n}\n/**\n * Add the correct display in IE 9-.\n */\narticle, aside, footer, header, nav, section {\n  display: block;\n}\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n/* Grouping content\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in IE.\n */\nfigcaption, figure, main { /* 1 */\n  display: block;\n}\n/**\n * Add the correct margin in IE 8.\n */\nfigure {\n  margin: 1em 40px;\n}\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n}\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n/* Text-level semantics\n   ========================================================================== */\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\na {\n  background-color: transparent; /* 1 */\n  -webkit-text-decoration-skip: objects; /* 2 */\n}\n/**\n * 1. Remove the bottom border in Chrome 57- and Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  border-bottom: none; /* 1 */\n  text-decoration: underline; /* 2 */\n  -webkit-text-decoration: underline dotted;\n          text-decoration: underline dotted; /* 2 */\n}\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\nb, strong {\n  font-weight: inherit;\n}\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb, strong {\n  font-weight: bolder;\n}\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode, kbd, samp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n/**\n * Add the correct font style in Android 4.3-.\n */\ndfn {\n  font-style: italic;\n}\n/**\n * Add the correct background and color in IE 9-.\n */\nmark {\n  background-color: #ff0;\n  color: #000;\n}\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub, sup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\nsub {\n  bottom: -0.25em;\n}\nsup {\n  top: -0.5em;\n}\n/* Embedded content\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n */\naudio, video {\n  display: inline-block;\n}\n/**\n * Add the correct display in iOS 4-7.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n/**\n * Remove the border on images inside links in IE 10-.\n */\nimg {\n  border-style: none;\n}\n/**\n * Hide the overflow in IE.\n */\nsvg:not(:root) {\n  overflow: hidden;\n}\n/* Forms\n   ========================================================================== */\n/**\n * 1. Change the font styles in all browsers (opinionated).\n * 2. Remove the margin in Firefox and Safari.\n */\nbutton, input, optgroup, select, textarea {\n  font-family: sans-serif; /* 1 */\n  font-size: 100%; /* 1 */\n  line-height: 1.15; /* 1 */\n  margin: 0; /* 2 */\n}\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\nbutton, input { /* 1 */\n  overflow: visible;\n}\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\nbutton, select { /* 1 */\n  text-transform: none;\n}\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\nbutton, html [type=\"button\"], [type=\"reset\"], [type=\"submit\"] {\n  -webkit-appearance: button; /* 2 */\n}\n/**\n * Remove the inner border and padding in Firefox.\n */\nbutton::-moz-focus-inner, [type=\"button\"]::-moz-focus-inner, [type=\"reset\"]::-moz-focus-inner, [type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0;\n}\n/**\n * Restore the focus styles unset by the previous rule.\n */\nbutton:-moz-focusring, [type=\"button\"]:-moz-focusring, [type=\"reset\"]:-moz-focusring, [type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText;\n}\n/**\n * Correct the padding in Firefox.\n */\nfieldset {\n  padding: 0.35em 0.75em 0.625em;\n}\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\nlegend {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; /* 1 */\n  color: inherit; /* 2 */\n  display: table; /* 1 */\n  max-width: 100%; /* 1 */\n  padding: 0; /* 3 */\n  white-space: normal; /* 1 */\n}\n/**\n * 1. Add the correct display in IE 9-.\n * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  display: inline-block; /* 1 */\n  vertical-align: baseline; /* 2 */\n}\n/**\n * Remove the default vertical scrollbar in IE.\n */\ntextarea {\n  overflow: auto;\n}\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n[type=\"checkbox\"], [type=\"radio\"] {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=\"number\"]::-webkit-inner-spin-button, [type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  outline-offset: -2px; /* 2 */\n}\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.\n */\n[type=\"search\"]::-webkit-search-cancel-button, [type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n/* Interactive\n   ========================================================================== */\n/*\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n */\ndetails, menu {\n  display: block;\n}\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n/* Scripting\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n */\ncanvas {\n  display: inline-block;\n}\n/**\n * Add the correct display in IE.\n */\ntemplate {\n  display: none;\n}\n/* Hidden\n   ========================================================================== */\n/**\n * Add the correct display in IE 10-.\n */\n[hidden] {\n  display: none;\n}\n.site-container {\n    display: grid;\n    grid-template-columns: 25% 75%;\n}\n/* colors */\n/* global */\n/* hc-banner typography */\n/* hc-nav typography */\n/* content-box typography */\n/* song typography */\n.album-preview-carousel {\n    overflow: hidden;\n  }\n.album-preview-carousel .carousel-btn-wrap {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n    }\n.album-preview-carousel .carousel-btn-wrap p {\n        font-size: 12px;\n      }\n.album-preview-carousel .carousel-wrap {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -ms-flex-pack: distribute;\n          justify-content: space-around;\n      list-style: none;\n      -webkit-transition: -webkit-transform 1s;\n      transition: -webkit-transform 1s;\n      transition: transform 1s;\n      transition: transform 1s, -webkit-transform 1s;\n    }\n.album-preview-carousel .carousel-wrap .album-preview {\n        background-color: #b7b7b7;\n        border: 1px solid;\n        margin: 15px 5%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        font-size: 24px\n      }\n.album-preview-carousel .carousel-wrap .album-preview.invisible {\n  visibility: hidden;\n}\n.song-player {\n    margin: 1em 40px;\n    font-size: 12px;\n  }\n.progress-bar .button-bar {\n      text-align: center;\n    }\n.progress-bar .button-bar svg {\n        width: x-small-font;\n        height: x-small-font;\n      }\n.progress-bar .button-bar li {\n        display: inline-block;\n        margin: 0 5%;\n      }\n.album {\n    font-size: 48px;\n    background-color: #b7b7b7;\n    margin: 0 auto;\n  }\n.song {\n    cursor: pointer;\n    background-color: #999999;\n    font-size: 12px;\n    padding: 20px;\n    margin: 1em 40px\n  }\n.song.selected {\n  background-color: #FFFFFF;\n}\n.song .song-controller h3 {\n        font-size: 12px;\n      }\n.song-img-placeholder {\n    background-color: #434343;\n    color: #FFFFFF;\n    width: 100px;\n    height: 100px;\n  }\nh1 {\n    font-size: 76px;\n    text-align: center;\n    padding: 1% 0;\n  }\n.content-box {\n    padding: 20px;\n    font-family: Verdana\n  }\n.content-box > h3 {\n  text-align: center;\n}\n.content-box h3 {\n      font-weight: 100;\n}\n.banner {\n    font-family: Palatino;\n    background-color: #434343;\n    color: #FFFFFF;\n    padding: 40px 0;\n  }\n.hc-hero {\n    height: 250px;\n    border-top: 2px dotted;\n    border-bottom: 2px dotted;\n  }\n", ""]);
+exports.push([module.i, "  /* normalize */\n/*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */\n/* Document\n   ========================================================================== */\n/**\n * 1. Correct the line height in all browsers.\n * 2. Prevent adjustments of font size after orientation changes in\n *    IE on Windows Phone and in iOS.\n */\nhtml {\n  line-height: 1.15; /* 1 */\n  -ms-text-size-adjust: 100%; /* 2 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n}\n/* Sections\n   ========================================================================== */\n/**\n * Remove the margin in all browsers (opinionated).\n */\nbody {\n  margin: 0;\n}\n/**\n * Add the correct display in IE 9-.\n */\narticle, aside, footer, header, nav, section {\n  display: block;\n}\n/**\n * Correct the font size and margin on `h1` elements within `section` and\n * `article` contexts in Chrome, Firefox, and Safari.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\n/* Grouping content\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n * 1. Add the correct display in IE.\n */\nfigcaption, figure, main { /* 1 */\n  display: block;\n}\n/**\n * Add the correct margin in IE 8.\n */\nfigure {\n  margin: 1em 40px;\n}\n/**\n * 1. Add the correct box sizing in Firefox.\n * 2. Show the overflow in Edge and IE.\n */\nhr {\n  -webkit-box-sizing: content-box;\n          box-sizing: content-box; /* 1 */\n  height: 0; /* 1 */\n  overflow: visible; /* 2 */\n}\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\npre {\n  font-family: monospace, monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n/* Text-level semantics\n   ========================================================================== */\n/**\n * 1. Remove the gray background on active links in IE 10.\n * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.\n */\na {\n  background-color: transparent; /* 1 */\n  -webkit-text-decoration-skip: objects; /* 2 */\n}\n/**\n * 1. Remove the bottom border in Chrome 57- and Firefox 39-.\n * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.\n */\nabbr[title] {\n  border-bottom: none; /* 1 */\n  text-decoration: underline; /* 2 */\n  -webkit-text-decoration: underline dotted;\n          text-decoration: underline dotted; /* 2 */\n}\n/**\n * Prevent the duplicate application of `bolder` by the next rule in Safari 6.\n */\nb, strong {\n  font-weight: inherit;\n}\n/**\n * Add the correct font weight in Chrome, Edge, and Safari.\n */\nb, strong {\n  font-weight: bolder;\n}\n/**\n * 1. Correct the inheritance and scaling of font size in all browsers.\n * 2. Correct the odd `em` font sizing in all browsers.\n */\ncode, kbd, samp {\n  font-family: monospace, monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n/**\n * Add the correct font style in Android 4.3-.\n */\ndfn {\n  font-style: italic;\n}\n/**\n * Add the correct background and color in IE 9-.\n */\nmark {\n  background-color: #ff0;\n  color: #000;\n}\n/**\n * Add the correct font size in all browsers.\n */\nsmall {\n  font-size: 80%;\n}\n/**\n * Prevent `sub` and `sup` elements from affecting the line height in\n * all browsers.\n */\nsub, sup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\nsub {\n  bottom: -0.25em;\n}\nsup {\n  top: -0.5em;\n}\n/* Embedded content\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n */\naudio, video {\n  display: inline-block;\n}\n/**\n * Add the correct display in iOS 4-7.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n/**\n * Remove the border on images inside links in IE 10-.\n */\nimg {\n  border-style: none;\n}\n/**\n * Hide the overflow in IE.\n */\nsvg:not(:root) {\n  overflow: hidden;\n}\n/* Forms\n   ========================================================================== */\n/**\n * 1. Change the font styles in all browsers (opinionated).\n * 2. Remove the margin in Firefox and Safari.\n */\nbutton, input, optgroup, select, textarea {\n  font-family: sans-serif; /* 1 */\n  font-size: 100%; /* 1 */\n  line-height: 1.15; /* 1 */\n  margin: 0; /* 2 */\n}\n/**\n * Show the overflow in IE.\n * 1. Show the overflow in Edge.\n */\nbutton, input { /* 1 */\n  overflow: visible;\n}\n/**\n * Remove the inheritance of text transform in Edge, Firefox, and IE.\n * 1. Remove the inheritance of text transform in Firefox.\n */\nbutton, select { /* 1 */\n  text-transform: none;\n}\n/**\n * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`\n *    controls in Android 4.\n * 2. Correct the inability to style clickable types in iOS and Safari.\n */\nbutton, html [type=\"button\"], [type=\"reset\"], [type=\"submit\"] {\n  -webkit-appearance: button; /* 2 */\n}\n/**\n * Remove the inner border and padding in Firefox.\n */\nbutton::-moz-focus-inner, [type=\"button\"]::-moz-focus-inner, [type=\"reset\"]::-moz-focus-inner, [type=\"submit\"]::-moz-focus-inner {\n  border-style: none;\n  padding: 0;\n}\n/**\n * Restore the focus styles unset by the previous rule.\n */\nbutton:-moz-focusring, [type=\"button\"]:-moz-focusring, [type=\"reset\"]:-moz-focusring, [type=\"submit\"]:-moz-focusring {\n  outline: 1px dotted ButtonText;\n}\n/**\n * Correct the padding in Firefox.\n */\nfieldset {\n  padding: 0.35em 0.75em 0.625em;\n}\n/**\n * 1. Correct the text wrapping in Edge and IE.\n * 2. Correct the color inheritance from `fieldset` elements in IE.\n * 3. Remove the padding so developers are not caught out when they zero out\n *    `fieldset` elements in all browsers.\n */\nlegend {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; /* 1 */\n  color: inherit; /* 2 */\n  display: table; /* 1 */\n  max-width: 100%; /* 1 */\n  padding: 0; /* 3 */\n  white-space: normal; /* 1 */\n}\n/**\n * 1. Add the correct display in IE 9-.\n * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.\n */\nprogress {\n  display: inline-block; /* 1 */\n  vertical-align: baseline; /* 2 */\n}\n/**\n * Remove the default vertical scrollbar in IE.\n */\ntextarea {\n  overflow: auto;\n}\n/**\n * 1. Add the correct box sizing in IE 10-.\n * 2. Remove the padding in IE 10-.\n */\n[type=\"checkbox\"], [type=\"radio\"] {\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box; /* 1 */\n  padding: 0; /* 2 */\n}\n/**\n * Correct the cursor style of increment and decrement buttons in Chrome.\n */\n[type=\"number\"]::-webkit-inner-spin-button, [type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\n/**\n * 1. Correct the odd appearance in Chrome and Safari.\n * 2. Correct the outline style in Safari.\n */\n[type=\"search\"] {\n  -webkit-appearance: textfield; /* 1 */\n  outline-offset: -2px; /* 2 */\n}\n/**\n * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.\n */\n[type=\"search\"]::-webkit-search-cancel-button, [type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n/**\n * 1. Correct the inability to style clickable types in iOS and Safari.\n * 2. Change font properties to `inherit` in Safari.\n */\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n/* Interactive\n   ========================================================================== */\n/*\n * Add the correct display in IE 9-.\n * 1. Add the correct display in Edge, IE, and Firefox.\n */\ndetails, menu {\n  display: block;\n}\n/*\n * Add the correct display in all browsers.\n */\nsummary {\n  display: list-item;\n}\n/* Scripting\n   ========================================================================== */\n/**\n * Add the correct display in IE 9-.\n */\ncanvas {\n  display: inline-block;\n}\n/**\n * Add the correct display in IE.\n */\ntemplate {\n  display: none;\n}\n/* Hidden\n   ========================================================================== */\n/**\n * Add the correct display in IE 10-.\n */\n[hidden] {\n  display: none;\n}\n/* colors */\n@font-face {\n  font-family: 'Roboto';\n  src: url(" + __webpack_require__(145) + ") format('ttf');\n}\n/* global */\n/* header font */\n/* hc-banner typography */\n/* hc-nav typography */\n/* content-box typography */\n/* song typography */\n.site-container {\n    display: grid;\n    grid-template-columns: 35% 65%;\n}\n.card {\n    -webkit-box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);\n            box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2),0 4px 20px 0 rgba(0,0,0,0.19);\n    background: #FFFFFF\n}\n.card.padded {\n  padding: 3%;\n}\n.player-container {\n    margin-right: 20px;\n}\n.album-preview-carousel {\n    overflow: hidden;\n  }\n.album-preview-carousel .carousel-btn-wrap {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n    }\n.album-preview-carousel .carousel-btn-wrap p {\n        font-size: 12px;\n      }\n.album-preview-carousel .carousel-wrap {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -ms-flex-pack: distribute;\n          justify-content: space-around;\n      list-style: none;\n      -webkit-transition: -webkit-transform 1s;\n      transition: -webkit-transform 1s;\n      transition: transform 1s;\n      transition: transform 1s, -webkit-transform 1s;\n    }\n.album-preview-carousel .carousel-wrap .album-preview {\n        background-color: #b7b7b7;\n        border: 1px solid;\n        margin: 15px 5%;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        font-size: 24px\n      }\n.album-preview-carousel .carousel-wrap .album-preview.invisible {\n  visibility: hidden;\n}\n.song-player {\n    margin: 1em 40px;\n    font-size: 12px;\n  }\n.progress-bar .button-bar {\n      text-align: center;\n    }\n.progress-bar .button-bar svg {\n        width: x-small-font;\n        height: x-small-font;\n      }\n.progress-bar .button-bar li {\n        display: inline-block;\n        margin: 0 5%;\n      }\n.album {\n    font-size: 48px;\n    background-color: #b7b7b7;\n    margin: 0 auto;\n  }\n.song {\n    cursor: pointer;\n    background-color: #999999;\n    font-size: 12px;\n    padding: 20px;\n    margin: 1em 40px\n  }\n.song.selected {\n  background-color: #FFFFFF;\n}\n.song .song-controller h3 {\n        font-size: 12px;\n      }\n.song-img-placeholder {\n    background-color: #434343;\n    color: #FFFFFF;\n    width: 100px;\n    height: 100px;\n  }\n.hc-nav {\n    position: -webkit-sticky;\n    position: sticky;\n    top: 0;\n    background: #434343;\n}\n@media (max-width: 415px) {\n  .hc-nav {\n    font-size: 48px;\n  }\n}\n.hc-nav {\n  font-family: Verdana;\n  padding: 20px 0;\n  color: whitesmoke;\n}\n.hc-nav ul {\n        list-style-type: none;\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -ms-flex-pack: distribute;\n            justify-content: space-around;\n}\n.hc-nav ul a {\n            color: inherit;\n            text-decoration: none;\n        }\nh1, h3, ul, p, figure {\n  margin: 0;\n  padding: 0;\n}\nbody {\n    background: whitesmoke;\n    font-family: 'Roboto';\n  }\n.content {\n    margin: 10px;\n  }\nh1 {\n    font-size: 48px;\n    font-family: 'Roboto';\n    text-align: center;\n    padding: 1% 0;\n  }\n.content-box {\n    padding: 20px;\n    font-family: Verdana\n  }\n.content-box > h3 {\n  text-align: center;\n}\n.content-box h3 {\n      font-weight: 100;\n}\n.banner {\n    font-family: Palatino;\n    background-color: #434343;\n    color: #FFFFFF;\n    padding: 40px 0;\n  }\n@media (max-width: 415px) {\n  .hc-nav {\n    font-size: 48px;\n  }\n}\n.hc-nav {\n  font-family: Verdana;\n  padding: 20px 0;\n  color: whitesmoke;\n}\n.hc-nav ul {\n      list-style-type: none;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -ms-flex-pack: distribute;\n          justify-content: space-around;\n}\n.hc-nav ul a {\n        color: inherit;\n        text-decoration: none;\n      }\n.hc-hero {\n    height: 250px;\n    border-top: 2px dotted;\n    border-bottom: 2px dotted;\n}\n", ""]);
 
 // exports
 
@@ -33844,6 +33849,12 @@ function toComment(sourceMap) {
 /* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__.p + "fonts/Roboto-Medium.ttf";
+
+/***/ }),
+/* 146 */
+/***/ (function(module, exports, __webpack_require__) {
+
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -33887,7 +33898,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(146);
+var	fixUrls = __webpack_require__(147);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -34200,7 +34211,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 146 */
+/* 147 */
 /***/ (function(module, exports) {
 
 
@@ -34295,7 +34306,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 147 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34467,7 +34478,7 @@ var mapDispatchToProps = {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(AlbumPreviewCarousel);
 
 /***/ }),
-/* 148 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34485,13 +34496,13 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(7);
 
-var _SongPlayerDisplay = __webpack_require__(149);
+var _SongPlayerDisplay = __webpack_require__(150);
 
 var _SongPlayerDisplay2 = _interopRequireDefault(_SongPlayerDisplay);
 
 var _actions = __webpack_require__(9);
 
-var _Player = __webpack_require__(157);
+var _Player = __webpack_require__(158);
 
 var _Player2 = _interopRequireDefault(_Player);
 
@@ -34556,7 +34567,7 @@ var mapDispatchToProps = {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SongPlayer);
 
 /***/ }),
-/* 149 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34576,23 +34587,23 @@ var _reactRedux = __webpack_require__(7);
 
 var _actions = __webpack_require__(9);
 
-var _SongPlayerButton = __webpack_require__(150);
+var _SongPlayerButton = __webpack_require__(151);
 
 var _SongPlayerButton2 = _interopRequireDefault(_SongPlayerButton);
 
-var _rewind = __webpack_require__(153);
+var _rewind = __webpack_require__(154);
 
 var _rewind2 = _interopRequireDefault(_rewind);
 
-var _play = __webpack_require__(154);
+var _play = __webpack_require__(155);
 
 var _play2 = _interopRequireDefault(_play);
 
-var _pause = __webpack_require__(155);
+var _pause = __webpack_require__(156);
 
 var _pause2 = _interopRequireDefault(_pause);
 
-var _forward = __webpack_require__(156);
+var _forward = __webpack_require__(157);
 
 var _forward2 = _interopRequireDefault(_forward);
 
@@ -34659,7 +34670,7 @@ var mapDispatchToProps = { btnOnClick: _actions.setSongPlayerCmd };
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SongPlayerDisplay);
 
 /***/ }),
-/* 150 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34677,7 +34688,7 @@ var _reactSvgInline = __webpack_require__(59);
 
 var _reactSvgInline2 = _interopRequireDefault(_reactSvgInline);
 
-var _PlayPauseButton = __webpack_require__(152);
+var _PlayPauseButton = __webpack_require__(153);
 
 var _PlayPauseButton2 = _interopRequireDefault(_PlayPauseButton);
 
@@ -34705,7 +34716,7 @@ var SongPlayerButton = function SongPlayerButton(_ref) {
 exports.default = SongPlayerButton;
 
 /***/ }),
-/* 151 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -34760,7 +34771,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 /***/ }),
-/* 152 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34813,31 +34824,31 @@ var mapDispatchToProps = { onClick: _actions.setSongPlayerCmd };
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(PlayPauseButton);
 
 /***/ }),
-/* 153 */
-/***/ (function(module, exports) {
-
-throw new Error("Module parse failed: /Users/dan/Documents/Sites/chrisbordeauxmusic/public/SVG/rewind.svg Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type.\n| <!-- Generated by IcoMoon.io -->\n| <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\">\n| <title>rewind</title>");
-
-/***/ }),
 /* 154 */
 /***/ (function(module, exports) {
 
-throw new Error("Module parse failed: /Users/dan/Documents/Sites/chrisbordeauxmusic/public/SVG/play.svg Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type.\n| <!-- Generated by IcoMoon.io -->\n| <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\">\n| <title>play</title>");
+module.exports = "<!-- Generated by IcoMoon.io -->\n<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\">\n<title>rewind</title>\n<path d=\"M18 5v10l10-10v22l-10-10v10l-11-11z\"></path>\n</svg>\n"
 
 /***/ }),
 /* 155 */
 /***/ (function(module, exports) {
 
-throw new Error("Module parse failed: /Users/dan/Documents/Sites/chrisbordeauxmusic/public/SVG/pause.svg Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type.\n| <!-- Generated by IcoMoon.io -->\n| <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\">\n| <title>pause</title>");
+module.exports = "<!-- Generated by IcoMoon.io -->\n<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\">\n<title>play</title>\n<path d=\"M6 4l20 12-20 12z\"></path>\n</svg>\n"
 
 /***/ }),
 /* 156 */
 /***/ (function(module, exports) {
 
-throw new Error("Module parse failed: /Users/dan/Documents/Sites/chrisbordeauxmusic/public/SVG/forward.svg Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type.\n| <!-- Generated by IcoMoon.io -->\n| <svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\">\n| <title>forward</title>");
+module.exports = "<!-- Generated by IcoMoon.io -->\n<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\">\n<title>pause</title>\n<path d=\"M4 4h10v24h-10zM18 4h10v24h-10z\"></path>\n</svg>\n"
 
 /***/ }),
 /* 157 */
+/***/ (function(module, exports) {
+
+module.exports = "<!-- Generated by IcoMoon.io -->\n<svg version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"32\" viewBox=\"0 0 32 32\">\n<title>forward</title>\n<path d=\"M16 27v-10l-10 10v-22l10 10v-10l11 11z\"></path>\n</svg>\n"
+
+/***/ }),
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -34928,7 +34939,7 @@ var Player = function () {
   }, {
     key: 'setProgressBar',
     value: function setProgressBar(progress) {
-      this.progressBar.style.background = 'linear-gradient(90deg, #EE7752 0px, #EE7752 ' + progress + '%, #23D5AB 0px)';
+      this.progressBar.style.background = 'linear-gradient(90deg, #434343 0px, #434343 ' + progress + '%, #b7b7b7 0px)';
     }
   }, {
     key: 'getProgressBar',
@@ -35044,7 +35055,7 @@ var Player = function () {
 exports.default = Player;
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35059,9 +35070,9 @@ var _AlbumLibrary = __webpack_require__(55);
 
 var _AlbumLibrary2 = _interopRequireDefault(_AlbumLibrary);
 
-var _PressPage = __webpack_require__(159);
+var _PressPage = __webpack_require__(160);
 
-var _FilmScorePage = __webpack_require__(160);
+var _FilmScorePage = __webpack_require__(161);
 
 var _helpers = __webpack_require__(8);
 
@@ -35082,7 +35093,7 @@ var HcSiteRoutes = exports.HcSiteRoutes = [{
 }];
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35108,7 +35119,7 @@ function PressPage() {
 }
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35123,22 +35134,65 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _film_scores = __webpack_require__(162);
+
+var _film_scores2 = _interopRequireDefault(_film_scores);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var renderScores = function renderScores(_ref, i) {
+  var title = _ref.title,
+      director = _ref.director,
+      thumbnail = _ref.thumbnail,
+      releaseDate = _ref.release_date;
+
+  return _react2.default.createElement(
+    'div',
+    { key: i },
+    _react2.default.createElement(
+      'h4',
+      null,
+      title
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      director
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      thumbnail
+    ),
+    _react2.default.createElement(
+      'p',
+      null,
+      releaseDate
+    )
+  );
+};
 
 function FilmScorePage() {
   return _react2.default.createElement(
     'div',
-    null,
+    { className: 'card padded' },
     _react2.default.createElement(
       'h3',
       null,
       'Film Scores'
-    )
+    ),
+    _film_scores2.default.films.map(renderScores)
   );
 }
 
 /***/ }),
-/* 161 */
+/* 162 */
+/***/ (function(module, exports) {
+
+module.exports = {"films":[{"title":"film 1","director":"Gill","thumbnail":"coming soon","release_date":"2017"},{"title":"film 2","director":"Gill","thumbnail":"coming soon","release_date":"2018"},{"title":"film 3","director":"Gill","thumbnail":"coming soon","release_date":"2014"}]}
+
+/***/ }),
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35150,15 +35204,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(19);
 
-var _songPlayer = __webpack_require__(162);
+var _songPlayer = __webpack_require__(164);
 
 var _songPlayer2 = _interopRequireDefault(_songPlayer);
 
-var _albumLibrary = __webpack_require__(163);
+var _albumLibrary = __webpack_require__(165);
 
 var _albumLibrary2 = _interopRequireDefault(_albumLibrary);
 
-var _albumPreviewCarousel = __webpack_require__(164);
+var _albumPreviewCarousel = __webpack_require__(166);
 
 var _albumPreviewCarousel2 = _interopRequireDefault(_albumPreviewCarousel);
 
@@ -35173,7 +35227,7 @@ var hcApp = (0, _redux.combineReducers)({
 exports.default = hcApp;
 
 /***/ }),
-/* 162 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35207,7 +35261,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 163 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35231,7 +35285,7 @@ var albumLibrary = function albumLibrary() {
 exports.default = albumLibrary;
 
 /***/ }),
-/* 164 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35259,7 +35313,7 @@ var albumPreviewCarousel = function albumPreviewCarousel() {
 exports.default = albumPreviewCarousel;
 
 /***/ }),
-/* 165 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

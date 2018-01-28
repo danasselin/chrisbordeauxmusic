@@ -1,5 +1,10 @@
 @import './colors.css';
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Medium.ttf') format('ttf');
+}
+
 /* global */
 $x-small-font: 12px;
 $small-font: 24px;
@@ -7,11 +12,14 @@ $medium-font: 48px;
 $large-font: 76px;
 $medium-text-spacing: 20px;
 $large-text-spacing: 40px;
-$h1-size: $medium-font;
+$h1-size: $small-font;
 $h3-size-mobile: $medium-font;
 $p-size-mobile: $small-font;
 $album-font-size: $medium-font;
 $player-button-size: x-small-font;
+
+/* header font */
+$h1-font: 'Roboto', Verdana;
 
 /* hc-banner typography */
 $banner-font: Palatino;
@@ -34,3 +42,4 @@ $song-bg-color: $grey;
 $album-bg-color: $light-grey;
 $song-controller-font-size: $x-small-font;
 $song-text-padding: $medium-text-spacing;
+
