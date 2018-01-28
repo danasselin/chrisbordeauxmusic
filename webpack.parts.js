@@ -38,7 +38,6 @@ exports.lintJavaScript = ({ include, exclude, options }) => ({
     ]
   }
 });
-
 exports.loadJavaScript = ({ include, exclude, options }) => ({
   module: {
     rules: [
@@ -70,6 +69,10 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
             options: {
               plugins: () => ([
                 require('postcss-easy-import'),
+                require('postcss-mixins'),
+                require('postcss-for'),
+                require('postcss-each'),
+                require('postcss-conditionals'),
                 require('postcss-simple-vars'),
                 require('postcss-extend'),
                 require('autoprefixer'),

@@ -1,10 +1,36 @@
-$small-font: 48px;
-$medium-font: 52px;
+@import './colors.css';
+
+/* global */
+$x-small-font: 12px;
+$small-font: 24px;
+$medium-font: 48px;
 $large-font: 76px;
 $medium-text-spacing: 20px;
 $large-text-spacing: 40px;
-$h1-size: $large-font;
+$h1-size: $medium-font;
 $h3-size-mobile: $medium-font;
 $p-size-mobile: $small-font;
 $album-font-size: $medium-font;
-$player-button-size: calc($large-font * 2);
+$player-button-size: x-small-font;
+
+/* hc-banner typography */
+$banner-font: Palatino;
+$banner-color: $white;
+$banner-bg-color: $dark-grey;
+$banner-text-padding: $large-text-spacing 0;
+
+/* hc-nav typography */
+$hc-nav-font: Verdana;
+$hc-nav-color: $very-light-grey;
+$hc-nav-font-size: $medium-font;
+$hc-nav-text-padding: $medium-text-spacing 0;
+
+/* content-box typography */
+$content-box-font: Verdana;
+$content-box-text-padding: $medium-text-spacing;
+
+/* song typography */
+$song-bg-color: $grey;
+$album-bg-color: $light-grey;
+$song-controller-font-size: $x-small-font;
+$song-text-padding: $medium-text-spacing;

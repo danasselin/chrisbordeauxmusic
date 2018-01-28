@@ -12,7 +12,7 @@ export const isSelectedSong = (song1, song2) => (
 // Route and template helpers
 export function createNavMenu(items) {
   const createLinks = (item, i) => (
-    <Link key={i} to={`/${item}`}>
+    <Link key={i} to={`/${item.replace(' ', '-')}`}>
       <li>{item}</li>
     </Link>
   );

@@ -67,7 +67,7 @@ class Player {
   }
 
   setProgressBar(progress) {
-    this.progressBar.style.background = `linear-gradient(90deg, #EE7752 0px, #EE7752 ${progress}%, #23D5AB 0px)`;
+    this.progressBar.style.background = `linear-gradient(90deg, #434343 0px, #434343 ${progress}%, #b7b7b7 0px)`;
   }
 
   getProgressBar() {

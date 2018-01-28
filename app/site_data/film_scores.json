@@ -1,0 +1,22 @@
+{
+    "films": [
+        {
+            "title": "film 1",
+            "director": "Gill",
+            "thumbnail": "coming soon",
+            "release_date": "2017"
+        },
+        {
+            "title": "film 2",
+            "director": "Gill",
+            "thumbnail": "coming soon",
+            "release_date": "2018"
+        },
+        {
+            "title": "film 3",
+            "director": "Gill",
+            "thumbnail": "coming soon",
+            "release_date": "2014"
+        }
+    ]
+}

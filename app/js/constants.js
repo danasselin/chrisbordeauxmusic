@@ -1,9 +1,7 @@
 export const navItems = [
-  'listen',
-  'video',
+  'film scores',
+  'songs',
   'press',
-  'shows',
-  'blog',
 ];
 
 export const defaultAlbumPath = '/dan/ cut up final tracks/mp3';

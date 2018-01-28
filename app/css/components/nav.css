@@ -1,0 +1,20 @@
+.hc-nav {
+    position: sticky;
+    top: 0;
+    background: $dark-grey;
+    @mixin breakpoint mobile {
+        font-size: $hc-nav-font-size;
+    }
+    font-family: $hc-nav-font;
+    padding: $hc-nav-text-padding;
+    color: $hc-nav-color;
+    ul {
+        list-style-type: none;
+        display: flex;
+        justify-content: space-around;
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+    }
+}

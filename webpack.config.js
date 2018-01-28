@@ -16,10 +16,10 @@ const commonConfig = merge([
     },
     output: {
       path: PATHS.build,
-      filename: '[name].js'
+      filename: '[name].js',
     },
     resolve: {
-      extensions: ['.js', '.jsx']
+      extensions: ['.js', '.jsx', '.json'],
     },
     plugins: [
       new HtmlWebpackPlugin({

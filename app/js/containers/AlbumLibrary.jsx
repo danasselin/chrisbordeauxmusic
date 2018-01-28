@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { connect } from 'react-redux';
 import Album from '../containers/Album.jsx';
@@ -31,7 +32,8 @@ class AlbumLibrary extends React.Component {
   render() {
     const { songs } = this.props;
     return (
-      <section>
+      <section className="player-container card">
+        <h1>Chris Bordeaux</h1>
         <AlbumPreviewCarousel previews={albumTitles} />
         <SongPlayer />
         <div>
