@@ -7,7 +7,6 @@ require('dotenv').config();
 const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
-  publicPath: 'http://localhost:8080/',
 };
 
 const commonConfig = merge([
@@ -24,15 +23,15 @@ const commonConfig = merge([
     },
     plugins: [
       new HtmlWebpackPlugin({
-        title: 'Webpack demo'
+        title: 'Webpack demo',
       }),
       parts.setFreeVariable(
         'process.env.DROPBOX_TOKEN',
-        `${process.env.DROPBOX_TOKEN}`
+        `${process.env.DROPBOX_TOKEN}`,
       ),
       parts.setFreeVariable(
         'process.env.DROPBOX_SEC',
-        `${process.env.DROPBOX_SEC}`
+        `${process.env.DROPBOX_SEC}`,
       ),
     ],
   },
@@ -42,9 +41,9 @@ const commonConfig = merge([
       cacheDirectory: true,
     }
   }),
-  parts.loadCSS(),
-  parts.loadFonts(),
   parts.loadImages(),
+  parts.loadFonts(),
+  parts.loadCSS(),
   parts.loadJavaScript({
     include: PATHS.app,
     options: {

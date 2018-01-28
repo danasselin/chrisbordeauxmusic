@@ -1,5 +1,6 @@
   /* normalize */
 @import 'normalize.css';
+@import './fonts.css';
 @import './typography.css';
 @import './grid.css';
 @import './mixins.css';

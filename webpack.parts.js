@@ -19,7 +19,7 @@ exports.devServer = ({ host, port } = {}) => ({
     port,
     overlay: {
       errors: false,
-      warnings: false
+      warnings: false,
     }
   }
 });
@@ -33,7 +33,7 @@ exports.lintJavaScript = ({ include, exclude, options }) => ({
         exclude,
         enforce: 'pre',
         loader: 'eslint-loader',
-        options
+        options,
       }
     ]
   }
@@ -46,7 +46,7 @@ exports.loadJavaScript = ({ include, exclude, options }) => ({
         include,
         exclude,
         loader: 'babel-loader',
-        options
+        options,
       },
     ],
   },
@@ -107,9 +107,12 @@ exports.loadFonts = ({ include, exclude, options } = {}) => ({
   module: {
     rules: [
       {
-        test: /\.(ttf|eot|woff(2?))(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?name=fonts/[name][hash].[ext]',
-      }
+        test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[name].[ext]',
+        },
+      },
     ],
   },
 });

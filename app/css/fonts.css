@@ -1,0 +1,38 @@
+/* roboto-100 - latin */
+@font-face {
+  font-family: 'Roboto Light';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto Thin'), local('Roboto-Thin'),
+       url('../fonts/roboto-v18-latin-100.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-v18-latin-100.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('../fonts/roboto-v18-latin-100.ttf') format('truetype'), /* Safari, Android, iOS */
+       /* this 'Legacy iOS' thing was breaking all the fonts. Worth looking into... */
+       /* url('../fonts/roboto-v18-latin-100.svg#Roboto') format('svg'); Legacy iOS */
+       url('../fonts/roboto-v18-latin-100.eot?#iefix') format('embedded-opentype'); /* IE6-IE8 */
+}
+/* roboto-regular - latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'),
+       url('../fonts/roboto-v18-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-v18-latin-regular.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('../fonts/roboto-v18-latin-regular.ttf') format('truetype'), /*Safari, Android, iOS*/
+       /* url('../fonts/roboto-v18-latin-regular.svg#Roboto') format('svg'), Legacy iOS */
+       url('../fonts/roboto-v18-latin-regular.eot?#iefix') format('embedded-opentype'); /*IE6-IE8*/      
+}
+
+/* roboto-900 - latin */
+@font-face {
+  font-family: 'Roboto Bold';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Roboto Black'), local('Roboto-Black'),
+       url('../fonts/roboto-v18-latin-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-v18-latin-900.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('../fonts/roboto-v18-latin-900.ttf') format('truetype'), /*  Safari, Android, iOS */
+       /* url('../fonts/roboto-v18-latin-900.svg#Roboto') format('svg'), Legacy iOS */
+       url('../fonts/roboto-v18-latin-900.eot?#iefix') format('embedded-opentype'); /* IE6-IE8 */
+}
