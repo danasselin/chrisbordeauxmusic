@@ -5,7 +5,7 @@ import Album from '../containers/Album.jsx';
 import AlbumPreviewCarousel from './AlbumPreviewCarousel.jsx';
 import SongPlayer from '../containers/SongPlayer.jsx';
 import { formatSong } from '../helpers.jsx';
-import { albumTitles } from '../constants';
+// import { albumTitles } from '../constants';
 import { setSelectedAlbum, selectSongFromAlbum } from '../actions';
 
 class AlbumLibrary extends React.Component {
@@ -36,7 +36,7 @@ class AlbumLibrary extends React.Component {
         <figure className="profile-temporary">
           <h1>Chris Bordeaux</h1>
         </figure>
-        <AlbumPreviewCarousel previews={albumTitles} />
+        <AlbumPreviewCarousel { ...this.props } />
         <SongPlayer />
         <div>
           <Album songs={ songs } />

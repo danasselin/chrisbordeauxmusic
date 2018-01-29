@@ -1,16 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SVGInline from 'react-svg-inline';
+// import SVGInline from 'react-svg-inline';
 import { setSongPlayerCmd } from '../actions';
 
 const PlayPauseButton = ({ command, play, pause, onClick }) => (
   (command !== 'play') ?
-    <li onClick={ () => onClick('play') }>
-      <SVGInline svg={ play } />
-    </li> :
-    <li onClick={ () => onClick('pause') }>
-      <SVGInline svg={ pause } />
-    </li>
+    <i
+      onClick={() => onClick('play')}
+      className={`fa ${play}`}
+      aria-hidden="true">
+    </i>
+    :
+    <i
+      onClick={() => onClick('pause')}
+      className={`fa ${pause}`}
+      aria-hidden="true">
+    </i>
 );
 
 const mapStateToProps = ({ songPlayer: { command } }) => ({ command });

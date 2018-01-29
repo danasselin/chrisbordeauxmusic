@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { browsePreview, setPreviewWidth, setPreviewOffset } from '../actions';
 import { sortCenter } from '../helpers.jsx';
 
-const AlbumPreview = ({ title, width, addlClass = '' }) => (
+const AlbumPreview = ({ img, width, addlClass = '' }) => (
   <div
     className={`album-preview ${addlClass}`}
     style={{ minWidth: `${width}px` }}>
-    { title }
+    <img src={`${img}`} />
   </div>
 );
 
@@ -44,8 +44,8 @@ class AlbumPreviewCarousel extends React.Component {
 
   processPreviews(previews, center = 'Fossil Fuel Kid') {
     const { previewWidth: width } = this;
-    return sortCenter(previews, center).map(title => (
-      { title, width }
+    return sortCenter(previews, center).map(img => (
+      { img, width }
     ));
   }
 
@@ -67,7 +67,7 @@ class AlbumPreviewCarousel extends React.Component {
             this.previews.map((preview, i) => (
               <AlbumPreview
                 key={ i }
-                title={ preview.title }
+                img={ preview.img }
                 width={ preview.width }
               />
             ))

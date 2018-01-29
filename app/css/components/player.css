@@ -17,8 +17,6 @@
       list-style: none;
       transition: transform 1s;
       .album-preview {
-        background-color: $light-grey;
-        border: 1px solid;
         margin: 15px 5%;
         display: flex;
         justify-content: center;
@@ -26,6 +24,10 @@
         font-size: $small-font;
         &.invisible {
           visibility: hidden;
+        }
+        img {
+          width: 260px;
+          height: 360px;
         }
       }
     }
@@ -38,11 +40,8 @@
 
   .progress-bar {
     .button-bar {
-      text-align: center;
-      svg {
-        width: $player-button-size;
-        height: $player-button-size;
-      }
+      display: flex;
+      justify-content: space-around;
       li {
         display: inline-block;
         margin: 0 5%;

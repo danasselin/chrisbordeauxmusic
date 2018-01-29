@@ -1,22 +1,22 @@
 {
     "films": [
         {
-            "title": "film 1",
-            "director": "Gill",
-            "thumbnail": "coming soon",
+            "title": "Obvious Child",
+            "director": "Gillian Robespierre",
+            "thumbnail": "obvious-child",
+            "release_date": "2014"
+        },
+        {
+            "title": "Landline",
+            "director": "Gillian Robespierre",
+            "thumbnail": "landline",
             "release_date": "2017"
         },
         {
-            "title": "film 2",
-            "director": "Gill",
+            "title": "The Last Temptation of Christ",
+            "director": "Scorcese",
             "thumbnail": "coming soon",
-            "release_date": "2018"
-        },
-        {
-            "title": "film 3",
-            "director": "Gill",
-            "thumbnail": "coming soon",
-            "release_date": "2014"
+            "release_date": "1990"
         }
     ]
 }

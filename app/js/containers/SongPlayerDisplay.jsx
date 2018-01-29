@@ -2,15 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setSongPlayerCmd } from '../actions';
 import SongPlayerButton from '../components/SongPlayerButton.jsx';
-import rewind from './../../../public/SVG/rewind.svg';
-import play from './../../../public/SVG/play.svg';
-import pause from './../../../public/SVG/pause.svg';
-import forward from './../../../public/SVG/forward.svg';
+// import rewind from './../../../public/SVG/rewind.svg';
+// import play from './../../../public/SVG/play.svg';
+// import pause from './../../../public/SVG/pause.svg';
+// import forward from './../../../public/SVG/forward.svg';
+
+// const btnData = {
+//   rewind,
+//   play: { play, pause },
+//   forward,
+// };
 
 const btnData = {
-  rewind,
-  play: { play, pause },
-  forward,
+  rewind: 'fa-backward fa-3x',
+  play: {
+    play: 'fa-play fa-3x',
+    pause: 'fa-pause fa-3x',
+  },
+  forward: 'fa-forward fa-3x',
 };
 
 const SongPlayerDisplay = ({
@@ -29,11 +38,11 @@ const SongPlayerDisplay = ({
     <figure className='progress-bar'>
       <ul className="button-bar">
         {
-          Object.entries(btnData).map(([name, value], i) => (
+          Object.entries(btnData).map(([name, icon], i) => (
             <SongPlayerButton
               key={ i }
               type={ name }
-              button={ value }
+              button={ icon }
               onClick={ btnOnClick }
               command={ command }
             />
