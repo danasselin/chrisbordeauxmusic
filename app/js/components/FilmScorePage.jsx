@@ -19,7 +19,7 @@ const renderScores = function ({
 
 export function FilmScorePage() {
   return (
-    <div className="card padded">
+    <div className="card shaded padded">
       <h3>Film Scores</h3>
       {
         filmScores.films.map(renderScores)

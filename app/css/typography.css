@@ -8,14 +8,14 @@ $medium-font: 48px;
 $large-font: 76px;
 $medium-text-spacing: 20px;
 $large-text-spacing: 40px;
-$h1-size: $small-font;
+$h1-size: $medium-font;
 $h3-size-mobile: $medium-font;
 $p-size-mobile: $small-font;
 $album-font-size: $medium-font;
 $player-button-size: x-small-font;
 
 /* header font */
-$h1-font: 'Roboto';
+$h1-font: 'Roboto Light';
 
 /* card font */
 $card-header-font: 'Roboto Bold';

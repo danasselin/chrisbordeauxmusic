@@ -1,0 +1,8 @@
+.profile-temporary {
+    height: 200px;
+    display: flex;
+    justify-content: flex-start;
+    h1 {
+        padding: 3%;
+    } 
+}

@@ -1,7 +1,10 @@
 Front-end
 
-[ ] set up CSS framework (with Post CSS)
-[ ] handle images, icons, fonts
+[X] set up CSS framework (with Post CSS)
+[ ] handle ... 
+    [X] fonts
+    [X] images
+    [ ] icons 
 [ ] design tablet and desktop layout
 
 Back-end

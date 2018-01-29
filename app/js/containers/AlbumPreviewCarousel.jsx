@@ -61,7 +61,7 @@ class AlbumPreviewCarousel extends React.Component {
   render() {
     const wrapStyle = { transform: `translateX(${this.props.offset}px)` };
     return (
-      <div className='album-preview-carousel'>
+      <div className='album-preview-carousel card padded'>
         <div className='carousel-wrap' style={wrapStyle}>
           {
             this.previews.map((preview, i) => (
@@ -84,12 +84,16 @@ class AlbumPreviewCarousel extends React.Component {
           }
         </div>
         <div className='carousel-btn-wrap'>
-          <p onClick={() => this.slide('left')}>
-            LEFT
-          </p>
-          <p onClick={() => this.slide('right')}>
-            RIGHT
-          </p>
+          <i
+            onClick={() => this.slide('left')}
+            className="fa fa-arrow-left fa-2x"
+            aria-hidden="true">
+          </i>
+          <i
+            onClick={() => this.slide('right')}
+            className="fa fa-arrow-right fa-2x"
+            aria-hidden="true">
+          </i>
         </div>
       </div>
     );

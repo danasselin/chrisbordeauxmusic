@@ -90,16 +90,16 @@ exports.loadImages = ({ include, exclude, options } = {}) => (
   {
     module: {
       rules: [
+        // {
+        //   test: /\.svg$/,
+        //   use: 'raw-loader',
+        // },
         {
-          test: /\.svg$/,
-          use: 'raw-loader',
+          test: /\.(png|jpg|svg)$/,
+          use: 'url-loader',
         },
-        {
-          test: /\.jpg$/,
-          use: 'file-loader',
-        }
-      ]
-    }
+      ],
+    },
   }
 );
 
@@ -107,10 +107,13 @@ exports.loadFonts = ({ include, exclude, options } = {}) => ({
   module: {
     rules: [
       {
+        // Capture eot, ttf, woff, and woff2
         test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file-loader',
-        options: {
-          name: 'fonts/[name].[ext]',
+        include,
+        exclude,
+        use: {
+          loader: 'file-loader',
+          options,
         },
       },
     ],

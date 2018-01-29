@@ -42,7 +42,11 @@ const commonConfig = merge([
     }
   }),
   parts.loadImages(),
-  parts.loadFonts(),
+  parts.loadFonts({
+    options: {
+      name: '[name].[ext]',
+    },
+  }),
   parts.loadCSS(),
   parts.loadJavaScript({
     include: PATHS.app,
@@ -53,7 +57,14 @@ const commonConfig = merge([
   }),
 ]);
 
-const productionConfig = merge([]);
+const productionConfig = merge([
+  parts.loadImages({
+    options: {
+      limit: 15000,
+      name: '[name].[ext]',
+    },
+  }),
+]);
 
 const developmentConfig = merge([
   parts.devServer({
