@@ -84,12 +84,16 @@ class AlbumPreviewCarousel extends React.Component {
           }
         </div>
         <div className='carousel-btn-wrap'>
-          <p onClick={() => this.slide('left')}>
-            LEFT
-          </p>
-          <p onClick={() => this.slide('right')}>
-            RIGHT
-          </p>
+          <i
+            onClick={() => this.slide('left')}
+            className="fa fa-arrow-left"
+            aria-hidden="true">
+          </i>
+          <i
+            onClick={() => this.slide('right')}
+            className="fa fa-arrow-right"
+            aria-hidden="true">
+          </i>
         </div>
       </div>
     );

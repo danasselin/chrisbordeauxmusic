@@ -1,0 +1,10 @@
+.profile-temporary {
+    background: url('./../images/chris.jpg');
+    background-size: cover;
+    height: 200px;
+    display: flex;
+    justify-content: flex-end;
+    h1 {
+        padding: 3%;
+    } 
+}

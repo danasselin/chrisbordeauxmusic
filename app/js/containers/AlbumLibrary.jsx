@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import chrisPhoto from '~/app/images/chris.jpg';
+// import chrisPhoto from '~/app/images/chris.jpg';
 import Album from '../containers/Album.jsx';
 import AlbumPreviewCarousel from './AlbumPreviewCarousel.jsx';
 import SongPlayer from '../containers/SongPlayer.jsx';
@@ -32,9 +32,8 @@ class AlbumLibrary extends React.Component {
   render() {
     const { songs } = this.props;
     return (
-      <section className="player-container card">
+      <section className="player-container card padded">
         <figure className="profile-temporary">
-          <img src={ chrisPhoto }/>
           <h1>Chris Bordeaux</h1>
         </figure>
         <AlbumPreviewCarousel previews={albumTitles} />
