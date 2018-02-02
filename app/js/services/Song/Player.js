@@ -5,6 +5,9 @@ import {
   formatTime,
 } from '../../helpers.jsx';
 
+const darkSlateGrey = '#434343';
+const deepPink = '#f93672';
+
 class Player {
   constructor({
     updateSongTime,
@@ -67,7 +70,7 @@ class Player {
   }
 
   setProgressBar(progress) {
-    this.progressBar.style.background = `linear-gradient(90deg, #434343 0px, #434343 ${progress}%, #b7b7b7 0px)`;
+    this.progressBar.style.background = `linear-gradient(90deg, ${deepPink} 0px, ${progress}%, ${darkSlateGrey} 0px)`;
   }
 
   getProgressBar() {

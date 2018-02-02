@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import SongPlayer from '~/app/js/containers/SongPlayer.jsx';
 import { browsePreview, setPreviewWidth, setPreviewOffset } from '../actions';
 import { sortCenter } from '../helpers.jsx';
 
@@ -89,6 +90,7 @@ class AlbumPreviewCarousel extends React.Component {
             className="fa fa-arrow-left fa-2x"
             aria-hidden="true">
           </i>
+          <SongPlayer />
           <i
             onClick={() => this.slide('right')}
             className="fa fa-arrow-right fa-2x"

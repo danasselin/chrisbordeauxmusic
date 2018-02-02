@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 // import chrisPhoto from '~/app/images/chris.jpg';
 import Album from '../containers/Album.jsx';
 import AlbumPreviewCarousel from './AlbumPreviewCarousel.jsx';
-import SongPlayer from '../containers/SongPlayer.jsx';
 import { formatSong } from '../helpers.jsx';
 // import { albumTitles } from '../constants';
 import { setSelectedAlbum, selectSongFromAlbum } from '../actions';
@@ -37,10 +36,9 @@ class AlbumLibrary extends React.Component {
           <h1>Chris Bordeaux</h1>
         </figure>
         <AlbumPreviewCarousel { ...this.props } />
-        <SongPlayer />
-        <div>
+        {/* <div>
           <Album songs={ songs } />
-        </div>
+        </div> */}
       </section>
     );
   }
