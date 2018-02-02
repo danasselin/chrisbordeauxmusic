@@ -1,10 +1,13 @@
   /* normalize */
 @import 'normalize.css';
+@import './misc.css';
 @import './fonts.css';
 @import './typography.css';
 @import './grid.css';
 @import './mixins.css';
-@import './components/card.css';
+@import './divider.css';
+@import './card.css';
+
 @import './components/player.css';
 @import './components/nav.css';
 @import './components/profile.css';

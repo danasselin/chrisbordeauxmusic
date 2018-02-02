@@ -73,6 +73,7 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
                 require('postcss-for'),
                 require('postcss-each'),
                 require('postcss-conditionals'),
+                require('postcss-color-function'),
                 require('postcss-simple-vars'),
                 require('postcss-extend'),
                 require('autoprefixer'),

@@ -8,11 +8,12 @@ const renderScores = function ({
   release_date: releaseDate,
 }, i) {
   return (
-    <div key={i}>
+    <div className='card' key={i}>
       <h4>{title}</h4>
       <p>{director}</p>
       <p>{thumbnail}</p>
       <p>{releaseDate}</p>
+      <hr className="divider" />
     </div>
   );
 };

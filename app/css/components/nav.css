@@ -1,4 +1,5 @@
 .hc-nav {
+    z-index: $highest-z-index;
     position: sticky;
     top: 0;
     background: $dark-grey;
