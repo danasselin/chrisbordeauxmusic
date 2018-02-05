@@ -46,3 +46,10 @@ export const setPreviewOffset = offset => (
     offset,
   }
 );
+
+export const scrollToPreview = preview => (
+  {
+    type: 'SCROLL_TO_PREVIEW',
+    preview,
+  }
+);

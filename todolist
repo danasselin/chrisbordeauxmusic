@@ -1,10 +1,21 @@
 Front-end
 
 [X] set up CSS framework (with Post CSS)
-[ ] handle ... 
+[X] handle ... 
     [X] fonts
     [X] images
     [X] icons 
+
+[ ] prevent thumbnail slider from sliding into empty space
+[ ] put both player/thumbnail preview and main content well into same container
+[ ] on click of film score card:
+    1. highlight card
+    2. queue album in player
+    3. reveal choice to view song titles
+
+[ ] create a "now playing" label below player controls with time ticker
+[ ] 15 sec skip ahead/skip back
+
 [ ] design tablet and desktop layout
 
 Back-end

@@ -52,7 +52,10 @@ const commonConfig = merge([
     include: PATHS.app,
     options: {
       cacheDirectory: true,
-      plugins: ['babel-plugin-root-import'],
+      plugins: [
+        'babel-plugin-root-import',
+        'transform-object-rest-spread',
+      ],
     },
   }),
 ]);

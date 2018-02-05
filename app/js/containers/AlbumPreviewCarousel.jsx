@@ -19,6 +19,15 @@ class AlbumPreviewCarousel extends React.Component {
     this.previews = this.processPreviews(this.props.previews);
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log(
+      'I guess I have some new props',
+      nextProps,
+      'nextProps.preview',
+      nextProps.preview,
+    );
+  }
+
   componentDidMount() {
     this.props.setPreviewOffset(0);
     this.slideDistance = this.getDistance();
@@ -103,8 +112,8 @@ class AlbumPreviewCarousel extends React.Component {
 }
 
 const mapStateToProps = ({
-  albumPreviewCarousel: { offset, scroll, previewWidth },
-}) => ({ offset, scroll, previewWidth });
+  albumPreviewCarousel: { offset, scroll, previewWidth, preview },
+}) => ({ offset, scroll, previewWidth, preview });
 
 const mapDispatchToProps = {
   btnOnClick: browsePreview,

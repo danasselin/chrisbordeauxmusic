@@ -1,4 +1,9 @@
-const albumPreviewCarousel = (state = { offset: 0 }, action) => {
+const albumPreviewCarousel = (
+  state = {
+    offset: 0,
+  },
+  action,
+) => {
   switch (action.type) {
     case 'BROWSE_PREVIEW':
       return Object.assign(
@@ -17,6 +22,12 @@ const albumPreviewCarousel = (state = { offset: 0 }, action) => {
         {},
         state,
         { offset: action.offset },
+      );
+    case 'SCROLL_TO_PREVIEW':
+      return Object.assign(
+        {},
+        state,
+        { preview: action.preview },
       );
     default:
       return state;

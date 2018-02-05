@@ -4,19 +4,22 @@
             "title": "Obvious Child",
             "director": "Gillian Robespierre",
             "thumbnail": "obvious-child",
-            "release_date": "2014"
+            "release_date": "2014",
+            "id": "obviousChild"
         },
         {
             "title": "Landline",
             "director": "Gillian Robespierre",
             "thumbnail": "landline",
-            "release_date": "2017"
+            "release_date": "2017",
+            "id": "landline"
         },
         {
             "title": "The Last Temptation of Christ",
             "director": "Scorcese",
             "thumbnail": "coming soon",
-            "release_date": "1990"
+            "release_date": "1990",
+            "id": "lastTemptation"
         }
     ]
 }

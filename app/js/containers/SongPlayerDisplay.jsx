@@ -24,8 +24,8 @@ const btnData = {
 
 const SongPlayerDisplay = ({
   btnOnClick,
-  selectedSong,
-  songTime,
+  // selectedSong,
+  // songTime,
   command,
 }) => (
   <div className='song-player'>
