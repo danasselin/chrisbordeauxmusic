@@ -20,12 +20,15 @@ class AlbumPreviewCarousel extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(
-      'I guess I have some new props',
-      nextProps,
-      'nextProps.preview',
-      nextProps.preview,
-    );
+    const { selectedPreviewId } = nextProps;
+    const { previews } = this;
+    // find selected preview id in carousel previews
+    const match = Object.values(previews).filter(({ data: { id } }) => (
+      id === selectedPreviewId
+    ));
+    // get distance from match to current center
+    console.log(this.center);
+    // if negative, slide <-- that distance, else slide -->
   }
 
   componentDidMount() {
@@ -52,10 +55,10 @@ class AlbumPreviewCarousel extends React.Component {
     return previews[centerIndex + 1].offsetLeft - center.offsetLeft;
   }
 
-  processPreviews(previews, center = 'Fossil Fuel Kid') {
+  processPreviews(previews, center = 'landline') {
     const { previewWidth: width } = this;
-    return sortCenter(previews, center).map(img => (
-      { img, width }
+    return sortCenter(previews, center).map(data => (
+      { data, width }
     ));
   }
 
@@ -74,11 +77,11 @@ class AlbumPreviewCarousel extends React.Component {
       <div className='album-preview-carousel card padded'>
         <div className='carousel-wrap' style={wrapStyle}>
           {
-            this.previews.map((preview, i) => (
+            this.previews.map(({ data, width }, i) => (
               <AlbumPreview
                 key={ i }
-                img={ preview.img }
-                width={ preview.width }
+                img={ data.img }
+                width={ width }
               />
             ))
           }
@@ -112,8 +115,18 @@ class AlbumPreviewCarousel extends React.Component {
 }
 
 const mapStateToProps = ({
-  albumPreviewCarousel: { offset, scroll, previewWidth, preview },
-}) => ({ offset, scroll, previewWidth, preview });
+  albumPreviewCarousel: {
+    offset,
+    scroll,
+    previewWidth,
+    selectedPreviewId,
+  },
+}) => ({
+  offset,
+  scroll,
+  previewWidth,
+  selectedPreviewId,
+});
 
 const mapDispatchToProps = {
   btnOnClick: browsePreview,

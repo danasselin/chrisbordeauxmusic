@@ -7,11 +7,16 @@ Front-end
     [X] icons 
 
 [ ] prevent thumbnail slider from sliding into empty space
-[ ] put both player/thumbnail preview and main content well into same container
+[ ] make player/thumbnail preview and main content well same height
 [ ] on click of film score card:
     1. highlight card
     2. queue album in player
     3. reveal choice to view song titles
+
+[ ] streamlined 'fetch data' funtionality
+    1. When one of the root components mount, fetch song data from s3
+    2. When it comes back, pass to Redux store
+    3. Any renderers waiting for it will then render, or cache and wait for user action to render
 
 [ ] create a "now playing" label below player controls with time ticker
 [ ] 15 sec skip ahead/skip back

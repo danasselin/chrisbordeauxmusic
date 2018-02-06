@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { scrollToPreview } from '~/app/js/actions';
 import FilmScoreItem from '~/app/js/components/FilmScoreItem.jsx';
-import filmScores from '~/app/site_data/film_scores.json';
 
 const renderScores = (onClick, {
   title,

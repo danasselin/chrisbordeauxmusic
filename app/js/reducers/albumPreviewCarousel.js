@@ -27,7 +27,7 @@ const albumPreviewCarousel = (
       return Object.assign(
         {},
         state,
-        { preview: action.preview },
+        { selectedPreviewId: action.selectedPreviewId },
       );
     default:
       return state;
