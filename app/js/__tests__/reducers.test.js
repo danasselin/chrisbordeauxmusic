@@ -19,7 +19,7 @@ describe('albumLibrary reducer', () => {
 });
 
 describe('songPlayer reducer', () => {
-  it('should handle SET_SONGPLAYER_CMD', () => {
+  xit('should handle SET_SONGPLAYER_CMD', () => {
     const testAction = {
       type: 'SET_SONGPLAYER_CMD',
       command: 'test command',
@@ -28,7 +28,7 @@ describe('songPlayer reducer', () => {
     expect(songPlayer({}, testAction)).toEqual(testResultingState);
   });
 
-  it('should handle SELECT_SONG_FROM_ALBUM', () => {
+  xit('should handle SELECT_SONG_FROM_ALBUM', () => {
     const testPrevState = { command: 'test command' };
     const testAction = {
       type: 'SELECT_SONG_FROM_ALBUM',

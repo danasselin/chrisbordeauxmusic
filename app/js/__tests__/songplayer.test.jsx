@@ -16,7 +16,7 @@ describe.skip('SongPlayer', () => {
     wrapper = mount(<SongPlayer fetch={ testFetch } />);
   });
 
-  it('Renders an album\'s song titles', () => {
+  xit('Renders an album\'s song titles', () => {
     const {
       props: {
         info: { name, path_lower: path }

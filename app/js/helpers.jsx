@@ -90,16 +90,42 @@ export function handleSkip(cmd, type) {
   return finalType;
 }
 
-export function sortCenter(array, element) {
-  const origIndex = array.indexOf(element);
-  if (origIndex > -1) {
-    const length = array.length;
-    const centerIndex = (length % 2 === 0) ? ((length / 2) + 1) : Math.round(length / 2);
-    return array.map(function (el, i) {
-      if (i === centerIndex - 1) return element;
-      if (el === element) return array[centerIndex - 1];
-      return el;
-    });
-  }
-  return array;
+export const getCenterIndex = length => (
+  (length % 2 === 0)
+    ? length / 2
+    : Math.round(length / 2)
+);
+
+export function sortCenter(array, id) {
+  const origIndex = array.findIndex(el => el.id === id);
+
+  const sliced =
+    array
+      .slice(0, origIndex)
+      .concat(array.slice(origIndex + 1, array.length));
+
+  const slicedLength = sliced.length;
+
+  const slicedCenterIndex = getCenterIndex(slicedLength);
+
+  const combined =
+    sliced
+      .slice(0, slicedCenterIndex)
+      .concat([array[origIndex]])
+      .concat(sliced.slice(slicedCenterIndex, slicedLength));
+
+  return combined;
 }
+
+// export function sortCenter(array, id) {
+//   const origIndex = array.findIndex(el => el.id === id);
+//   if (origIndex > -1) {
+//     const centerIndex = getCenterIndex(array);
+//     return array.map(function (el, i) {
+//       if (i === centerIndex - 1) return el;
+//       if (el.id === id) return array[centerIndex - 1];
+//       return el;
+//     });
+//   }
+//   return array;
+// }

@@ -1,8 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SongPlayer from '~/app/js/containers/SongPlayer.jsx';
-import { browsePreview, setPreviewWidth, setPreviewOffset } from '../actions';
-import { sortCenter } from '../helpers.jsx';
+import {
+  browsePreview,
+  setPreviewWidth,
+  setPreviewOffset,
+  scrollToPreview,
+} from '../actions';
+import { sortCenter, getCenterIndex } from '../helpers.jsx';
 
 const AlbumPreview = ({ img, width, addlClass = '' }) => (
   <div
@@ -17,18 +22,20 @@ class AlbumPreviewCarousel extends React.Component {
     super(props);
     this.previewWidth = this.getPreviewWidth();
     this.previews = this.processPreviews(this.props.previews);
+    this.centerIndex = getCenterIndex(this.previews);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { selectedPreviewId } = nextProps;
-    const { previews } = this;
-    // find selected preview id in carousel previews
-    const match = Object.values(previews).filter(({ data: { id } }) => (
-      id === selectedPreviewId
+  getNextPreview(selected) {
+    const index = this.previews.findIndex(({ data: { id } }) => (
+      id === selected
     ));
-    // get distance from match to current center
-    console.log(this.center);
-    // if negative, slide <-- that distance, else slide -->
+    return index;
+  }
+
+  componentWillReceiveProps({ selectedPreviewId = null }) {
+    if (selectedPreviewId) {
+      this.slide(null, this.getNextPreview(selectedPreviewId));
+    }
   }
 
   componentDidMount() {
@@ -55,14 +62,15 @@ class AlbumPreviewCarousel extends React.Component {
     return previews[centerIndex + 1].offsetLeft - center.offsetLeft;
   }
 
-  processPreviews(previews, center = 'landline') {
+  processPreviews(previews, center = 'obviousChild') {
     const { previewWidth: width } = this;
     return sortCenter(previews, center).map(data => (
       { data, width }
     ));
   }
 
-  slide(direction) {
+  slide(direction, index) {
+    console.log('index', index, 'this.centerIndex', this.centerIndex);
     const { offset } = this.props;
     if (direction === 'left') {
       this.props.setPreviewOffset(offset - this.slideDistance);
@@ -132,6 +140,7 @@ const mapDispatchToProps = {
   btnOnClick: browsePreview,
   setPreviewOffset,
   setPreviewWidth,
+  scrollToPreview,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AlbumPreviewCarousel);

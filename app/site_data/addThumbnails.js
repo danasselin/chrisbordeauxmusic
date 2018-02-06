@@ -15,4 +15,3 @@ const addImgToFilmScores = scores => (
 
 export const enrichedScores = addImgToFilmScores(filmScores.films);
 
-console.log(enrichedScores);
