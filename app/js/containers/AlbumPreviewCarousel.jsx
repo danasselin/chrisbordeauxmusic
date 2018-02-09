@@ -47,15 +47,6 @@ class AlbumPreviewCarousel extends React.Component {
       if (direction) {
         this.slide(null, direction, Math.abs(diff));
       }
-      // this.slide(null, direction, Math.abs(diff));
-      // if (index > this.centerIndex) {
-      //   console.log(index - this.centerIndex);
-      // } else if (index < this.centerIndex) {
-      //   console.log(this.centerIndex - index);
-      // } else {
-      //   console.log(index);
-      // }
-      // const center = this.previews.find(({ data }) => data.id === this.center);
     }
   }
 
@@ -91,14 +82,16 @@ class AlbumPreviewCarousel extends React.Component {
   }
 
   slide(index, direction, centerDiff = 1) {
-    const { offset } = this.props;
-    const slideDistance = this.slideDistance * centerDiff;
-    if (direction === 'left') {
-      this.centerIndex += centerDiff;
-      this.props.setPreviewOffset(offset - (slideDistance));
-    } else {
-      this.centerIndex -= centerDiff;
-      this.props.setPreviewOffset(offset + (slideDistance));
+    if (index < this.previews.length && index >= 0) {
+      const { offset } = this.props;
+      const slideDistance = this.slideDistance * centerDiff;
+      if (direction === 'left') {
+        this.centerIndex += centerDiff;
+        this.props.setPreviewOffset(offset - (slideDistance));
+      } else {
+        this.centerIndex -= centerDiff;
+        this.props.setPreviewOffset(offset + (slideDistance));
+      }
     }
   }
 
@@ -129,13 +122,13 @@ class AlbumPreviewCarousel extends React.Component {
         </div>
         <div className='carousel-btn-wrap'>
           <i
-            onClick={() => this.slide(null, 'left')}
+            onClick={() => this.slide(this.centerIndex + 1, 'left')}
             className="fa fa-arrow-left fa-2x"
             aria-hidden="true">
           </i>
           <SongPlayer />
           <i
-            onClick={() => this.slide(null, 'right')}
+            onClick={() => this.slide(this.centerIndex - 1, 'right')}
             className="fa fa-arrow-right fa-2x"
             aria-hidden="true">
           </i>
