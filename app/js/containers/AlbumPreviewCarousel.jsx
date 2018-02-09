@@ -22,7 +22,7 @@ class AlbumPreviewCarousel extends React.Component {
     super(props);
     this.previewWidth = this.getPreviewWidth();
     this.previews = this.processPreviews(this.props.previews);
-    this.centerIndex = getCenterIndex(this.previews);
+    this.centerIndex = getCenterIndex(this.previews.length) - 1;
   }
 
   getNextPreview(selected) {
@@ -34,7 +34,28 @@ class AlbumPreviewCarousel extends React.Component {
 
   componentWillReceiveProps({ selectedPreviewId = null }) {
     if (selectedPreviewId) {
-      this.slide(null, this.getNextPreview(selectedPreviewId));
+      const index = this.getNextPreview(selectedPreviewId);
+      const diff = index - this.centerIndex;
+      const direction = (function () {
+        if (diff <= -1) {
+          return 'right';
+        } else if (diff > 0) {
+          return 'left';
+        }
+        return null;
+      }());
+      if (direction) {
+        this.slide(null, direction, Math.abs(diff));
+      }
+      // this.slide(null, direction, Math.abs(diff));
+      // if (index > this.centerIndex) {
+      //   console.log(index - this.centerIndex);
+      // } else if (index < this.centerIndex) {
+      //   console.log(this.centerIndex - index);
+      // } else {
+      //   console.log(index);
+      // }
+      // const center = this.previews.find(({ data }) => data.id === this.center);
     }
   }
 
@@ -69,13 +90,15 @@ class AlbumPreviewCarousel extends React.Component {
     ));
   }
 
-  slide(direction, index) {
-    console.log('index', index, 'this.centerIndex', this.centerIndex);
+  slide(index, direction, centerDiff = 1) {
     const { offset } = this.props;
+    const slideDistance = this.slideDistance * centerDiff;
     if (direction === 'left') {
-      this.props.setPreviewOffset(offset - this.slideDistance);
+      this.centerIndex += centerDiff;
+      this.props.setPreviewOffset(offset - (slideDistance));
     } else {
-      this.props.setPreviewOffset(offset + this.slideDistance);
+      this.centerIndex -= centerDiff;
+      this.props.setPreviewOffset(offset + (slideDistance));
     }
   }
 
@@ -106,13 +129,13 @@ class AlbumPreviewCarousel extends React.Component {
         </div>
         <div className='carousel-btn-wrap'>
           <i
-            onClick={() => this.slide('left')}
+            onClick={() => this.slide(null, 'left')}
             className="fa fa-arrow-left fa-2x"
             aria-hidden="true">
           </i>
           <SongPlayer />
           <i
-            onClick={() => this.slide('right')}
+            onClick={() => this.slide(null, 'right')}
             className="fa fa-arrow-right fa-2x"
             aria-hidden="true">
           </i>
