@@ -11,6 +11,11 @@ const PATHS = {
 
 const commonConfig = merge([
   {
+    node: {
+      fs: 'empty',
+      net: 'empty',
+      tls: 'empty',
+    },
     entry: {
       app: PATHS.app,
     },

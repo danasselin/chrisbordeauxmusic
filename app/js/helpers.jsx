@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
-import { defaultAlbumPath } from './constants';
+import { defaultAlbumName, pathToScores } from './constants';
 
+const nodePath = require('path');
+const requestPromise = require('request-promise');
 const Dropbox = require('dropbox');
 
 // display helpers
@@ -35,10 +37,17 @@ export const createRoutes = (route, i) => (
 );
 
 // Music API helpers
+export const getAlbumPath = function (album, type) {
+  if (type === 'score') {
+    return nodePath.resolve(__dirname, pathToScores, album);
+  }
+  return null;
+};
+
 export const dbx = new Dropbox({ accessToken: process.env.DROPBOX_TOKEN });
 
-export function fetchAlbum(albumPath = defaultAlbumPath) {
-  return dbx.filesListFolder({ path: albumPath });
+export function fetchAlbum(albumName = defaultAlbumName) {
+  return requestPromise(`http://localhost:8080${getAlbumPath(albumName, 'score')}`);
 }
 
 export function fetchSongPlayData(albumPath) {
@@ -117,15 +126,3 @@ export function sortCenter(array, id) {
   return combined;
 }
 
-// export function sortCenter(array, id) {
-//   const origIndex = array.findIndex(el => el.id === id);
-//   if (origIndex > -1) {
-//     const centerIndex = getCenterIndex(array);
-//     return array.map(function (el, i) {
-//       if (i === centerIndex - 1) return el;
-//       if (el.id === id) return array[centerIndex - 1];
-//       return el;
-//     });
-//   }
-//   return array;
-// }

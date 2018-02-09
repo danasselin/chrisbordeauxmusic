@@ -15,10 +15,11 @@ class AlbumLibrary extends React.Component {
 
   componentWillMount() {
     this.props.fetchAlbum()
-      .then(({ entries: songs }) => {
-        const formatted = songs.map(formatSong);
-        this.props.selectSongFromAlbum(formatted[0]);
-        return formatted;
+      .then((data) => {
+        console.log(data);
+        // const formatted = songs.map(formatSong);
+        // this.props.selectSongFromAlbum(formatted[0]);
+        // return formatted;
       })
       .then((songs) => {
         this.props.setSelectedAlbum(songs);
