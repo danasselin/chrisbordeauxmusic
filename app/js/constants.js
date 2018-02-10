@@ -1,3 +1,13 @@
+import landline from '~/app/images/Landline-movie-poster.jpg';
+import obviousChild from '~/app/images/Obvious-child-movie-poster.jpg';
+import lastTemptation from '~/app/images/last-temptation-of-christ-movie-poster.jpg';
+
+export const thumbnails = {
+  landline,
+  obviousChild,
+  lastTemptation,
+};
+
 export const navItems = [
   'film scores',
   'songs',
@@ -5,13 +15,5 @@ export const navItems = [
 ];
 
 export const defaultAlbumName = 'obvious-child';
-
-export const albumTitles = [
-  'Fossil Fuel Kid',
-  'Dead Gowns Showcase (Live Performance)',
-  'East End Underground (Live Performance)',
-  'Live From 226 Madison (Live Performance)',
-  'A Hundred Thousand Dollars A Day (Single)',
-];
 
 export const pathToScores = 'app/site_data/scores';

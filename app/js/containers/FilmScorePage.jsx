@@ -6,7 +6,6 @@ import FilmScoreItem from '~/app/js/components/FilmScoreItem.jsx';
 const renderScores = (onClick, {
   title,
   director,
-  thumbnail,
   release_date: releaseDate,
   id,
 }, i) => (
@@ -15,7 +14,6 @@ const renderScores = (onClick, {
     key={i}
     title={title}
     director={director}
-    thumbnail={thumbnail}
     releaseDate={releaseDate}
   />
 );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
-import { defaultAlbumName, pathToScores } from './constants';
+import enrich from './util/enrich';
+import { defaultAlbumName, pathToScores, thumbnails } from './constants';
 
 const nodePath = require('path');
 const requestPromise = require('request-promise');
@@ -49,6 +50,15 @@ export const dbx = new Dropbox({ accessToken: process.env.DROPBOX_TOKEN });
 export function fetchAlbum(albumName = defaultAlbumName) {
   return requestPromise(`http://localhost:8080${getAlbumPath(albumName, 'score')}`);
 }
+
+export const enrichScores = target => (
+  enrich({
+    target,
+    addOns: thumbnails,
+    keyName: 'img',
+    cb: (images, score) => images[score.id],
+  })
+);
 
 export function fetchSongPlayData(albumPath) {
   return dbx.filesGetTemporaryLink({ path: `${albumPath}` });

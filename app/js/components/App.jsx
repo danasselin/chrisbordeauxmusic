@@ -1,9 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AlbumLibrary from '~/app/js/containers/AlbumLibrary.jsx';
-import { enrichedScores } from '~/app/site_data/addThumbnails';
+import filmScores from '~/app/site_data/film_scores.json';
+import {
+  createNavMenu,
+  createRoutes,
+  fetchAlbum,
+  enrichScores,
+} from '~/app/js/helpers.jsx';
 import { HcSiteRoutes } from '../routes.jsx';
-import { createNavMenu, createRoutes, fetchAlbum } from '../helpers.jsx';
 import { navItems } from '../constants';
 
 const App = () => (
@@ -12,7 +17,7 @@ const App = () => (
       <div className="site-container">
         <AlbumLibrary
           fetchAlbum={ fetchAlbum }
-          previews={ enrichedScores }
+          previews={ enrichScores(filmScores.films) }
         />
         <div className="page-container">
           <nav className="hc-nav">

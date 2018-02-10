@@ -1,4 +1,4 @@
-import { enrichedScores } from '~/app/site_data/addThumbnails';
+import filmScores from '~/app/site_data/film_scores.json';
 import AlbumLibrary from './containers/AlbumLibrary.jsx';
 import { PressPage } from './components/PressPage.jsx';
 import FilmScorePage from './containers/FilmScorePage.jsx';
@@ -9,7 +9,7 @@ export const HcSiteRoutes = [
     path: '/film-scores',
     component: FilmScorePage,
     propsData: {
-      scores: enrichedScores,
+      scores: filmScores.films,
     },
   },
   {

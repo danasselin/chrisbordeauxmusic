@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import chrisPhoto from '~/app/images/chris.jpg';
 // import Album from '../containers/Album.jsx';
 import AlbumPreviewCarousel from './AlbumPreviewCarousel.jsx';
-import { formatSong } from '../helpers.jsx';
+// import { formatSong } from '../helpers.jsx';
 // import { albumTitles } from '../constants';
 import { setSelectedAlbum, selectSongFromAlbum } from '../actions';
 
