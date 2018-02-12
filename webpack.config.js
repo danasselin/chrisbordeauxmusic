@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const parts = require('./webpack.parts');
 require('dotenv').config();
+const isDev = process.env.NODE_ENV === 'development';
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
@@ -30,14 +31,6 @@ const commonConfig = merge([
       new HtmlWebpackPlugin({
         title: 'Webpack demo',
       }),
-      parts.setFreeVariable(
-        'process.env.DROPBOX_TOKEN',
-        `${process.env.DROPBOX_TOKEN}`,
-      ),
-      parts.setFreeVariable(
-        'process.env.DROPBOX_SEC',
-        `${process.env.DROPBOX_SEC}`,
-      ),
     ],
   },
   parts.lintJavaScript({
@@ -77,7 +70,7 @@ const productionConfig = merge([
 const developmentConfig = merge([
   parts.devServer({
     host: process.env.HOST,
-    port: process.env.PORT
+    port: process.env.PORT,
   }),
   parts.generateSourceMaps({
     type: 'cheap-module-eval-source-map',

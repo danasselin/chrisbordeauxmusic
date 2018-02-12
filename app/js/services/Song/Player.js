@@ -13,7 +13,6 @@ class Player {
     selectSongFromAlbum,
     setSongPlayerCmd,
   }) {
-    this.fetchedSongs = {};
     this.songNumber = 0;
     this.audio = document.createElement('audio');
     this.updateSongTime = updateSongTime;
@@ -110,19 +109,11 @@ class Player {
     this.animationId = requestAnimationFrame(animateProgBar);
   }
 
-  songCached() {
-    return this.fetchedSongs[this.selectedSong.path];
-  }
-
-  queueCached() {
-    this.audio.src = this.fetchedSongs[this.selectedSong.path];
-  }
-
   queue() {
     this.updateSongTime('0:00');
     this.initPlayback();
     this.initProgressBar();
-    this.audio.src = `//localhost:8080/${this.selectedSong}`;
+    this.audio.src = this.selectedSong;
   }
 
   executeCmd(cmd) {

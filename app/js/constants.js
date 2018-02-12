@@ -22,6 +22,15 @@ export const scoreSrcs = [
       'Recovery',
     ],
   },
+  {
+    name: 'landline',
+    titles: [
+      'catskills',
+      'coal-fired-train',
+      'fossil-fuel-kid',
+      'same-side',
+    ],
+  },
 ];
 
 
@@ -33,4 +42,7 @@ export const navItems = [
 
 export const defaultAlbumName = 'obvious-child';
 
-export const pathToScores = 'app/site_data/scores';
+export const pathToScores = '/app/site_data/scores';
+
+console.log(pathToScores);
+

@@ -72,14 +72,18 @@ export const songEnrich = target => (
     target,
     addOns: scoreSrcs,
     keyName: 'srcs',
-    cb: (srcs, film) => (
-      srcs.map(src => (
-        src.titles.reduce((result, title) => ({
-          ...result,
-          [title]: `${pathToScores}/${dashCase(film.id)}/${title}.mp3`,
-        }), {})
-      ))
-    ),
+    cb: (srcs, film) => {
+      const filmId = dashCase(film.id);
+      const source = srcs.find(src => src.name === filmId);
+      return (
+        source
+          ? source.titles.map(title => ({
+              title,
+              path: `${pathToScores}/${dashCase(film.id)}/${title}.mp3`,
+            }))
+          : null
+      );
+    },
   })
 );
 

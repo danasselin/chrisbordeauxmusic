@@ -15,22 +15,25 @@ class FilmScoreItem extends React.Component {
     } = this.props;
 
     return (
-      <div className='card scorecard'>
-        <h4 onClick={this.props.onClick}>{title}</h4>
+      <div onClick={this.props.onClick} className='card scorecard'>
+        <h4>{title}</h4>
         <p>{director}</p>
         <p>{releaseDate}</p>
         <ul>
           {
-            Object.entries(songData[0]).map(([key, value]) => (
-              <SongSticker
-                name={ key }
-                src={ value }
-                onClick={ function () {
-                  songOnClick(value);
-                  setCmd('queued');
-                } }
-              />
-            ))
+            songData
+              ? songData.map(({ title: name, path }, i) => (
+                <SongSticker
+                  name={ name }
+                  key={ i }
+                  src={ path }
+                  onClick={ function () {
+                    songOnClick(path);
+                    setCmd('queued');
+                  } }
+                />
+              ))
+              : null
           }
         </ul>
         <hr className="divider" />
@@ -44,4 +47,3 @@ const mapDispatchToProps = {
   setCmd: setSongPlayerCmd,
 };
 export default connect(null, mapDispatchToProps)(FilmScoreItem);
-
