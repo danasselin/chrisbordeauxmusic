@@ -1,5 +1,4 @@
 import {
-  fetchSongPlayData,
   animate,
   getStartTime,
   formatTime,
@@ -123,20 +122,7 @@ class Player {
     this.updateSongTime('0:00');
     this.initPlayback();
     this.initProgressBar();
-    if (this.songCached()) {
-      this.queueCached();
-    } else {
-      const songPath = this.selectedSong.path;
-      fetchSongPlayData(songPath)
-        .then(({ link }) => {
-          this.fetchedSongs[songPath] = link;
-          this.audio.src = link;
-        })
-        .catch((err) => {
-          console.log(err);
-          // todo: emit action if fetch fails
-        });
-    }
+    this.audio.src = `//localhost:8080/${this.selectedSong}`;
   }
 
   executeCmd(cmd) {
