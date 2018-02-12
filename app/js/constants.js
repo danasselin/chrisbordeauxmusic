@@ -8,6 +8,23 @@ export const thumbnails = {
   lastTemptation,
 };
 
+export const scoreSrcs = [
+  {
+    name: 'obvious-child',
+    titles: [
+      'Bathtub',
+      'Box',
+      'ElevenThirty',
+      'Greenpoint',
+      'Halloween',
+      'Opening',
+      'Park_Bench',
+      'Recovery',
+    ],
+  },
+];
+
+
 export const navItems = [
   'film scores',
   'songs',

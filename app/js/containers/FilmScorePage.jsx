@@ -18,12 +18,17 @@ const renderScores = (onClick, {
   />
 );
 
-const FilmScorePage = ({ scoreOnClick, scores }) => (
-  <div className="card shaded padded">
-    <h3>Film Scores</h3>
-    { scores.map(renderScores.bind(null, scoreOnClick)) }
-  </div>
-);
+class FilmScorePage extends React.Component {
+  render() {
+    return (
+      <div className="card shaded padded">
+        <h3>Film Scores</h3>
+        {this.props.scores.map(renderScores.bind(null, this.props.scoreOnClick))}
+      </div>
+    );
+  }
+}
 
 const mapDispatchToProps = { scoreOnClick: scrollToPreview };
-export default connect(null, mapDispatchToProps)(FilmScorePage);
+const mapStateToProps = ({ scores }) => ({ scores });
+export default connect(mapStateToProps, mapDispatchToProps)(FilmScorePage);

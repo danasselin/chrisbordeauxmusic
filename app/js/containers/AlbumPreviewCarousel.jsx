@@ -21,7 +21,7 @@ class AlbumPreviewCarousel extends React.Component {
   constructor(props) {
     super(props);
     this.previewWidth = this.getPreviewWidth();
-    this.previews = this.processPreviews(this.props.previews);
+    this.previews = this.processPreviews(this.props.scores);
     this.centerIndex = getCenterIndex(this.previews.length) - 1;
   }
 

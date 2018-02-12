@@ -1,7 +1,13 @@
 import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import enrich from './util/enrich';
-import { defaultAlbumName, pathToScores, thumbnails } from './constants';
+import dashCase from './util/dashCase';
+import {
+  defaultAlbumName,
+  pathToScores,
+  thumbnails,
+  scoreSrcs,
+} from './constants';
 
 const nodePath = require('path');
 const requestPromise = require('request-promise');
@@ -38,6 +44,7 @@ export const createRoutes = (route, i) => (
 );
 
 // Music API helpers
+
 export const getAlbumPath = function (album, type) {
   if (type === 'score') {
     return nodePath.resolve(__dirname, pathToScores, album);
@@ -51,12 +58,28 @@ export function fetchAlbum(albumName = defaultAlbumName) {
   return requestPromise(`http://localhost:8080${getAlbumPath(albumName, 'score')}`);
 }
 
-export const enrichScores = target => (
+export const thumbnailEnrich = target => (
   enrich({
     target,
     addOns: thumbnails,
     keyName: 'img',
     cb: (images, score) => images[score.id],
+  })
+);
+
+export const songEnrich = target => (
+  enrich({
+    target,
+    addOns: scoreSrcs,
+    keyName: 'srcs',
+    cb: (srcs, film) => (
+      srcs.map(src => (
+        src.titles.reduce((result, title) => ({
+          ...result,
+          [title]: `${pathToScores}/${dashCase(film.id)}/${title}.mp3`,
+        }), {})
+      ))
+    ),
   })
 );
 
