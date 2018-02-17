@@ -1,11 +1,11 @@
-import landline from '~/app/images/Landline-movie-poster.jpg';
-import obviousChild from '~/app/images/Obvious-child-movie-poster.jpg';
-import lastTemptation from '~/app/images/last-temptation-of-christ-movie-poster.jpg';
+import landline from '~/app/images/landline-movie-poster.jpg';
+import obviousChild from '~/app/images/obvious-child-movie-poster.jpg';
+import theNymphets from '~/app/images/the-nymphets-movie-poster.jpg';
 
 export const thumbnails = {
   landline,
   obviousChild,
-  lastTemptation,
+  theNymphets,
 };
 
 export const scoreSrcs = [
@@ -25,14 +25,28 @@ export const scoreSrcs = [
   {
     name: 'landline',
     titles: [
-      'catskills',
-      'coal-fired-train',
-      'fossil-fuel-kid',
-      'same-side',
+      'Alan Posts Bail',
+      'Ali Finds Out',
+      'Ali Spies on Alan',
+      'All The Shrimp',
+      'Cab to Club',
+      'Dana and Ali Spi on Alan',
+      'Dana Reflects',
+      'Post Credit Song',
+    ],
+  },
+  {
+    name: 'the-nymphets',
+    titles: [
+      'Black Balloons',
+      'Late Night',
+      'Night Variation 1',
+      'Night Variation 2',
+      'P-cussion',
+      'Sitting on a Motorcycle',
     ],
   },
 ];
-
 
 export const navItems = [
   'film scores',
@@ -43,6 +57,4 @@ export const navItems = [
 export const defaultAlbumName = 'obvious-child';
 
 export const pathToScores = '/app/site_data/scores';
-
-console.log(pathToScores);
 

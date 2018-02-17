@@ -76,12 +76,11 @@ export const songEnrich = target => (
       const filmId = dashCase(film.id);
       const source = srcs.find(src => src.name === filmId);
       return (
-        source
-          ? source.titles.map(title => ({
-              title,
-              path: `${pathToScores}/${dashCase(film.id)}/${title}.mp3`,
-            }))
-          : null
+        source ?
+          source.titles.map(title => ({
+            title,
+            path: `${pathToScores}/${dashCase(film.id)}/${title}.mp3`,
+          })) : null
       );
     },
   })
