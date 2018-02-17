@@ -21,7 +21,6 @@ class SongPlayer extends React.Component {
   componentWillReceiveProps(nextProps) {
     const { command, selectedSong } = nextProps;
     this.player.selectedSong = selectedSong;
-    console.log('command', command);
     this.player.executeCmd(command);
   }
 

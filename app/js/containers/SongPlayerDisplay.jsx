@@ -24,17 +24,17 @@ const btnData = {
 
 const SongPlayerDisplay = ({
   btnOnClick,
-  // selectedSong,
-  // songTime,
+  selectedSong,
+  songTime,
   command,
 }) => (
   <div className='song-player'>
-    {/* <figcaption className='song-player-caption'>
+    <figcaption className='song-player-caption'>
       { selectedSong ?
         selectedSong.name :
         'Loading song . . .' }
-    </figcaption> */}
-    {/* <p>{ songTime }</p> */}
+    </figcaption>
+    <p className="song-time">{ songTime }</p>
     <figure className='progress-bar'>
       <ul className="button-bar">
         {
