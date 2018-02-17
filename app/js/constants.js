@@ -18,7 +18,7 @@ export const scoreSrcs = [
       'Greenpoint',
       'Halloween',
       'Opening',
-      'Park_Bench',
+      'Park Bench',
       'Recovery',
     ],
   },

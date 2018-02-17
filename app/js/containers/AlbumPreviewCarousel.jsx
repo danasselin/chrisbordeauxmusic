@@ -33,7 +33,7 @@ class AlbumPreviewCarousel extends React.Component {
   }
 
   componentWillReceiveProps({ selectedPreviewId = null }) {
-    if (selectedPreviewId) {
+    if (selectedPreviewId && selectedPreviewId !== this.props.selectedPreviewId) {
       const index = this.getNextPreview(selectedPreviewId);
       const diff = index - this.centerIndex;
       const direction = (function () {
@@ -74,11 +74,14 @@ class AlbumPreviewCarousel extends React.Component {
     return previews[centerIndex + 1].offsetLeft - center.offsetLeft;
   }
 
-  processPreviews(previews, center = 'obviousChild') {
+  processPreviews(previews, center) {
     const { previewWidth: width } = this;
-    return sortCenter(previews, center).map(data => (
-      { data, width }
-    ));
+    if (center) {
+      return sortCenter(previews, center).map(data => (
+        { data, width }
+      ));
+    }
+    return previews.map(data => ({ data, width }));
   }
 
   slide(index, direction, centerDiff = 1) {
