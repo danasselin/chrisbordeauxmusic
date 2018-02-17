@@ -47,9 +47,9 @@ export const setPreviewOffset = offset => (
   }
 );
 
-export const scrollToPreview = selectedPreviewId => (
+export const scrollToPreview = selectedPreview => (
   {
     type: 'SCROLL_TO_PREVIEW',
-    selectedPreviewId,
+    selectedPreview,
   }
 );

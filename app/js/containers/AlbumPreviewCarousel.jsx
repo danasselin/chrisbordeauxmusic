@@ -25,29 +25,50 @@ class AlbumPreviewCarousel extends React.Component {
     this.centerIndex = getCenterIndex(this.previews.length) - 1;
   }
 
-  getNextPreview(selected) {
-    const index = this.previews.findIndex(({ data: { id } }) => (
-      id === selected
-    ));
-    return index;
+  getNextPreview(selected, direction) {
+    let nextPreview;
+    let nextIndex;
+    if (direction === 'left') {
+      nextIndex = selected.index + 1;
+      nextPreview = this.previews[nextIndex];
+    } else {
+      nextIndex = selected.index - 1;
+      nextPreview = this.previews[nextIndex];
+    }
+    if (nextPreview) {
+      return {
+        preview: nextPreview,
+        index: nextIndex,
+        direction,
+      };
+    }
+    return selected;
   }
 
-  componentWillReceiveProps({ selectedPreviewId = null }) {
-    if (selectedPreviewId && selectedPreviewId !== this.props.selectedPreviewId) {
-      const index = this.getNextPreview(selectedPreviewId);
-      const diff = index - this.centerIndex;
-      const direction = (function () {
-        if (diff <= -1) {
-          return 'right';
-        } else if (diff > 0) {
-          return 'left';
+  componentWillReceiveProps({ selectedPreview: nextPreview }) {
+    if (this.props.selectedPreview) {
+      const { index: currentIndex } = this.props.selectedPreview;
+      if (nextPreview.index !== currentIndex) {
+        if (!nextPreview.direction) {
+          const direction = nextPreview.index > currentIndex ? 'left' : 'right';
+          this.slide(
+            { ...nextPreview, direction },
+            this.getPreviewDiff(nextPreview.index),
+          );
+        } else {
+          this.slide(nextPreview, this.getPreviewDiff(nextPreview.index));
         }
-        return null;
-      }());
-      if (direction) {
-        this.slide(null, direction, Math.abs(diff));
       }
     }
+  }
+
+  componentWillMount() {
+    const initialState = {
+      preview: this.previews[0].data,
+      index: 0,
+      direction: 'left',
+    };
+    this.props.scrollToPreview(initialState);
   }
 
   componentDidMount() {
@@ -84,17 +105,25 @@ class AlbumPreviewCarousel extends React.Component {
     return previews.map(data => ({ data, width }));
   }
 
-  slide(index, direction, centerDiff = 1) {
-    if (index < this.previews.length && index >= 0) {
-      const { offset } = this.props;
-      const slideDistance = this.slideDistance * centerDiff;
-      if (direction === 'left') {
-        this.centerIndex += centerDiff;
-        this.props.setPreviewOffset(offset - (slideDistance));
-      } else {
-        this.centerIndex -= centerDiff;
-        this.props.setPreviewOffset(offset + (slideDistance));
-      }
+  getPreviewDiff(selectedIndex) {
+    const { index: previousIndex } = this.props.selectedPreview;
+    if (selectedIndex > previousIndex) {
+      return selectedIndex - previousIndex;
+    } else if (selectedIndex < previousIndex) {
+      return previousIndex - selectedIndex;
+    }
+    return 1;
+  }
+
+  slide(nextPreview, diff) {
+    console.log('slide', nextPreview);
+    const direction = nextPreview.direction;
+    const { offset } = this.props;
+    const slideDistance = this.slideDistance * diff;
+    if (direction === 'left') {
+      this.props.setPreviewOffset(offset - slideDistance);
+    } else {
+      this.props.setPreviewOffset(offset + slideDistance);
     }
   }
 
@@ -125,13 +154,19 @@ class AlbumPreviewCarousel extends React.Component {
         </div>
         <div className='carousel-btn-wrap'>
           <i
-            onClick={() => this.slide(this.centerIndex + 1, 'left')}
+            onClick={() => {
+              const nextPreview = this.getNextPreview(this.props.selectedPreview, 'left');
+              this.props.scrollToPreview(nextPreview);
+            }}
             className="fa fa-arrow-left fa-2x"
             aria-hidden="true">
           </i>
           <SongPlayer />
           <i
-            onClick={() => this.slide(this.centerIndex - 1, 'right')}
+            onClick={() => {
+              const nextPreview = this.getNextPreview(this.props.selectedPreview, 'right');
+              this.props.scrollToPreview(nextPreview);
+            }}
             className="fa fa-arrow-right fa-2x"
             aria-hidden="true">
           </i>
@@ -146,13 +181,13 @@ const mapStateToProps = ({
     offset,
     scroll,
     previewWidth,
-    selectedPreviewId,
+    selectedPreview,
   },
 }) => ({
   offset,
   scroll,
   previewWidth,
-  selectedPreviewId,
+  selectedPreview,
 });
 
 const mapDispatchToProps = {

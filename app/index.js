@@ -11,8 +11,6 @@ import root from './js/root';
 import 'font-awesome/css/font-awesome.css'; // eslint-disable-line import/first
 import './css/main.css';
 
-console.log(songEnrich(thumbnailEnrich(filmScores.films)));
-
 const store = createStore(
   hcApp,
   { scores: songEnrich(thumbnailEnrich(filmScores.films)) },

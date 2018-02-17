@@ -7,11 +7,10 @@ const renderScores = (onClick, {
   title,
   director,
   release_date: releaseDate,
-  id,
   srcs,
 }, i) => (
   <FilmScoreItem
-    onClick={onClick.bind(null, id, srcs)}
+    onClick={onClick.bind(null, i, srcs)}
     key={i}
     title={title}
     director={director}
@@ -21,9 +20,12 @@ const renderScores = (onClick, {
 );
 
 class FilmScorePage extends React.Component {
+  componentWillMount() {
+    console.log(this.props);
+  }
   render() {
-    const updater = (id, srcs) => {
-      this.props.scoreOnClick(id);
+    const updater = (i, srcs) => {
+      this.props.scoreOnClick({ preview: this.props.scores[i], index: i, direction: null });
       this.props.setSelectedAlbum(srcs);
     };
     return (
