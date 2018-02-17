@@ -50,7 +50,7 @@ export const scoreSrcs = [
 
 export const navItems = [
   'film scores',
-  'songs',
+  'other music',
   'press',
 ];
 

@@ -1,7 +1,6 @@
-import AlbumLibrary from './containers/AlbumLibrary.jsx';
 import { PressPage } from './components/PressPage.jsx';
 import FilmScorePage from './containers/FilmScorePage.jsx';
-import { fetchAlbum } from './helpers.jsx';
+import OtherMusic from './components/OtherMusicPage.jsx';
 
 export const HcSiteRoutes = [
   {
@@ -9,11 +8,8 @@ export const HcSiteRoutes = [
     component: FilmScorePage,
   },
   {
-    path: '/songs',
-    component: AlbumLibrary,
-    propsData: {
-      fetchAlbum,
-    },
+    path: '/other-music',
+    component: OtherMusic,
   },
   {
     path: '/press',
