@@ -20,13 +20,13 @@ const renderScores = (onClick, {
 );
 
 class FilmScorePage extends React.Component {
-  componentWillMount() {
-    console.log(this.props);
-  }
   render() {
     const updater = (i, srcs) => {
       this.props.scoreOnClick({ preview: this.props.scores[i], index: i, direction: null });
-      this.props.setSelectedAlbum(srcs);
+      this.props.setSelectedAlbum({
+        title: this.props.scores[i].title,
+        songs: srcs,
+      });
     };
     return (
       <div className="card shaded padded">

@@ -1,7 +1,7 @@
-export const setSelectedAlbum = songs => (
+export const setSelectedAlbum = album => (
   {
     type: 'SET_SELECTED_ALBUM',
-    songs,
+    album,
   }
 );
 

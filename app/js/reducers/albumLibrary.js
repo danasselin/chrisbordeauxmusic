@@ -1,7 +1,9 @@
 const albumLibrary = (state = {}, action) => {
   switch (action.type) {
     case 'SET_SELECTED_ALBUM':
-      return { songs: action.songs };
+      return {
+        album: action.album,
+      };
     default:
       return state;
   }

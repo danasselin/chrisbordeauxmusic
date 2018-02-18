@@ -6,14 +6,20 @@ import {
   setPreviewWidth,
   setPreviewOffset,
   scrollToPreview,
+  setSelectedAlbum,
 } from '../actions';
 import { sortCenter, getCenterIndex } from '../helpers.jsx';
 
-const AlbumPreview = ({ img, width, addlClass = '' }) => (
+const AlbumPreview = ({
+  img,
+  width,
+  onClick,
+  addlClass = '',
+}) => (
   <div
     className={`album-preview ${addlClass}`}
     style={{ minWidth: `${width}px` }}>
-    <img src={`${img}`} />
+    <img src={`${img}`} onClick={ onClick }/>
   </div>
 );
 
@@ -116,7 +122,6 @@ class AlbumPreviewCarousel extends React.Component {
   }
 
   slide(nextPreview, diff) {
-    console.log('slide', nextPreview);
     const direction = nextPreview.direction;
     const { offset } = this.props;
     const slideDistance = this.slideDistance * diff;
@@ -133,13 +138,24 @@ class AlbumPreviewCarousel extends React.Component {
       <div className='album-preview-carousel card padded'>
         <div className='carousel-wrap' style={wrapStyle}>
           {
-            this.previews.map(({ data, width }, i) => (
-              <AlbumPreview
-                key={ i }
-                img={ data.img }
-                width={ width }
-              />
-            ))
+            this.previews.map(({ data, width }, i) => {
+              const queueAlbum =
+                this.props.setSelectedAlbum.bind(
+                  null,
+                  {
+                    title: this.previews[i].data.title,
+                    songs: this.previews[i].data.srcs,
+                  },
+                );
+              return (
+                <AlbumPreview
+                  onClick={ queueAlbum }
+                  key={ i }
+                  img={ data.img }
+                  width={ width }
+                />
+              );
+            })
           }
           {
             this.previews.length % 2 === 0
@@ -195,6 +211,7 @@ const mapDispatchToProps = {
   setPreviewOffset,
   setPreviewWidth,
   scrollToPreview,
+  setSelectedAlbum,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AlbumPreviewCarousel);

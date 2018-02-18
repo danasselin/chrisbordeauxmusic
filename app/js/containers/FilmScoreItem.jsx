@@ -28,7 +28,7 @@ class FilmScoreItem extends React.Component {
                   key={ i }
                   src={ path }
                   onClick={ function () {
-                    songOnClick({ path, name });
+                    songOnClick({ path, title: name });
                     setCmd('queued');
                   } }
                 />

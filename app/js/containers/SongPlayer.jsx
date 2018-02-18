@@ -19,22 +19,28 @@ class SongPlayer extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { command, selectedSong } = nextProps;
-    this.player.selectedSong = selectedSong;
+    const { command, selectedSong, songs } = nextProps;
+    console.log(songs);
+    if (selectedSong) {
+      this.player.selectedSong = selectedSong;
+    } else {
+      this.player.selectedSong = songs[0];
+    }
     this.player.executeCmd(command);
   }
 
   render() {
     return (
-      <SongPlayerDisplay />
+      <SongPlayerDisplay { ...this.props } />
     );
   }
 }
 
 const mapStateToProps = ({
-  songPlayer: { command, selectedSong },
+  songPlayer: { command, selectedSong, songTime },
   albumLibrary: { songs },
-}) => ({ command, songs, selectedSong });
+  scores,
+}) => ({ scores, command, songs, selectedSong, songTime });
 
 const mapDispatchToProps = {
   updateSongTime,
