@@ -25,6 +25,10 @@ const renderScores = (onClick, {
 );
 
 class FilmScorePage extends React.Component {
+  componentDidMount() {
+    this.props.selectSongFromAlbum(this.props.scores[0].srcs[0]);
+  }
+
   render() {
     const updater = (i, srcs) => {
       this.props.scoreOnClick({
@@ -37,10 +41,6 @@ class FilmScorePage extends React.Component {
         songs: srcs,
       });
       this.props.setSongPlayerCmd('queued');
-      // this.props.selectSongFromAlbum({
-      //   title: srcs[0].title,
-      //   path: srcs[0].path,
-      // });
     };
     return (
       <div className="card shaded padded">

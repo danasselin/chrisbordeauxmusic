@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SongPlayerDisplay from './SongPlayerDisplay.jsx';
 import {
   setSongPlayerCmd,
   updateSongTime,
   selectSongFromAlbum,
   setSelectedAlbum,
-} from '../actions';
-import Player from '../services/Song/Player';
+} from '~/app/js/actions';
+import Player from '~/app/js/services/Song/Player';
+import SongPlayerDisplay from './SongPlayerDisplay.jsx';
 
 class SongPlayer extends React.Component {
   constructor(props) {
@@ -28,6 +28,7 @@ class SongPlayer extends React.Component {
     if (this.player.album.title !== album.title) {
       this.player.album = album;
       this.props.setSongPlayerCmd('queued');
+      this.player.setPlayerProgressColor(album.title);
     }
     if (selectedSong) {
       this.player.selectedSong = selectedSong;

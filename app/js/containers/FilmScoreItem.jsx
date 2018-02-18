@@ -10,25 +10,45 @@ class FilmScoreItem extends React.Component {
       director,
       releaseDate,
       songData,
-      songOnClick,
+      selectSong,
       setCmd,
+      selectedSong,
+      album,
     } = this.props;
 
+    const albumInfoClasses = (function () {
+      const defaultClasses = 'card scorecard';
+      const isSelectedAlbum = album ? album.title === title : false;
+      return isSelectedAlbum ? `selected ${defaultClasses}` : defaultClasses;
+    }());
+
+    const songStickerClasses = function (song, currentTitle) {
+      const defaultClasses = `song-sticker ${title.toLowerCase().replace(' ', '-')}`;
+      return (
+        song && song.title === currentTitle
+          ? `${defaultClasses} selected`
+          : defaultClasses
+      );
+    };
+
     return (
-      <div onClick={this.props.onClick} className='card scorecard'>
-        <h4>{title}</h4>
-        <p>{director}</p>
-        <p>{releaseDate}</p>
-        <ul>
+      <div onClick={this.props.onClick} className={albumInfoClasses}>
+        <div className='album-info-listing'>
+          <h4>{title}</h4>
+          <p>directed by {director}</p>
+          <p>released in {releaseDate}</p>
+        </div>
+        <ul className='album-song-listing'>
           {
             songData
               ? songData.map(({ title: name, path }, i) => (
                 <SongSticker
+                  classes={ songStickerClasses(selectedSong, name) }
                   name={ name }
                   key={ i }
                   src={ path }
                   onClick={ function () {
-                    songOnClick({ path, title: name });
+                    selectSong({ path, title: name });
                     setCmd('queued');
                   } }
                 />
@@ -36,14 +56,22 @@ class FilmScoreItem extends React.Component {
               : null
           }
         </ul>
-        <hr className="divider" />
       </div>
     );
   }
 }
 
+const mapStateToProps = ({
+  albumLibrary: {
+    album,
+  },
+  songPlayer: {
+    selectedSong,
+  },
+}) => ({ album, selectedSong });
+
 const mapDispatchToProps = {
-  songOnClick: selectSongFromAlbum,
+  selectSong: selectSongFromAlbum,
   setCmd: setSongPlayerCmd,
 };
-export default connect(null, mapDispatchToProps)(FilmScoreItem);
+export default connect(mapStateToProps, mapDispatchToProps)(FilmScoreItem);

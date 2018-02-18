@@ -4,5 +4,15 @@ $grey: #999999;
 $very-light-grey: whitesmoke;
 $light-grey: #b7b7b7;
 $white: #FFFFFF;
+$cyan: #159587;
+$deep-pink: #f93672;
+$deep-purple: #58336e;
+$nineties-purple: #831abe;
 
 $divider-color: color($very-light-grey shade(5%));
+$selected-album-color: $divider-color;
+
+/* film score colors */
+$obvious-child-color: $deep-pink;
+$the-nymphets-color: $deep-purple;
+$landline-color: $nineties-purple;

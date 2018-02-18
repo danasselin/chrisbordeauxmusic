@@ -58,3 +58,6 @@ export const defaultAlbumName = 'obvious-child';
 
 export const pathToScores = '/app/site_data/scores';
 
+export const landlineColor = '#831abe';
+export const theNymphetsColor = '#58336e';
+export const obviousChildColor = '#f93672';

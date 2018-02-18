@@ -2,10 +2,15 @@ import {
   animate,
   getStartTime,
   formatTime,
-} from '../../helpers.jsx';
+} from '~/app/js/helpers.jsx';
+
+import {
+  theNymphetsColor,
+  landlineColor,
+  obviousChildColor,
+} from '~/app/js/constants';
 
 const darkSlateGrey = '#434343';
-const deepPink = '#f93672';
 
 class Player {
   constructor({
@@ -22,6 +27,7 @@ class Player {
       this.currentSongTime = formatTime(this.audio.currentTime);
     };
     this.album = {};
+    this.albumColor = obviousChildColor;
   }
 
   play() {
@@ -70,8 +76,18 @@ class Player {
     }
   }
 
+  setPlayerProgressColor(title) {
+    if (title === 'Landline') {
+      this.albumColor = landlineColor;
+    } else if (title === 'The Nymphets') {
+      this.albumColor = theNymphetsColor;
+    } else {
+      this.albumColor = obviousChildColor;
+    }
+  }
+
   setProgressBar(progress) {
-    this.progressBar.style.background = `linear-gradient(90deg, ${deepPink} 0px, ${progress}%, ${darkSlateGrey} 0px)`;
+    this.progressBar.style.background = `linear-gradient(90deg, ${this.albumColor} 0px, ${progress}%, ${darkSlateGrey} 0px)`;
   }
 
   getProgressBar() {

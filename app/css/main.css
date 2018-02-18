@@ -13,9 +13,13 @@
 @import './components/profile.css';
 @import './components/scorecard.css';
 
-h1, h3, ul, p, figure {
+h1, h3, h4, ul, p, figure {
   margin: 0;
   padding: 0;
+}
+
+li {
+  list-style-type: none;
 }
 
 :global {
@@ -34,6 +38,10 @@ h1, h3, ul, p, figure {
     text-transform: uppercase;
     /* text-align: center; */
     /* padding: 1% 0; */
+  }
+
+  h3 {
+    font-size: $h3-size-desktop;
   }
   
   .content-box {

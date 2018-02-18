@@ -3,13 +3,13 @@
 
 /* global */
 $x-small-font: 12px;
-$small-font: 24px;
-$medium-font: 48px;
-$large-font: 76px;
+$small-font: 16px;
+$medium-font: 24px;
+$large-font: 36px;
 $medium-text-spacing: 20px;
 $large-text-spacing: 40px;
-$h1-size: $medium-font;
-$h3-size-mobile: $medium-font;
+$h1-size: $large-font;
+$h3-size-desktop: $large-font;
 $p-size-mobile: $small-font;
 $album-font-size: $medium-font;
 $player-button-size: x-small-font;
