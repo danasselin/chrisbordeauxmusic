@@ -12,11 +12,7 @@ import Player from '../services/Song/Player';
 class SongPlayer extends React.Component {
   constructor(props) {
     super(props);
-    this.player = new Player({
-      updateSongTime: props.updateSongTime,
-      selectSongFromAlbum: props.selectSongFromAlbum,
-      setSongPlayerCmd: props.setSongPlayerCmd,
-    });
+    this.player = new Player(props);
   }
 
   componentDidMount() {
@@ -31,6 +27,7 @@ class SongPlayer extends React.Component {
     const { command, selectedSong, album } = nextProps;
     if (this.player.album.title !== album.title) {
       this.player.album = album;
+      this.props.setSongPlayerCmd('queued');
     }
     if (selectedSong) {
       this.player.selectedSong = selectedSong;
