@@ -5,6 +5,7 @@ import {
   setSongPlayerCmd,
   updateSongTime,
   selectSongFromAlbum,
+  setSelectedAlbum,
 } from '../actions';
 import Player from '../services/Song/Player';
 
@@ -18,13 +19,23 @@ class SongPlayer extends React.Component {
     });
   }
 
+  componentDidMount() {
+    const initialAlbum = this.props.scores[0];
+    this.props.setSelectedAlbum({
+      title: initialAlbum.title,
+      songs: initialAlbum.srcs,
+    });
+  }
+
   componentWillReceiveProps(nextProps) {
-    const { command, selectedSong, songs } = nextProps;
-    console.log(songs);
+    const { command, selectedSong, album } = nextProps;
+    if (this.player.album.title !== album.title) {
+      this.player.album = album;
+    }
     if (selectedSong) {
       this.player.selectedSong = selectedSong;
     } else {
-      this.player.selectedSong = songs[0];
+      this.player.selectedSong = album.songs[0];
     }
     this.player.executeCmd(command);
   }
@@ -38,14 +49,15 @@ class SongPlayer extends React.Component {
 
 const mapStateToProps = ({
   songPlayer: { command, selectedSong, songTime },
-  albumLibrary: { songs },
+  albumLibrary: { album },
   scores,
-}) => ({ scores, command, songs, selectedSong, songTime });
+}) => ({ scores, command, album, selectedSong, songTime });
 
 const mapDispatchToProps = {
   updateSongTime,
   setSongPlayerCmd,
   selectSongFromAlbum,
+  setSelectedAlbum,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SongPlayer);

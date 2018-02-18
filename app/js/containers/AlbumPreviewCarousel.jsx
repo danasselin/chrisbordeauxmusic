@@ -7,6 +7,7 @@ import {
   setPreviewOffset,
   scrollToPreview,
   setSelectedAlbum,
+  selectSongFromAlbum,
 } from '../actions';
 import { sortCenter, getCenterIndex } from '../helpers.jsx';
 
@@ -134,28 +135,28 @@ class AlbumPreviewCarousel extends React.Component {
 
   render() {
     const wrapStyle = { transform: `translateX(${this.props.offset}px)` };
+    const goToAlbum = (i) => {
+      this.props.setSelectedAlbum({
+        title: this.previews[i].data.title,
+        songs: this.previews[i].data.srcs,
+      });
+      this.props.selectSongFromAlbum({
+        title: this.previews[i].data.srcs[0].title,
+        path: this.previews[i].data.srcs[0].path,
+      });
+    };
     return (
       <div className='album-preview-carousel card padded'>
         <div className='carousel-wrap' style={wrapStyle}>
           {
-            this.previews.map(({ data, width }, i) => {
-              const queueAlbum =
-                this.props.setSelectedAlbum.bind(
-                  null,
-                  {
-                    title: this.previews[i].data.title,
-                    songs: this.previews[i].data.srcs,
-                  },
-                );
-              return (
-                <AlbumPreview
-                  onClick={ queueAlbum }
-                  key={ i }
-                  img={ data.img }
-                  width={ width }
-                />
-              );
-            })
+            this.previews.map(({ data, width }, i) => (
+              <AlbumPreview
+                onClick={ goToAlbum.bind(null, i) }
+                key={ i }
+                img={ data.img }
+                width={ width }
+              />
+            ))
           }
           {
             this.previews.length % 2 === 0
@@ -212,6 +213,7 @@ const mapDispatchToProps = {
   setPreviewWidth,
   scrollToPreview,
   setSelectedAlbum,
+  selectSongFromAlbum,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AlbumPreviewCarousel);

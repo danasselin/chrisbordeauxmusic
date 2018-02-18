@@ -21,6 +21,7 @@ class Player {
     this.audio.ontimeupdate = () => {
       this.currentSongTime = formatTime(this.audio.currentTime);
     };
+    this.album = {};
   }
 
   play() {
@@ -52,19 +53,21 @@ class Player {
   }
 
   forward() {
-    this.songNumber += 1;
-    const nextSong = this.songs[this.songNumber];
-    this.songPath = nextSong.path;
-    this.selectSongFromAlbum(nextSong);
-    this.setSongPlayerCmd('queued');
+    if (this.songNumber < this.album.songs.length - 1) {
+      this.songNumber += 1;
+      const nextSong = this.album.songs[this.songNumber];
+      this.selectSongFromAlbum(nextSong);
+      this.setSongPlayerCmd('queued');
+    }
   }
 
   back() {
-    this.songNumber -= 1;
-    const prevSong = this.songs[this.songNumber];
-    this.songPath = prevSong.path;
-    this.selectSongFromAlbum(prevSong);
-    this.setSongPlayerCmd('queued');
+    if (this.songNumber >= 1) {
+      this.songNumber -= 1;
+      const prevSong = this.album.songs[this.songNumber];
+      this.selectSongFromAlbum(prevSong);
+      this.setSongPlayerCmd('queued');
+    }
   }
 
   setProgressBar(progress) {
@@ -113,7 +116,7 @@ class Player {
     this.updateSongTime('0:00');
     this.initPlayback();
     this.initProgressBar();
-    this.audio.src = this.selectedSong;
+    this.audio.src = this.selectedSong.path;
   }
 
   executeCmd(cmd) {

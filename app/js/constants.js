@@ -30,7 +30,7 @@ export const scoreSrcs = [
       'Ali Spies on Alan',
       'All The Shrimp',
       'Cab to Club',
-      'Dana and Ali Spi on Alan',
+      'Dana and Ali Spy on Alan',
       'Dana Reflects',
       'Post Credit Song',
     ],

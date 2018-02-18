@@ -1,6 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { scrollToPreview, setSelectedAlbum } from '~/app/js/actions';
+import {
+  scrollToPreview,
+  setSelectedAlbum,
+  selectSongFromAlbum,
+  setSongPlayerCmd,
+} from '~/app/js/actions';
 import FilmScoreItem from './FilmScoreItem.jsx';
 
 const renderScores = (onClick, {
@@ -22,11 +27,20 @@ const renderScores = (onClick, {
 class FilmScorePage extends React.Component {
   render() {
     const updater = (i, srcs) => {
-      this.props.scoreOnClick({ preview: this.props.scores[i], index: i, direction: null });
+      this.props.scoreOnClick({
+        preview: this.props.scores[i],
+        index: i,
+        direction: null,
+      });
       this.props.setSelectedAlbum({
         title: this.props.scores[i].title,
         songs: srcs,
       });
+      this.props.setSongPlayerCmd('queued');
+      // this.props.selectSongFromAlbum({
+      //   title: srcs[0].title,
+      //   path: srcs[0].path,
+      // });
     };
     return (
       <div className="card shaded padded">
@@ -40,6 +54,8 @@ class FilmScorePage extends React.Component {
 const mapDispatchToProps = {
   scoreOnClick: scrollToPreview,
   setSelectedAlbum,
+  selectSongFromAlbum,
+  setSongPlayerCmd,
 };
 const mapStateToProps = ({ scores }) => ({ scores });
 export default connect(mapStateToProps, mapDispatchToProps)(FilmScorePage);
