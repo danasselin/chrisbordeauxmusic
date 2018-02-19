@@ -16,10 +16,13 @@ const AlbumPreview = ({
   width,
   onClick,
   addlClass = '',
+  id,
 }) => (
   <div
     className={`album-preview ${addlClass}`}
-    style={{ minWidth: `${width}px` }}>
+    id={id}
+    style={{ minWidth: `${width}px` }}
+  >
     <img src={`${img}`} onClick={ onClick }/>
   </div>
 );
@@ -27,7 +30,7 @@ const AlbumPreview = ({
 class AlbumPreviewCarousel extends React.Component {
   constructor(props) {
     super(props);
-    this.previewWidth = this.getPreviewWidth();
+    // this.previewWidth = this.getPreviewWidth();
     this.previews = this.processPreviews(this.props.scores);
     this.centerIndex = getCenterIndex(this.previews.length) - 1;
   }
@@ -70,6 +73,7 @@ class AlbumPreviewCarousel extends React.Component {
   }
 
   componentWillMount() {
+    // this.previewWidth = this.getPreviewWidth();
     const initialState = {
       preview: this.previews[0].data,
       index: 0,
@@ -88,7 +92,9 @@ class AlbumPreviewCarousel extends React.Component {
     // if mobile threshold return mobile width
     // if tablet threshold return tablet width
     // if desktop threshold return desktop width
-    return 350;
+    // return 350;
+    // console.log(document.querySelectorAll('.album-preview-carousel')[0].offsetWidth);
+    // return document.querySelectorAll('.album-preview-carousel')[0].offsetWidth;
   }
 
   getDistance() {
@@ -155,6 +161,7 @@ class AlbumPreviewCarousel extends React.Component {
                 key={ i }
                 img={ data.img }
                 width={ width }
+                id={ data.id }
               />
             ))
           }

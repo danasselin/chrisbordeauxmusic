@@ -9,21 +9,6 @@ class AlbumLibrary extends React.Component {
     this.selectedAlbum = props.songs || [];
   }
 
-  componentWillMount() {
-    //   .then((data) => {
-    //     console.log(data);
-    // const formatted = songs.map(formatSong);
-    // this.props.selectSongFromAlbum(formatted[0]);
-    // return formatted;
-  // })
-  // .then((songs) => {
-  //   this.props.setSelectedAlbum(songs);
-  // })
-  // .catch((err) => {
-  //   console.log(err);
-  // });
-  }
-
   render() {
     return (
       <section className="player-container card shaded">

@@ -2,49 +2,15 @@
     margin-right: 20px;
 }
 
-.album-preview-carousel {
-  overflow: hidden;
-  .carousel-btn-wrap {
-    display: flex;
-    justify-content: space-between;
-    .fa {
-      align-self: center;
-    }
-    p {
-      font-size: $x-small-font;
-    }
-  }
-
-  .carousel-wrap {
-    display: flex;
-    list-style: none;
-    transition: transform 1s;
-    .album-preview {
-      margin: 15px 5%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: $small-font;
-      &.invisible {
-        visibility: hidden;
-      }
-      img {
-        /* max-width: 260px;
-        max-height: 360px; */
-        width: 75%;
-        max-width: 260px;
-        max-height: 360px;
-      }
-    }
-  }
-}
-
 .song-player {
   flex: 2;
   margin: 1em 40px;
-  font-size: $x-small-font;
-  .song-time {
-    font-size: $medium-font;
+  .now-playing {
+    text-align: center;
+    font-size: $small-font;
+    .song-time {
+      font-size: $medium-font;
+    }
   }
 }
 

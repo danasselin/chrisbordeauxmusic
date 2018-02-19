@@ -1,0 +1,57 @@
+.album-preview-carousel {
+  overflow: hidden;
+  .carousel-btn-wrap {
+    display: flex;
+    justify-content: space-between;
+    .fa {
+      align-self: center;
+    }
+    p {
+      font-size: $x-small-font;
+    }
+  }
+
+  .carousel-wrap {
+    display: flex;
+    list-style: none;
+    transition: transform 1s;
+    .album-preview {
+      margin: 15px 5%;
+      min-width: 90%;
+      height: 450px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: $small-font;
+      &.invisible {
+        visibility: hidden;
+      }
+      &#obviousChild {
+          background-image: url('~/app/images/obvious-child-movie-poster.jpg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+      }
+      &#theNymphets {
+          background-image: url('~/app/images/the-nymphets-movie-poster.jpg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+      }
+      &#landline {
+          background-image: url('~/app/images/landline-movie-poster.jpg');
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+      }
+      img {
+          display: none;
+          /* max-width: 260px;
+          max-height: 360px; */
+          /* width: 75%; */
+          /* max-width: 260px;
+          max-height: 360px; */
+      }
+    }
+  }
+}

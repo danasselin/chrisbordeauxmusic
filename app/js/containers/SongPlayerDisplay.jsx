@@ -12,6 +12,26 @@ const btnData = {
   forward: 'fa-forward fa-3x',
 };
 
+const NowPlayingBanner = ({ selectedSong, scores, songTime }) => {
+  const currentSong = (function () {
+    if (selectedSong) {
+      return selectedSong.title;
+    }
+    return scores[0].srcs[0].title;
+  }());
+
+  const nowPlayingText = `Now Playing: ${currentSong}`;
+
+  return (
+    <div className='now-playing'>
+      <div className="selected-song">
+        <h4>{ nowPlayingText }</h4>
+      </div>
+      <p className="song-time">{ songTime }</p>
+    </div>
+  );
+};
+
 class SongPlayerDisplay extends React.Component {
   constructor(props) {
     super(props);
@@ -31,25 +51,12 @@ class SongPlayerDisplay extends React.Component {
   }
   render() {
     const {
-      selectedSong,
-      scores,
-      songTime,
       btnOnClick,
       command,
     } = this.props;
     return (
       <div className='song-player'>
-        <figcaption className='song-player-caption'>
-          {
-            (function () {
-              if (selectedSong) {
-                return selectedSong.title;
-              }
-              return scores[0].srcs[0].title;
-            }())
-          }
-        </figcaption>
-        <p className="song-time">{ songTime }</p>
+        <NowPlayingBanner { ...this.props } />
         <figure className='progress-bar'>
           <ul className="button-bar">
             {

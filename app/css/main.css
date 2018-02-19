@@ -8,6 +8,7 @@
 @import './divider.css';
 @import './card.css';
 
+@import './components/carousel.css';
 @import './components/player.css';
 @import './components/nav.css';
 @import './components/profile.css';
