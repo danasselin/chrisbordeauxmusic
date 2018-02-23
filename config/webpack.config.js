@@ -1,13 +1,17 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 const merge = require('webpack-merge');
 const parts = require('./webpack.parts');
+const { cssUse, prodCssUse } = require('./cssConfig');
 require('dotenv').config();
 const isDev = process.env.NODE_ENV === 'development';
 
 const PATHS = {
   app: path.join(__dirname, '..', 'app'),
   build: path.join(__dirname, '..', 'build'),
+  styles: path.join(__dirname, '..', 'app', 'css', 'main.css'),
 };
 
 const commonConfig = merge([
@@ -19,6 +23,7 @@ const commonConfig = merge([
     },
     entry: {
       app: PATHS.app,
+      styles: PATHS.styles,
     },
     output: {
       path: PATHS.build,
@@ -29,23 +34,26 @@ const commonConfig = merge([
     },
     plugins: [
       new HtmlWebpackPlugin({
-        title: 'Webpack demo',
+        title: 'Chris Bordeaux Music',
+        excludeAssets: [/styles.js/],
       }),
+      new WebpackShellPlugin({
+        onBuildStart: ['rm -rf build'],
+      }),
+      new HtmlWebpackExcludeAssetsPlugin(),
     ],
   },
   parts.lintJavaScript({
     include: PATHS.app,
     options: {
       cacheDirectory: true,
-    }
-  }),
-  parts.loadImages(),
-  parts.loadFonts({
-    options: {
-      name: '[name].[ext]',
     },
   }),
-  parts.loadCSS(),
+  parts.loadFonts({
+    options: {
+      name: 'fonts/[name].[ext]',
+    },
+  }),
   parts.loadJavaScript({
     include: PATHS.app,
     options: {
@@ -61,9 +69,12 @@ const commonConfig = merge([
 const productionConfig = merge([
   parts.loadImages({
     options: {
-      limit: 15000,
       name: '[name].[ext]',
+      outputPath: 'images/',
     },
+  }),
+  parts.extractCSS({
+    use: prodCssUse,
   }),
 ]);
 
@@ -74,6 +85,10 @@ const developmentConfig = merge([
   }),
   parts.generateSourceMaps({
     type: 'cheap-module-eval-source-map',
+  }),
+  parts.loadImages(),
+  parts.loadCSS({
+    use: cssUse,
   }),
 ]);
 

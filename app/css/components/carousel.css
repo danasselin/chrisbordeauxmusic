@@ -27,19 +27,19 @@
         visibility: hidden;
       }
       &#obviousChild {
-          background-image: url('~/app/images/obvious-child-movie-poster.jpg');
+          background-image: url('../images/obvious-child-movie-poster.jpg');
           background-size: contain;
           background-repeat: no-repeat;
           background-position: center;
       }
       &#theNymphets {
-          background-image: url('~/app/images/the-nymphets-movie-poster.jpg');
+          background-image: url('../images/the-nymphets-movie-poster.jpg');
           background-size: contain;
           background-repeat: no-repeat;
           background-position: center;
       }
       &#landline {
-          background-image: url('~/app/images/landline-movie-poster.jpg');
+          background-image: url('../images/landline-movie-poster.jpg');
           background-size: contain;
           background-repeat: no-repeat;
           background-position: center;

@@ -52,52 +52,51 @@ exports.loadJavaScript = ({ include, exclude, options }) => ({
   },
 });
 
-exports.loadCSS = ({ include, exclude } = {}) => ({
+exports.loadCSS = ({ include, exclude, use } = {}) => ({
   module: {
     rules: [
       {
         test: /\.css$/,
         include,
         exclude,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => ([
-                require('postcss-easy-import'),
-                require('postcss-mixins'),
-                require('postcss-for'),
-                require('postcss-each'),
-                require('postcss-conditionals'),
-                require('postcss-color-function'),
-                require('postcss-simple-vars'),
-                require('postcss-extend'),
-                require('autoprefixer'),
-                require('precss'),
-              ]),
-            },
-          }
-        ]
-      }
-    ]
-  }
+        use,
+      },
+    ],
+  },
 });
 
-exports.loadImages = ({ include, exclude, options } = {}) => (
+exports.extractCSS = ({ use }) => {
+  const plugin = new ExtractTextPlugin({
+    filename: '[name].css',
+    allChunks: true,
+  });
+
+  return {
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: plugin.extract({
+            fallback: 'style-loader',
+            use,
+          }),
+        },
+      ],
+    },
+    plugins: [plugin],
+  };
+};
+
+exports.loadImages = ({ options } = {}) => (
   {
     module: {
       rules: [
-        // {
-        //   test: /\.svg$/,
-        //   use: 'raw-loader',
-        // },
         {
           test: /\.(png|jpg|svg)$/,
-          use: 'url-loader',
+          use: {
+            loader: 'file-loader',
+            options,
+          },
         },
       ],
     },

@@ -9,7 +9,6 @@ import hcApp from './js/reducers';
 import root from './js/root';
 
 import 'font-awesome/css/font-awesome.css'; // eslint-disable-line import/first
-import './css/main.css';
 
 const store = createStore(
   hcApp,
