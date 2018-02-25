@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, Redirect } from 'react-router-dom';
 import enrich from './util/enrich';
 import dashCase from './util/dashCase';
 import {
@@ -38,7 +38,11 @@ export const createRoutes = (route, i) => (
         updatedProps = Object.assign({}, props, route.propsData);
         return <route.component {...updatedProps} />;
       }
-      return <route.component {...props} />;
+      return (
+        route.redirect
+          ? <Redirect to={ route.redirect.to } />
+          : <route.component { ...props } />
+      );
     }}
   />
 );

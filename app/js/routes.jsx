@@ -4,6 +4,13 @@ import OtherMusic from './components/OtherMusicPage.jsx';
 
 export const HcSiteRoutes = [
   {
+    path: '/',
+    redirect: {
+      to: '/film-scores',
+    },
+    component: FilmScorePage,
+  },
+  {
     path: '/film-scores',
     component: FilmScorePage,
   },
