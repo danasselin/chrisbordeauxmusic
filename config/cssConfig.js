@@ -1,5 +1,4 @@
-const path = require('path');
-const postCssPlugins = [
+  const postCssPlugins = [
   require('postcss-easy-import'),
   require('postcss-mixins'),
   require('postcss-for'),
@@ -15,9 +14,6 @@ const postCssPlugins = [
 const baseLoaders = [
   {
     loader: 'css-loader',
-    // options: {
-    //   root: path.join(__dirname, '..', 'build', 'images'),
-    // },
   },
   {
     loader: 'postcss-loader',

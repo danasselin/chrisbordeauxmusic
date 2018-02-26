@@ -1,18 +1,14 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const merge = require('webpack-merge');
 const parts = require('./webpack.parts');
 const { cssUse, prodCssUse } = require('./cssConfig');
+const PATHS = require('./util');
+
 require('dotenv').config();
 const isDev = process.env.NODE_ENV === 'development';
-
-const PATHS = {
-  app: path.join(__dirname, '..', 'app'),
-  build: path.join(__dirname, '..', 'build'),
-  styles: path.join(__dirname, '..', 'app', 'css', 'main.css'),
-};
 
 const commonConfig = merge([
   {
@@ -76,6 +72,15 @@ const productionConfig = merge([
   parts.extractCSS({
     use: prodCssUse,
   }),
+  {
+    plugins: [
+      new CopyWebpackPlugin([{
+        from: 'site_data/**',
+        to: PATHS.build,
+        ignore: 'film_scores.json',
+        context: 'app/',
+      }])],
+  },
 ]);
 
 const developmentConfig = merge([
