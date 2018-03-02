@@ -74,6 +74,7 @@ const productionConfig = merge([
   }),
   {
     plugins: [
+      parts.setFreeVariable('process.env.NODE_ENV', 'production'),
       new CopyWebpackPlugin([{
         from: 'site_data/**',
         to: PATHS.build,

@@ -5,7 +5,7 @@ exports.generateSourceMaps = ({ type }) => ({
   devtool: type,
 });
 
-exports.setFreeVariable = ( key, value ) => {
+exports.setFreeVariable = (key, value) => {
   const env = {};
   env[key] = JSON.stringify(value);
   return new webpack.DefinePlugin(env);
