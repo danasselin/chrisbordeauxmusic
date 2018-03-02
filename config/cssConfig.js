@@ -1,4 +1,4 @@
-  const postCssPlugins = [
+const postCssPlugins = [
   require('postcss-easy-import'),
   require('postcss-mixins'),
   require('postcss-for'),
