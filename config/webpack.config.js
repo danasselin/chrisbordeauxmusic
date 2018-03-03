@@ -4,7 +4,7 @@ const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plug
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const merge = require('webpack-merge');
 const parts = require('./webpack.parts');
-const { cssUse, prodCssUse } = require('./cssConfig');
+const { devCssUse, prodCssUse } = require('./cssConfig');
 const PATHS = require('./util');
 
 require('dotenv').config();
@@ -29,12 +29,12 @@ const commonConfig = merge([
       extensions: ['.js', '.jsx', '.json'],
     },
     plugins: [
+      new WebpackShellPlugin({
+        onBuildStart: ['rm -rf build'],
+      }),
       new HtmlWebpackPlugin({
         title: 'Chris Bordeaux Music',
         excludeAssets: [/styles.js/],
-      }),
-      new WebpackShellPlugin({
-        onBuildStart: ['rm -rf build'],
       }),
       new HtmlWebpackExcludeAssetsPlugin(),
     ],
@@ -44,6 +44,9 @@ const commonConfig = merge([
     options: {
       cacheDirectory: true,
     },
+  }),
+  parts.extractCSS({
+    use: prodCssUse,
   }),
   parts.loadFonts({
     options: {
@@ -60,6 +63,7 @@ const commonConfig = merge([
       ],
     },
   }),
+  
 ]);
 
 const productionConfig = merge([
@@ -80,7 +84,8 @@ const productionConfig = merge([
         to: PATHS.build,
         ignore: 'film_scores.json',
         context: 'app/',
-      }])],
+      }]),
+    ],
   },
 ]);
 
@@ -93,9 +98,9 @@ const developmentConfig = merge([
     type: 'cheap-module-eval-source-map',
   }),
   parts.loadImages(),
-  parts.loadCSS({
-    use: cssUse,
-  }),
+  // parts.loadCSS({
+  //   use: devCssUse,
+  // }),
 ]);
 
 
@@ -105,4 +110,4 @@ module.exports = (env) => {
   }
 
   return merge(commonConfig, developmentConfig);
-}
+};
