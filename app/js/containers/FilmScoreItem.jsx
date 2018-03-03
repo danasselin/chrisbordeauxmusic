@@ -32,7 +32,7 @@ class FilmScoreItem extends React.Component {
     };
 
     return (
-      <div onClick={this.props.onClick} className={albumInfoClasses}>
+      <div onClick={this.props.onClick} className={`${albumInfoClasses} ${songData.length <= 6 ? 'two-column' : ''}`}>
         <div className='album-info-listing'>
           <h4>{title}</h4>
           <p>directed by {director}</p>

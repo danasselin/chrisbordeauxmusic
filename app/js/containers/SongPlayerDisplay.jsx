@@ -1,15 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { playerButtonSize } from '~/app/js/constants';
 import { setSongPlayerCmd, selectSongFromAlbum } from '../actions';
 import SongPlayerButton from '../components/SongPlayerButton.jsx';
 
 const btnData = {
-  rewind: 'fa-backward fa-3x',
+  rewind: `fa-backward fa-${playerButtonSize}x`,
   play: {
-    play: 'fa-play fa-3x',
-    pause: 'fa-pause fa-3x',
+    play: `fa-play fa-${playerButtonSize}x`,
+    pause: `fa-pause fa-${playerButtonSize}x`,
   },
-  forward: 'fa-forward fa-3x',
+  forward: `fa-forward fa-${playerButtonSize}x`,
 };
 
 const NowPlayingBanner = ({ selectedSong, scores, songTime }) => {

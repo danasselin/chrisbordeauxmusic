@@ -73,9 +73,9 @@ const productionConfig = merge([
       outputPath: 'images/',
     },
   }),
-  parts.extractCSS({
-    use: prodCssUse,
-  }),
+  // parts.extractCSS({
+  //   use: prodCssUse,
+  // }),
   {
     plugins: [
       parts.setFreeVariable('process.env.NODE_ENV', 'production'),

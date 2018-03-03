@@ -65,3 +65,4 @@ export const landlineColor = '#831abe';
 export const theNymphetsColor = '#58336e';
 export const obviousChildColor = '#f93672';
 
+export const playerButtonSize = 2;

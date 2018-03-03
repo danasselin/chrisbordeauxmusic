@@ -30,7 +30,8 @@ body {
 }
 
 .content {
-  margin: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 h1 {

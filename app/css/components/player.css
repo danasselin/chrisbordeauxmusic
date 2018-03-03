@@ -1,10 +1,12 @@
 .player-container {
+    position: sticky;
+    max-height: 375px;
+    top: 0;
     margin-right: 20px;
 }
 
 .song-player {
   flex: 2;
-  margin: 1em 40px;
   .now-playing {
     text-align: center;
     font-size: $small-font;
@@ -15,13 +17,14 @@
 }
 
 .progress-bar {
-  border-radius: 5px;
-  padding: 6%;
   .button-bar {
+    padding: 3%;
+    border-radius: 3px;
     display: flex;
     justify-content: space-around;
+    border: 1px solid $dark-grey;
     .fa {
-      color: $very-light-grey;
+      color: $dark-grey;
     }
   }
 }

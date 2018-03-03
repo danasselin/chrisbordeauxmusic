@@ -1,6 +1,5 @@
 .profile-temporary {
-    display: flex;
-    justify-content: flex-start;
+    text-align: center;
     h1 {
         padding: 3%;
     } 

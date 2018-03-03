@@ -5,27 +5,56 @@
     &.selected {
         background-color: $selected-album-color;
     }
+    &.two-column {
+        grid-template-columns: 1fr 60%;   
+        .album-song-listing {
+            justify-content: center;
+        } 
+    }
     padding: 3% 10px;
-    min-height: 115px;
+    min-height: 195px;
     cursor: pointer;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     border-bottom: 1px solid $divider-color;
 }
 
 .album-song-listing {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     font-size: $x-small-font;
     li {
         background-color: $white;
         border-radius: 2px;
-        height: min-content;
+        border: 1px solid $selected-album-color;
+        height: 30px;
         padding: 1% 7px;
-        margin: 3% 0;
-        border: 1px solid #b7b7b7;
-        width: max-content;
+        margin: 2% 10px;
+        width: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         text-align: center;
+        &.obvious-child {
+            &.selected {
+                background-color: $obvious-child-color;
+                color: $white;
+            }
+        }
+        
+        &.the-nymphets {
+            &.selected {
+                background-color: $the-nymphets-color;
+                color: $white;
+            }
+        }
+        
+        &.landline {
+            &.selected {
+                background-color: $landline-color;
+                color: $white;
+            }
+        }
     }
 }
 
@@ -36,24 +65,3 @@
     }
 }
 
-
-.obvious-child {
-    &.selected {
-        background-color: $obvious-child-color;
-        color: $white;
-    }
-}
-
-.the-nymphets {
-    &.selected {
-        background-color: $the-nymphets-color;
-        color: $white;
-    }
-}
-
-.landline {
-    &.selected {
-        background-color: $landline-color;
-        color: $white;
-    }
-}

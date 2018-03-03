@@ -152,30 +152,7 @@ class AlbumPreviewCarousel extends React.Component {
       });
     };
     return (
-      <div className='album-preview-carousel card padded'>
-        <div className='carousel-wrap' style={wrapStyle}>
-          {
-            this.previews.map(({ data, width }, i) => (
-              <AlbumPreview
-                onClick={ goToAlbum.bind(null, i) }
-                key={ i }
-                img={ data.img }
-                width={ width }
-                id={ data.id }
-              />
-            ))
-          }
-          {
-            this.previews.length % 2 === 0
-              ?
-              <AlbumPreview
-                width={ this.previewWidth }
-                title={''}
-                addlClass='invisible'
-              />
-              : null
-          }
-        </div>
+      <div>
         <div className='carousel-btn-wrap'>
           <i
             onClick={() => {
@@ -185,7 +162,6 @@ class AlbumPreviewCarousel extends React.Component {
             className="fa fa-arrow-left fa-2x"
             aria-hidden="true">
           </i>
-          <SongPlayer />
           <i
             onClick={() => {
               const nextPreview = this.getNextPreview(this.props.selectedPreview, 'right');
@@ -194,6 +170,32 @@ class AlbumPreviewCarousel extends React.Component {
             className="fa fa-arrow-right fa-2x"
             aria-hidden="true">
           </i>
+        </div>
+        <div className='album-preview-carousel card padded'>
+          <div className='carousel-wrap' style={wrapStyle}>
+            {
+              this.previews.map(({ data, width }, i) => (
+                <AlbumPreview
+                  onClick={ goToAlbum.bind(null, i) }
+                  key={ i }
+                  img={ data.img }
+                  width={ width }
+                  id={ data.id }
+                />
+              ))
+            }
+            {
+              this.previews.length % 2 === 0
+                ?
+                <AlbumPreview
+                  width={ this.previewWidth }
+                  title={''}
+                  addlClass='invisible'
+                />
+                : null
+            }
+          </div>
+          <SongPlayer />
         </div>
       </div>
     );

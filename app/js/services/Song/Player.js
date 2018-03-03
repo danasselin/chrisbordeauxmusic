@@ -10,7 +10,7 @@ import {
   obviousChildColor,
 } from '~/app/js/constants';
 
-const darkSlateGrey = '#434343';
+const white = '#FFFFFF';
 
 class Player {
   constructor({
@@ -87,7 +87,7 @@ class Player {
   }
 
   setProgressBar(progress) {
-    this.progressBar.style.background = `linear-gradient(90deg, ${this.albumColor} 0px, ${progress}%, ${darkSlateGrey} 0px)`;
+    this.progressBar.style.background = `linear-gradient(90deg, ${this.albumColor} 0px, ${progress}%, ${white} 0px)`;
   }
 
   getProgressBar() {

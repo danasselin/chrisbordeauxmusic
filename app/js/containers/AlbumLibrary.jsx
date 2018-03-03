@@ -14,6 +14,7 @@ class AlbumLibrary extends React.Component {
       <section className="player-container card shaded">
         <figure className="profile-temporary">
           <h1>Chris Bordeaux</h1>
+          <h4>composer | songwriter</h4>
         </figure>
         <AlbumPreviewCarousel { ...this.props } />
       </section>

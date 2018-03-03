@@ -1,4 +1,5 @@
 .site-container {
+    width: 97%;
     display: grid;
     grid-template-columns: 35% 65%;
 }
