@@ -1,4 +1,4 @@
-import { PressPage } from './components/PressPage.jsx';
+import ContactPage from './components/ContactPage.jsx';
 import FilmScorePage from './containers/FilmScorePage.jsx';
 import OtherMusic from './components/OtherMusicPage.jsx';
 
@@ -19,7 +19,7 @@ export const HcSiteRoutes = [
     component: OtherMusic,
   },
   {
-    path: '/press',
-    component: PressPage,
+    path: '/contact',
+    component: ContactPage,
   },
 ];

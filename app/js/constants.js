@@ -51,7 +51,7 @@ export const scoreSrcs = [
 export const navItems = [
   'film scores',
   'other music',
-  'press',
+  'contact',
 ];
 
 export const defaultAlbumName = 'obvious-child';
