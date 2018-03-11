@@ -53,6 +53,7 @@
     "jest": "^21.2.1",
     "json-loader": "^0.5.7",
     "lodash": "^4.17.4",
+    "node-emoji": "^1.8.1",
     "postcss": "^6.0.8",
     "postcss-calc": "^6.0.0",
     "postcss-clean": "^1.0.3",
