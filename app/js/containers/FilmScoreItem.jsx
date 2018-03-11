@@ -9,6 +9,7 @@ class FilmScoreItem extends React.Component {
       title,
       director,
       releaseDate,
+      coComposers,
       songData,
       selectSong,
       setCmd,
@@ -37,6 +38,17 @@ class FilmScoreItem extends React.Component {
           <h4>{title}</h4>
           <p>directed by {director}</p>
           <p>released in {releaseDate}</p>
+          {
+            coComposers
+              ? <p>co-composed by
+                {
+                  coComposers.map((composer, i, all) => (
+                    ` ${composer}${all.length !== (i + 1) ? ' and ' : ''}`
+                  ))
+                }
+              </p>
+              : null
+          }
         </div>
         <ul className='album-song-listing'>
           {

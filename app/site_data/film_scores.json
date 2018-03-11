@@ -16,7 +16,11 @@
             "title": "Landline",
             "director": "Gillian Robespierre",
             "release_date": "2017",
-            "id": "landline"
+            "id": "landline",
+            "co_composers": [
+                "Clyde Lawrence",
+                "Jordan Cohen"
+            ]
         }
     ]
 }

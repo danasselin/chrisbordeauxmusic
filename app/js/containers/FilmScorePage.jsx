@@ -13,6 +13,7 @@ const renderScores = (onClick, {
   director,
   release_date: releaseDate,
   srcs,
+  co_composers: coComposers,
 }, i) => (
   <FilmScoreItem
     onClick={onClick.bind(null, i, srcs)}
@@ -20,6 +21,7 @@ const renderScores = (onClick, {
     title={title}
     director={director}
     releaseDate={releaseDate}
+    coComposers={coComposers}
     songData={srcs}
   />
 );
