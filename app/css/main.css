@@ -13,8 +13,9 @@
 @import './components/nav.css';
 @import './components/profile.css';
 @import './components/scorecard.css';
-@import './components/underconstruction.css';
+@import './components/page.css';
 @import './components/contactpage.css';
+@import './components/aboutpage.css';
 
 h1, h3, h4, ul, p, figure {
   margin: 0;

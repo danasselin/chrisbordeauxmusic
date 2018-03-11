@@ -1,10 +1,10 @@
 import React from 'react';
-
-const emoji = require('node-emoji');
+import { underConstructionEmojis } from '~/app/js/helpers.jsx';
 
 export default () => (
   <div className="under-construction">
-    <h4>Page under construction! More content coming soon</h4>
-    {[1, 2, 3].map(() => emoji.get('thinking_face'))}
+    <p>
+      {`Page under construction! More content coming soon ${underConstructionEmojis()}`}
+    </p>
   </div>
 );

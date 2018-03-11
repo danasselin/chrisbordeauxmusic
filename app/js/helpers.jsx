@@ -12,11 +12,20 @@ import {
 const nodePath = require('path');
 const requestPromise = require('request-promise');
 const Dropbox = require('dropbox');
+const emoji = require('node-emoji');
 
 // display helpers
 export const isSelectedSong = (song1, song2) => (
   song1 === song2 ? ' selected' : ''
 );
+
+export const underConstructionEmojis = function () {
+  let emojis = '';
+  [1, 2, 3].forEach(() => {
+    emojis += emoji.get('thinking_face');
+  });
+  return `  ${emojis}`;
+};
 
 // Route and template helpers
 export function createNavMenu(items) {

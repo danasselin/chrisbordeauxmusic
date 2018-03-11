@@ -52,6 +52,7 @@ export const navItems = [
   'film scores',
   'other music',
   'contact',
+  'about',
 ];
 
 export const defaultAlbumName = 'obvious-child';
